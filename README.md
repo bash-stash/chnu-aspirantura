@@ -1,1 +1,1 @@
-# The software for university department of graduate students
+# The software for university(BSNU) department of graduate students
