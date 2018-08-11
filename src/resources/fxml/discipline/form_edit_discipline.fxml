@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="511.0" minHeight="258.0" minWidth="300.0" prefHeight="397.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.discipline.ControllerEditDiscipline">
+   <children>
+      <Label fx:id="title" layoutX="29.0" layoutY="8.0" text="Редагувати дисципліну">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Separator layoutX="14.0" layoutY="49.0" prefHeight="3.0" prefWidth="459.0" />
+      <Button layoutX="365.0" layoutY="342.0" mnemonicParsing="false" onMouseClicked="#apply" prefHeight="25.0" prefWidth="97.0" text="Готово" />
+
+      <Button layoutX="256.0" layoutY="342.0" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="25.0" prefWidth="97.0" text="Скасувати" />
+      <ComboBox fx:id="comboBoxTypeControl" layoutX="156.0" layoutY="190.0" prefHeight="25.0" prefWidth="144.0" promptText="Оберіть тип">
+      </ComboBox>
+      <Label layoutX="25.0" layoutY="191.0" text="Тип контролю:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="93.0" text="Назва дисципліни:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldName" layoutX="154.0" layoutY="91.0" prefHeight="25.0" prefWidth="305.0" />
+      <ComboBox fx:id="comboBoxNumberSym" layoutX="356.0" layoutY="126.0" prefHeight="25.0" prefWidth="46.0" promptText="1">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="1" />
+               <String fx:value="2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="225.0" layoutY="127.0" text="Номер симестру:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxVykladach" layoutX="156.0" layoutY="225.0" prefHeight="25.0" prefWidth="299.0" promptText="Оберіть викладача">
+      </ComboBox>
+      <Label layoutX="26.0" layoutY="226.0" text="Викладач:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxSpeciality" layoutX="157.0" layoutY="262.0" prefHeight="25.0" prefWidth="299.0" promptText="Оберіть спеціальність">
+      </ComboBox>
+      <Label layoutX="26.0" layoutY="263.0" text="Спеціальність:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxDisciplines" layoutX="152.0" layoutY="57.0" prefHeight="25.0" prefWidth="305.0" promptText="Оберіть дисципліну" />
+      <Label layoutX="26.0" layoutY="58.0" text="Дисципліна: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxStatus" layoutX="157.0" layoutY="298.0" prefHeight="25.0" prefWidth="144.0" promptText="Оберіть статус">
+      <items>
+      <FXCollections fx:factory="observableArrayList">
+         <String fx:value="Активно" />
+         <String fx:value="Неактивно" />
+      </FXCollections>
+   </items>
+      </ComboBox>
+      <Label layoutX="27.0" layoutY="299.0" text="Статус дисципліни:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxNumberCourse" layoutX="156.0" layoutY="125.0" prefHeight="25.0" prefWidth="46.0" promptText="1">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="1" />
+               <String fx:value="2" />
+               <String fx:value="3" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="25.0" layoutY="127.0" text="Номер курсу:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxForm" layoutX="156.0" layoutY="157.0" prefHeight="25.0" prefWidth="144.0" promptText="Оберіть тип" />
+      <Label layoutX="25.0" layoutY="158.0" text="Форма начання:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

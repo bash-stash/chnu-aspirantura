@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="730.0" minHeight="600.0" minWidth="600.0" prefHeight="730.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerShowInfoAspirant">
+   <children>
+      <Pane prefHeight="745.0" prefWidth="588.0">
+         <children>
+            <Label layoutX="28.0" layoutY="11.0" text="Перегляд інформації">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Separator layoutX="19.0" layoutY="55.0" prefHeight="3.0" prefWidth="556.0" />
+            <Label layoutX="32.0" layoutY="74.0" text="П.І.Б.: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="114.0" text="Дата народження: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="14.0" layoutY="210.0" prefHeight="3.0" prefWidth="556.0" />
+            <Label layoutX="34.0" layoutY="480.0" text="Паспортні дані">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+
+            <Separator layoutX="19.0" layoutY="436.0" prefHeight="3.0" prefWidth="556.0" />
+            <Label layoutX="26.0" layoutY="181.0" text="Контакти">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="229.0" text="Номер телефону: ">
+
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="16.0" layoutY="329.0" prefHeight="3.0" prefWidth="563.0" />
+            <Label layoutX="36.0" layoutY="294.0" text="Навчальні відомості">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="262.0" text="Фізична адреса: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="338.0" text="Спеціальність: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="370.0" text="Науковий керівник: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="18.0" layoutY="509.0" prefHeight="3.0" prefWidth="563.0" />
+            <Label layoutX="36.0" layoutY="405.0" text="Зарахування в аспірануру">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="451.0" text="Номер наказу: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="196.0" layoutY="451.0" text="Дата наказу: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="16.0" layoutY="623.0" prefHeight="3.0" prefWidth="563.0" />
+            <Label layoutX="287.0" layoutY="228.0" text="E-mail: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="showHideLabel" layoutX="171.0" layoutY="486.0" onMouseClicked="#togglePassport" text="[Приховати]" textFill="#1822a8">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Pane fx:id="passportPane" layoutX="23.0" layoutY="510.0" prefHeight="112.0" prefWidth="546.0">
+               <children>
+                  <Label layoutX="9.0" layoutY="13.0" text="Серія: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="13.0" text="Номер: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="9.0" layoutY="83.0" text="Ідентифікаційний код:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="241.0" layoutY="11.0" text="Дата видачі: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="49.0" text="Виданий: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="seria" layoutX="62.0" layoutY="13.0" text="ЕР">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="number" layoutX="159.0" layoutY="13.0" text="123456">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="publishedDate" layoutX="339.0" layoutY="13.0" text="12.13.2016">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="identificator" layoutX="176.0" layoutY="84.0" text="123456789012456">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="publishedBy" layoutX="89.0" layoutY="49.0" prefHeight="20.0" prefWidth="303.0" text="Миколаївським УРВМС Миколаївської області">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+
+            <ImageView fx:id="photo" fitHeight="137.0" fitWidth="121.0" layoutX="463.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/profile.jpg" />
+               </image></ImageView>
+            <Button layoutX="473.0" layoutY="684.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="97.0" text="Закрити" />
+            <Label fx:id="pib" layoutX="82.0" layoutY="74.0" text="Іванов Іван Іванович">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="birthday" layoutX="166.0" layoutY="114.0" text="01.01.2000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="telephone" layoutX="162.0" layoutY="229.0" text="+38(091)320-0355">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="email" layoutX="344.0" layoutY="228.0" text="example@chnu.com">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="address" layoutX="155.0" layoutY="263.0" text="Миколаївська обл., м.Миколаїв, вул. 68 Десантиків, 10.">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="speciality" layoutX="142.0" layoutY="337.0" text="Комп'ютерні науки">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="kerivnik" layoutX="175.0" layoutY="370.0" text="Іванов Іван Іванович">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nakazNumber" layoutX="142.0" layoutY="451.0" text="12345">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="nakazDate" layoutX="286.0" layoutY="451.0" text="13.13.2013">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="144.0" text="Стать: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="male" layoutX="78.0" layoutY="144.0" text="Чоловіча">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="366.0" layoutY="450.0" text="Форма навчання: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="form" layoutX="494.0" layoutY="450.0" text="Денна">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

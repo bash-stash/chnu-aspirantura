@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="600.0" maxWidth="600.0" minHeight="205.0" minWidth="540.0" prefHeight="205.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerAddEditScienceWork">
+   <children>
+      <Button fx:id="apply" layoutX="418.0" layoutY="166.0" mnemonicParsing="false" onAction="#apply" prefHeight="25.0" prefWidth="95.0" text="Зберегти" />
+      <Label layoutX="28.0" layoutY="28.0" text="Назва роботи: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="58.0" text="Де видано:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="91.0" text="Дата:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="123.0" text="Посилання:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="133.0" layoutY="26.0" prefHeight="25.0" prefWidth="382.0" />
+      <TextField fx:id="where" layoutX="133.0" layoutY="57.0" prefHeight="25.0" prefWidth="382.0" />
+      <TextField fx:id="link" layoutX="133.0" layoutY="121.0" prefHeight="25.0" prefWidth="382.0" />
+      <DatePicker fx:id="datePicker" layoutX="133.0" layoutY="89.0" prefHeight="25.0" prefWidth="137.0" />
+      <Button fx:id="cancel" layoutX="308.0" layoutY="165.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="95.0" text="Скасувати" />
+   </children>
+</Pane>

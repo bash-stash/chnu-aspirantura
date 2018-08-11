@@ -1,0 +1,107 @@
+anchorpane {
+    -fx-cursor: hand;
+}
+
+.nofocus {
+    -fx-focus-color: #c8c8c8;
+    -fx-faint-focus-color: transparent;
+}
+
+
+.cell-renderer-dismiss-student {
+    my-bg: rgb(196, 109, 96);
+    -fx-background-color: my-bg;
+}
+
+.cell-renderer-finished-student {
+    my-bg: rgb(119, 222, 110);
+    -fx-background-color: my-bg;
+}
+
+.cell-renderer-active-student {
+
+}
+
+
+*
+{
+    /* add your predefined values here */
+}
+
+.radio-button .radio{
+    -fx-border-width     : 1px   ;
+    -fx-border-color     : #000  ;
+    -fx-background-color : white ;
+    -fx-background-image : null  ;
+    -fx-border-radius    : 15px  ;
+    -fx-height           : 15px  ; /* Not working */
+    height               : 5px   ; /* Not working */
+}
+.radio-button .radio:selected{
+    -fx-background-color : white ;
+    -fx-background-image : null  ;
+}
+.radio-button -radio:armed{
+    -fx-background-color : white ;
+    -fx-background-image : null  ;
+}
+.radio-button -radio:determinate{
+    -fx-background-color : white ;
+    -fx-background-image : null  ;
+}
+.radio-button -radio:indeterminate{
+    -fx-background-color : white ;
+    -fx-background-image : null  ;
+}
+
+.cell-renderer-stopped-student {
+    my-bg: rgb(98, 140, 255);
+    -fx-background-color: my-bg;
+}
+
+
+
+
+/*!* Restore default behaviour from caspian.css *!*/
+/*.cell-renderer-dismiss-student:hover, .ccell-renderer-finished-student:hover, .cell-renderer-stopped-student:hover {*/
+    /*-fx-background-color: -fx-table-cell-border-color, -fx-cell-hover-color;*/
+    /*-fx-background-insets: 0, 0 0 1 0;*/
+/*}*/
+
+/*.cell-renderer-dismiss-student:selected, .cell-renderer-finished-student:selected, .cell-renderer-stopped-student:selected {*/
+    /*-fx-background: -fx-accent;*/
+    /*-fx-background-color: -fx-selection-bar;*/
+    /*-fx-text-fill: -fx-selection-bar-text;*/
+    /*-fx-background-insets: 0 0 1 0;*/
+/*}*/
+
+/*.cell-renderer-dismiss-student:focused:selected, .cell-renderer-finished-student:focused:selected, .cell-renderer-stopped-student:focused:selected {*/
+    /*-fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;*/
+    /*-fx-background-insets: 0 1 0 0, 1 2 1 1, 2 3 2 2;*/
+    /*-fx-background: -fx-accent;*/
+    /*-fx-text-fill: -fx-selection-bar-text;*/
+/*}*/
+
+/*.cell-renderer-dismiss-student, .cell-renderer-finished-student:focused, .cell-renderer-stopped-student:focused {*/
+    /*-fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, my-bg;*/
+    /*!*-fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, transparent;*!*/
+    /*-fx-background-insets: 0 1 0 0, 1 2 1 1, 2 3 2 2;*/
+/*}*/
+
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow,
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}

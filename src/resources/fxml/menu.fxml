@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.MenuBar?>
+
+
+<MenuBar xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.ControllerMenu">
+   <fx:define>
+      <ToggleGroup fx:id="toggleGroup1" />
+   </fx:define>
+   <menus>
+
+      <Menu mnemonicParsing="false" text="Довідники">
+         <items>
+            <RadioMenuItem fx:id="itemAspirants" mnemonicParsing="false" selected="true" text="Аспіранти" toggleGroup="$toggleGroup1" onAction="#switchToAspirant"/>
+            <RadioMenuItem fx:id="itemVykladachi" mnemonicParsing="false" text="Викладачі" toggleGroup="$toggleGroup1" onAction="#switchToVykladachi"/>
+            <RadioMenuItem fx:id="itemDiscipline" mnemonicParsing="false" text="Дисципліни" toggleGroup="$toggleGroup1" onAction="#switchToDiscipline" />
+            <RadioMenuItem fx:id="itemKafedri" mnemonicParsing="false" text="Кафедри" toggleGroup="$toggleGroup1" onAction="#switchToKafedri"/>
+            <RadioMenuItem fx:id="itemSpeciality" mnemonicParsing="false" text="Cпеціальності" toggleGroup="$toggleGroup1" onAction="#switchToSpeciality"/>
+            <RadioMenuItem fx:id="itemFaculty" mnemonicParsing="false" text="Факультети" toggleGroup="$toggleGroup1" onAction="#switchToFaculty"/>
+            <RadioMenuItem fx:id="itemNakazi" mnemonicParsing="false" text="Накази" toggleGroup="$toggleGroup1" onAction="#switchToNakazi"/>
+         </items>
+      </Menu>
+
+      <Menu mnemonicParsing="false" text="Вигляд" fx:id="viewItems">
+         <items >
+            <RadioMenuItem fx:id="itemName" selected="true" mnemonicParsing="false" text="Ім'я" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemBirthday" selected="true" mnemonicParsing="false" text="Дата народження" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemKerivnikView" selected="true" mnemonicParsing="false" text="Науковий керівник" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemSpecialityView" selected="true" mnemonicParsing="false" text="Спеціальність" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemStatus" selected="true" mnemonicParsing="false" text="Статус" onAction="#changeMenuViewListener"/>
+         </items>
+      </Menu>
+
+      <Menu mnemonicParsing="false" text="Налаштування">
+         <items>
+            <MenuItem fx:id="itemLegend" mnemonicParsing="false" text="Легенда   " />
+            <MenuItem fx:id="itemOther" mnemonicParsing="false" text="Інше    " />
+         </items>
+      </Menu>
+
+      <Menu mnemonicParsing="false" text="Звіти">
+         <items>
+            <MenuItem fx:id="allTogether" mnemonicParsing="false" text="Про всіх    "  onAction="#openReports"/>
+         </items>
+      </Menu>
+
+   </menus>
+</MenuBar>
+

@@ -1,0 +1,54 @@
+
+
+
+
+
+********[NEW APPLICATION START]********
+[Сб 11.08.2018 22:24:2:381]----------------
+	Error reading cfg file! Loading default values for connecting to db..
+	db.cfg (Не удается найти указанный файл)
+--------------------------------------------
+[Сб 11.08.2018 22:24:23:651]----------------
+	Connection failed with default values!
+	Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+--------------------------------------------
+
+
+
+
+********[NEW APPLICATION START]********
+[Сб 11.08.2018 22:27:8:825]----------------
+	Error reading cfg file! Loading default values for connecting to db..
+	db.cfg (Не удается найти указанный файл)
+--------------------------------------------
+[Сб 11.08.2018 22:27:12:802]----------------
+	Connection failed with default values!
+	The server time zone value '' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
+--------------------------------------------
+
+
+
+
+********[NEW APPLICATION START]********
+[Сб 11.08.2018 22:27:52:500]----------------
+	Error reading cfg file! Loading default values for connecting to db..
+	db.cfg (Не удается найти указанный файл)
+--------------------------------------------
+[Сб 11.08.2018 22:27:52:821]----------------
+	Connection failed with default values!
+	The server time zone value '' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
+--------------------------------------------
+
+
+
+
+********[NEW APPLICATION START]********
+[Сб 11.08.2018 22:30:43:989]----------------
+	Error reading cfg file! Loading default values for connecting to db..
+	db.cfg (Не удается найти указанный файл)
+--------------------------------------------
+[Сб 11.08.2018 22:30:45:622]----------------
+	Connected successfully with default values!
+--------------------------------------------

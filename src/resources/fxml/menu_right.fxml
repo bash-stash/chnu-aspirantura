@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar  fx:id="menu" prefHeight="25.0" prefWidth="114.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.ControllerMenuRight">
+   <menus>
+      <Menu fx:id="menuUserCaption" mnemonicParsing="false" style="-fx-cursor: hand;" text="User" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+         <items>
+            <MenuItem fx:id="itemUserSettings" mnemonicParsing="false" text="Налаштування.." onAction="#openSettings" />
+            <MenuItem fx:id="itemUserLogout" mnemonicParsing="false" text="Вихід з акаунту" onAction="#logout"/>
+         </items>
+      </Menu>
+
+   </menus>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</MenuBar>

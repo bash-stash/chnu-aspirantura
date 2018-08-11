@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="511.0" minHeight="207.0" minWidth="300.0" prefHeight="503.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.vykladach.ControllerEditVykladach">
+   <children>
+      <Label fx:id="title" layoutX="29.0" layoutY="8.0" text="Редагування інформації">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="470.0" />
+      <TextField fx:id="nameVykladach" layoutX="106.0" layoutY="99.0" prefHeight="25.0" prefWidth="371.0" />
+      <Label layoutX="29.0" layoutY="66.0" text="Викладач: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="101.0" text="Ім'я:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="380.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#apply" prefHeight="25.0" prefWidth="97.0" text="Готово" />
+      <ComboBox fx:id="comboBoxVykladach" layoutX="106.0" layoutY="64.0" prefHeight="25.0" prefWidth="371.0" promptText="Оберіть викладача" />
+
+      <Button layoutX="279.0" layoutY="460.0" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="25.0" prefWidth="89.0" text="Скасувати" />
+      <ComboBox fx:id="comboSpecialities" layoutX="28.0" layoutY="175.0" prefHeight="25.0" prefWidth="252.0" promptText="Оберіть спеціальність" />
+      <ListView fx:id="listSpecialities" layoutX="28.0" layoutY="207.0" prefHeight="165.0" prefWidth="252.0" />
+      <Button layoutX="28.0" layoutY="381.0" mnemonicParsing="false" onAction="#deleteSpeciality" prefHeight="25.0" prefWidth="252.0" text="Видалити" />
+      <Button layoutX="292.0" layoutY="175.0" mnemonicParsing="false" onAction="#addSpeciality" prefHeight="25.0" prefWidth="117.0" text="Додати" />
+      <Label layoutX="29.0" layoutY="147.0" text="Спеціальності наукового керівника: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="135.0" prefHeight="0.0" prefWidth="470.0" />
+   </children>
+</Pane>

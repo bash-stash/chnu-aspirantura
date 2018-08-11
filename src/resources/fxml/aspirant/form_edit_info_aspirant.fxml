@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.chnu.aspirantura.aspirant.MaskField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="597.0" minHeight="600.0" minWidth="597.0" prefHeight="730.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerEditInfoAspirant">
+   <children>
+      <Pane prefHeight="745.0" prefWidth="588.0">
+         <children>
+            <Label layoutX="28.0" layoutY="9.0" text="Редагування даних">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Separator layoutX="19.0" layoutY="55.0" prefHeight="3.0" prefWidth="556.0" />
+            <Label layoutX="32.0" layoutY="74.0" text="П.І.Б.: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="pib" layoutX="80.0" layoutY="72.0" prefHeight="25.0" prefWidth="230.0" promptText="Іванов Іван Іванович" />
+            <Label layoutX="32.0" layoutY="114.0" text="Дата народження: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="birthday" layoutX="159.0" layoutY="112.0" prefHeight="25.0" prefWidth="151.0" promptText="01.01.2000" />
+            <Separator layoutX="14.0" layoutY="210.0" prefHeight="3.0" prefWidth="556.0" />
+            <Label layoutX="34.0" layoutY="480.0" text="Паспортні дані">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="521.0" text="Серія: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="seria" layoutX="79.0" layoutY="519.0" prefHeight="25.0" prefWidth="29.0" promptText="ЕР" />
+            <Label layoutX="120.0" layoutY="521.0" text="Номер: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="number" layoutX="179.0" layoutY="519.0" prefHeight="25.0" prefWidth="58.0" promptText="123456" />
+            <Label layoutX="34.0" layoutY="589.0" text="Ідентифікаційний код:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="identificator" layoutX="185.0" layoutY="587.0" prefHeight="25.0" prefWidth="114.0" promptText="123456789012456" />
+            <DatePicker fx:id="datePublished" layoutX="343.0" layoutY="518.0" prefHeight="25.0" prefWidth="106.0" promptText="01.01.2016" />
+            <Label layoutX="257.0" layoutY="521.0" text="Дата видачі: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="553.0" text="Виданий: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+
+            <Separator layoutX="19.0" layoutY="436.0" prefHeight="3.0" prefWidth="556.0" />
+            <Label layoutX="26.0" layoutY="181.0" text="Контакти">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="229.0" text="Номер телефону: ">
+
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <MaskField fx:id="telephone" layoutX="148.0" layoutY="227.0" mask="+38(DDD)DDD-DDDD" prefHeight="25.0" prefWidth="114.0" />
+            <TextField fx:id="email" layoutX="331.0" layoutY="227.0" prefHeight="25.0" prefWidth="224.0" promptText="example@chnu.com" />
+            <Separator layoutX="16.0" layoutY="329.0" prefHeight="3.0" prefWidth="563.0" />
+            <Label layoutX="36.0" layoutY="294.0" text="Навчальні відомості">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="address" layoutX="147.0" layoutY="260.0" prefHeight="25.0" prefWidth="407.0" promptText="Миколаївська обл., м.Миколаїв, вул. 68 Десантиків, 10" />
+            <Label layoutX="32.0" layoutY="262.0" text="Фізична адреса: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBoxSpeciality" layoutX="144.0" layoutY="335.0" prefHeight="25.0" prefWidth="291.0" promptText="Оберіть спеціальність" />
+            <Label layoutX="32.0" layoutY="338.0" text="Спеціальність: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="370.0" text="Науковий керівник: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBoxKerivnik" layoutX="168.0" layoutY="367.0" prefHeight="25.0" prefWidth="267.0" promptText="Оберіть керівника" />
+            <Separator layoutX="18.0" layoutY="509.0" prefHeight="3.0" prefWidth="563.0" />
+            <Label layoutX="36.0" layoutY="405.0" text="Зарахування в аспірануру">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="451.0" text="Номер наказу: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="publishedBy" layoutX="103.0" layoutY="551.0" prefHeight="25.0" prefWidth="448.0" promptText="Миколаївським УРВМС Миколаївської області" />
+            <Separator layoutX="16.0" layoutY="623.0" prefHeight="3.0" prefWidth="563.0" />
+            <Label layoutX="272.0" layoutY="229.0" text="E-mail: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="photo" fitHeight="111.0" fitWidth="89.0" layoutX="484.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/profile.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="482.0" layoutY="179.0" mnemonicParsing="false" onAction="#selectPhoto" prefHeight="25.0" prefWidth="89.0" text="Обрати фото" />
+            <Button layoutX="409.0" layoutY="682.0" mnemonicParsing="false" onAction="#apply" prefHeight="35.0" prefWidth="165.0" text="Редагувати" />
+            <Button layoutX="297.0" layoutY="682.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="97.0" text="Скасувати" />
+            <ComboBox fx:id="comboBoxNakaz" layoutX="136.0" layoutY="447.0" prefHeight="25.0" prefWidth="142.0" promptText="Оберіть наказ" />
+            <Label layoutX="32.0" layoutY="153.0" text="Стать: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBoxMale" layoutX="78.0" layoutY="151.0" prefHeight="25.0" prefWidth="121.0" promptText="Оберіть стать">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Чоловіча" />
+                     <String fx:value="Жіноча" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+            <Label layoutX="300.0" layoutY="451.0" text="Форма навчання: ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBoxForma" layoutX="426.0" layoutY="447.0" prefHeight="25.0" prefWidth="142.0" promptText="Оберіть форму">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Денна" />
+                     <String fx:value="Заочна" />
+                     <String fx:value="Вечірня" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </children>
+      </Pane>
+   </children>
+</Pane>
