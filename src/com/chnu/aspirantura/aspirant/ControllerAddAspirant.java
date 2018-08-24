@@ -29,10 +29,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 
-/*
- * Created by fibs on 04.02.2018.
- */
-
 public class ControllerAddAspirant {
     public static Scene scene;
     @FXML

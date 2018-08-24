@@ -7,9 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by fibs on 08.02.2018.
- */
+
 
 public class ObjectAspirant {
     private int id;

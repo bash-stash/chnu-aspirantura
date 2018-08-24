@@ -15,9 +15,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 
-/**
- * Created by fibs on 12.02.2018.
- */
+
 
 public class ControllerShowResults {
     public  static int aspirantId;

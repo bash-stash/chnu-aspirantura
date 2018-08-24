@@ -14,9 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Created by fibs on 30.01.2018.
- */
 public class ControllerSettingsNakazi {
 
 

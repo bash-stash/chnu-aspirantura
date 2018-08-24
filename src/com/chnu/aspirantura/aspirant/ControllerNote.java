@@ -5,9 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-/**
- * Created by fibs on 07.02.2018.
- */
 public class ControllerNote {
 
     static String note;

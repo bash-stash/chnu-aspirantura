@@ -4,9 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
-/**
- * Created by fibs on 12.02.2018.
- */
+
 public class ControllerPraktika {
     static int actionId=0;
     static ObjectAspirant aspirant;

@@ -13,9 +13,7 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Created by fibs on 07.02.2018.
- */
+
 public class ControllerActions{
     static int actionId=0;
     static ObjectAspirant aspirant;

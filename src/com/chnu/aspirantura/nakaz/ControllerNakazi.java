@@ -24,9 +24,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-/**
- * Created by fibs on 30.01.2018.
- */
+
 public class ControllerNakazi {
 
 

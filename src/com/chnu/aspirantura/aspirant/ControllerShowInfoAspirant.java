@@ -16,9 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Created by fibs on 08.02.2018.
- */
+
 
 public class ControllerShowInfoAspirant {
     public static ObjectAspirant aspirant;

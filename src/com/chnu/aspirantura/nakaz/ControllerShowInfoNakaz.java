@@ -6,9 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-/**
- * Created by fibs on 12.02.2018.
- */
+
 
 public class ControllerShowInfoNakaz {
     public static int nakazId;

@@ -6,9 +6,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-/**
- * Created by fibs on 04.02.2018.
- */
 
 public class ControllerFormAddVykladach {
 

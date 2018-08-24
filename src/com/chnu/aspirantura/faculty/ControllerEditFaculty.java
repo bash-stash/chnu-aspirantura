@@ -10,9 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-/**
- * Created by fibs on 07.02.2018.
- */
+
 public class ControllerEditFaculty {
 
     static ObjectFaculty faculty;

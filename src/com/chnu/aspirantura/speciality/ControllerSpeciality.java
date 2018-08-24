@@ -17,9 +17,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 
-/**
- * Created by fibs on 30.01.2018.
- */
+
 public class ControllerSpeciality extends SpecialityData {
 
     static boolean loaded = false;

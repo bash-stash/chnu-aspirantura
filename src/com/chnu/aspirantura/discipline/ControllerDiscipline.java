@@ -14,9 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
-/**
- * Created by fibs on 30.01.2018.
- */
+
 public class ControllerDiscipline {
 
     private ObservableList<ObjectDiscipline> disciplinesData = FXCollections.observableArrayList();

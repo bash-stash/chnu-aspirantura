@@ -15,9 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * Created by fibs on 30.01.2018.
- */
+
 public class ControllerFaculty {
 
 

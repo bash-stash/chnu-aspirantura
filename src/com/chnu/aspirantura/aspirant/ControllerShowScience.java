@@ -21,9 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-/**
- * Created by fibs on 12.02.2018.
- */
+
 public class ControllerShowScience{
     public  static int aspirantId;
     public  static String aspirantName;

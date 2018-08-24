@@ -26,9 +26,6 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Created by fibs on 12.02.2018.
- */
 
 public class ControllerEditInfoAspirant {
     public static ObjectAspirant aspirant;

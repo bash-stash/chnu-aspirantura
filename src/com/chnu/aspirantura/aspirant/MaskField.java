@@ -1,8 +1,5 @@
 package com.chnu.aspirantura.aspirant;
 
-/**
- * Created by fibs on 06.02.2018.
- */
 
 
 import javafx.beans.property.SimpleStringProperty;

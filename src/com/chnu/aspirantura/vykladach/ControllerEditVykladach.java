@@ -13,42 +13,41 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-/**
- * Created by fibs on 07.02.2018.
- */
-
 public class ControllerEditVykladach {
 
     static ObjectVykladach vykladach;
     static ObservableList<ObjectVykladach> vykladachesData;
 
-    @FXML private ComboBox<ObjectVykladach> comboBoxVykladach;
-    @FXML private TextField nameVykladach;
+    @FXML
+    private ComboBox<ObjectVykladach> comboBoxVykladach;
+    @FXML
+    private TextField nameVykladach;
 
     static ObservableList<ObjectSpeciality> specialitiesData;
     static ObservableList<ObjectSpeciality> specialitiesDataSelected;
 
-    @FXML private ComboBox<ObjectSpeciality> comboSpecialities;
-    @FXML private ListView<ObjectSpeciality> listSpecialities;
+    @FXML
+    private ComboBox<ObjectSpeciality> comboSpecialities;
+    @FXML
+    private ListView<ObjectSpeciality> listSpecialities;
 
 
-    public void addSpeciality(){
+    public void addSpeciality() {
         ObjectSpeciality o = comboSpecialities.getValue();
 
-        if (o!=null) specialitiesDataSelected.add(o);
+        if (o != null) specialitiesDataSelected.add(o);
         listSpecialities.setItems(specialitiesDataSelected);
-        if (o!=null) specialitiesData.remove(o);
+        if (o != null) specialitiesData.remove(o);
     }
 
-    public void deleteSpeciality(){
+    public void deleteSpeciality() {
         ObjectSpeciality o = listSpecialities.getFocusModel().getFocusedItem();
-        if (o!=null) specialitiesData.add(o);
-        if (o!=null) specialitiesDataSelected.remove(o);
+        if (o != null) specialitiesData.add(o);
+        if (o != null) specialitiesDataSelected.remove(o);
     }
 
 
-
-    public void initialize(){
+    public void initialize() {
         specialitiesDataSelected = FXCollections.observableArrayList();
         specialitiesData = SqlCommander.getAllSpeciality();
         comboSpecialities.setItems(specialitiesData);
@@ -56,13 +55,13 @@ public class ControllerEditVykladach {
         comboBoxVykladach.setPromptText("Оберіть викладача");
         listSpecialities.setItems(specialitiesDataSelected);
 
-        if (vykladach!=null){
+        if (vykladach != null) {
             comboBoxVykladach.setValue(vykladach);
             nameVykladach.setText(vykladach.getName());
             specialitiesDataSelected.setAll(vykladach.getSpecialities());
 
-            specialitiesDataSelected.forEach((y)->{
-                specialitiesData.removeIf((x)->{
+            specialitiesDataSelected.forEach((y) -> {
+                specialitiesData.removeIf((x) -> {
                     if (x.getCode().equals(y.getCode())) return true;
                     return false;
                 });
@@ -74,13 +73,12 @@ public class ControllerEditVykladach {
             @Override
             public void changed(ObservableValue<? extends ObjectVykladach> observable, ObjectVykladach oldValue, ObjectVykladach newValue) {
                 nameVykladach.setText(newValue.getName());
-                if (listSpecialities.getItems()!=null) specialitiesData.addAll(listSpecialities.getItems());
+                if (listSpecialities.getItems() != null) specialitiesData.addAll(listSpecialities.getItems());
                 specialitiesDataSelected.setAll(newValue.getSpecialities());
 
 
-
-                specialitiesDataSelected.forEach((y)->{
-                    specialitiesData.removeIf((x)->{
+                specialitiesDataSelected.forEach((y) -> {
+                    specialitiesData.removeIf((x) -> {
                         if (x.getCode().equals(y.getCode())) return true;
                         return false;
                     });
@@ -88,15 +86,16 @@ public class ControllerEditVykladach {
 
             }
         });
-        vykladach=null;
+        vykladach = null;
 
     }
+
     public void apply() {
 
         int id = comboBoxVykladach.getValue().getId();
         String name = nameVykladach.getText();
         comboBoxVykladach.getValue().setSpecialities(specialitiesDataSelected);
-        SqlCommander.editVykladach(id,name,specialitiesDataSelected);
+        SqlCommander.editVykladach(id, name, specialitiesDataSelected);
         ControllerVykladach.addedNew = true;
 
         Stage stage = (Stage) comboBoxVykladach.getScene().getWindow();

@@ -22,9 +22,6 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * Created by fibs on 30.01.2018.
- */
 public class ControllerAspirant {
 
     public static final String CSS_DISMISSED = "cell-renderer-dismiss-student";
