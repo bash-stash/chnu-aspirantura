@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar  fx:id="menu" prefHeight="25.0" prefWidth="114.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.ControllerMenuRight">
+<MenuBar  fx:id="menu" prefHeight="25.0" prefWidth="114.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.ControllerMenuRight">
    <menus>
       <Menu fx:id="menuUserCaption" mnemonicParsing="false" style="-fx-cursor: hand;" text="User" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
          <items>

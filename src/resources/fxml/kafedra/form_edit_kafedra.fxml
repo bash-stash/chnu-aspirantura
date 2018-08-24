@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="511.0" minHeight="229.0" minWidth="300.0" prefHeight="229.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.kafedra.ControllerEditKafedra">
+<Pane maxHeight="-Infinity" maxWidth="511.0" minHeight="229.0" minWidth="300.0" prefHeight="229.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.kafedra.ControllerEditKafedra">
    <children>
       <Label fx:id="title" layoutX="29.0" layoutY="8.0" text="Редагування інформації">
          <font>

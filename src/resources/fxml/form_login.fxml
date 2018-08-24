@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="500.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.ControllerLogin">
+<Pane maxHeight="-Infinity" maxWidth="500.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.ControllerLogin">
    <children>
       <ImageView fitHeight="113.0" fitWidth="117.0" layoutX="95.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>

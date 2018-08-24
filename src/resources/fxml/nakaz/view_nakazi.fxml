@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.String?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="695.0" minWidth="1311.0" prefHeight="595.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.nakaz.ControllerNakazi">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="695.0" minWidth="1311.0" prefHeight="595.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.nakaz.ControllerNakazi">
    <children>
       <Pane prefHeight="131.0" prefWidth="1311.0">
          <children>

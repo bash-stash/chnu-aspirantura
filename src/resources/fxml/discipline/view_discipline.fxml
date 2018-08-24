@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="695.0" minWidth="1311.0" prefHeight="595.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.discipline.ControllerDiscipline">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="695.0" minWidth="1311.0" prefHeight="595.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.discipline.ControllerDiscipline">
     <children>
         <Pane prefHeight="131.0" prefWidth="1311.0">
             <children>

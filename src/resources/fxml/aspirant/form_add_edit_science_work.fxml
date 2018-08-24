@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="600.0" maxWidth="600.0" minHeight="205.0" minWidth="540.0" prefHeight="205.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerAddEditScienceWork">
+<Pane maxHeight="600.0" maxWidth="600.0" minHeight="205.0" minWidth="540.0" prefHeight="205.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerAddEditScienceWork">
    <children>
       <Button fx:id="apply" layoutX="418.0" layoutY="166.0" mnemonicParsing="false" onAction="#apply" prefHeight="25.0" prefWidth="95.0" text="Зберегти" />
       <Label layoutX="28.0" layoutY="28.0" text="Назва роботи: ">

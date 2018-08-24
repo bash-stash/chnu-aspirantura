@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="610.0" maxWidth="833.0" minHeight="498.0" minWidth="600.0" prefHeight="610.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.nakaz.ControllerShowInfoNakaz">
+<Pane maxHeight="610.0" maxWidth="833.0" minHeight="498.0" minWidth="600.0" prefHeight="610.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.nakaz.ControllerShowInfoNakaz">
    <children>
       <Label fx:id="header" layoutX="38.0" layoutY="12.0" prefHeight="27.0" prefWidth="757.0" text="Вміст наказу">
          <font>
