@@ -74,7 +74,7 @@ public class ControllerMenu {
             Main.setMainStageTitle("Відділ аспірантури | " + title);
             manageMenuViewItems();
         } catch (IOException e) {
-            e.printStackTrace();
+            Utils.logger.error("Error switching activity: "+e.getMessage());
         }
         return pane;
     }
@@ -87,7 +87,7 @@ public class ControllerMenu {
             try {
                 LoadWindow.loader.openWindow("/fxml/reports/report_aspirants.fxml", "Відділ аспірантури | Звіти", 400, 200, null, 2, 0);
             } catch (IOException e) {
-                e.printStackTrace();
+                Utils.logger.error("Error opening reports: "+e.getMessage());
             }
         }
     }
@@ -96,9 +96,6 @@ public class ControllerMenu {
     @FXML
     void changeMenuViewListener(ActionEvent event) throws IOException {
         RadioMenuItem radioMenuItem = (RadioMenuItem) event.getSource();
-
-        System.out.println(radioMenuItem.getId());
-        System.out.println("Selected:" + radioMenuItem.isSelected());
 
         boolean isSelected = radioMenuItem.isSelected();
 
@@ -113,9 +110,7 @@ public class ControllerMenu {
                 else if (radioMenuItem.getId().equals("itemForm"))  Settings.setSettings("item.form.aspirantura.checked", String.valueOf(isSelected));
         }
         manageMenuViewItems();
-
         Settings.savePropertiesToFile();
-        System.out.println("_______________________________");
     }
 
 
@@ -148,7 +143,6 @@ public class ControllerMenu {
 
     public void manageMenuViewItems() throws IOException {
         TableView tableView;
-
 
         radioMenuItemsAspirantura.forEach((x)->x.setVisible(false));
         if(activePane.getId().equals("paneAspirant")) {

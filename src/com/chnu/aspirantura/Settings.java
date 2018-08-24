@@ -21,10 +21,10 @@ public class Settings {
 
 
     public static void savePropertiesToFile() {
-        try (FileOutputStream out = new FileOutputStream(FILE_NAME);) {
+        try (FileOutputStream out = new FileOutputStream(FILE_NAME)) {
             properties.store(out, null);
         } catch (Exception e) {
-            System.out.println("ERROR in saving: " + e);
+           Utils.logger.error("Error saving properties to file: "+e.getMessage());
         }
     }
 
