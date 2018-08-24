@@ -28,8 +28,8 @@ public class Main extends Application {
     public static Stage mainStage;
     public static  Scene scene;
     public static Main mInstance;
-    public static ControllerAspirant controllerAspirant;
 
+    public static ControllerAspirant controllerAspirant;
 
     public static void setMainStageTitle(String title) {
        mainStage.setTitle(title);

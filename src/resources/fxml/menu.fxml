@@ -13,13 +13,13 @@
 
       <Menu mnemonicParsing="false" text="Довідники">
          <items>
-            <RadioMenuItem fx:id="itemAspirants" mnemonicParsing="false" selected="true" text="Аспіранти" toggleGroup="$toggleGroup1" onAction="#switchToAspirant"/>
-            <RadioMenuItem fx:id="itemVykladachi" mnemonicParsing="false" text="Викладачі" toggleGroup="$toggleGroup1" onAction="#switchToVykladachi"/>
-            <RadioMenuItem fx:id="itemDiscipline" mnemonicParsing="false" text="Дисципліни" toggleGroup="$toggleGroup1" onAction="#switchToDiscipline" />
-            <RadioMenuItem fx:id="itemKafedri" mnemonicParsing="false" text="Кафедри" toggleGroup="$toggleGroup1" onAction="#switchToKafedri"/>
-            <RadioMenuItem fx:id="itemSpeciality" mnemonicParsing="false" text="Cпеціальності" toggleGroup="$toggleGroup1" onAction="#switchToSpeciality"/>
-            <RadioMenuItem fx:id="itemFaculty" mnemonicParsing="false" text="Факультети" toggleGroup="$toggleGroup1" onAction="#switchToFaculty"/>
-            <RadioMenuItem fx:id="itemNakazi" mnemonicParsing="false" text="Накази" toggleGroup="$toggleGroup1" onAction="#switchToNakazi"/>
+            <RadioMenuItem fx:id="itemAspirants" mnemonicParsing="false" selected="true" text="Аспіранти" toggleGroup="$toggleGroup1" onAction="#switchLayout"/>
+            <RadioMenuItem fx:id="itemVykladachi" mnemonicParsing="false" text="Викладачі" toggleGroup="$toggleGroup1" onAction="#switchLayout"/>
+            <RadioMenuItem fx:id="itemDiscipline" mnemonicParsing="false" text="Дисципліни" toggleGroup="$toggleGroup1" onAction="#switchLayout" />
+            <RadioMenuItem fx:id="itemKafedri" mnemonicParsing="false" text="Кафедри" toggleGroup="$toggleGroup1" onAction="#switchLayout"/>
+            <RadioMenuItem fx:id="itemSpeciality" mnemonicParsing="false" text="Cпеціальності" toggleGroup="$toggleGroup1" onAction="#switchLayout"/>
+            <RadioMenuItem fx:id="itemFaculty" mnemonicParsing="false" text="Факультети" toggleGroup="$toggleGroup1" onAction="#switchLayout"/>
+            <RadioMenuItem fx:id="itemNakazi" mnemonicParsing="false" text="Накази" toggleGroup="$toggleGroup1" onAction="#switchLayout"/>
          </items>
       </Menu>
 
@@ -30,6 +30,9 @@
             <RadioMenuItem fx:id="itemKerivnikView" selected="true" mnemonicParsing="false" text="Науковий керівник" onAction="#changeMenuViewListener"/>
             <RadioMenuItem fx:id="itemSpecialityView" selected="true" mnemonicParsing="false" text="Спеціальність" onAction="#changeMenuViewListener"/>
             <RadioMenuItem fx:id="itemStatus" selected="true" mnemonicParsing="false" text="Статус" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemNote" selected="true" mnemonicParsing="false" text="Примітка" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemYear" selected="true" mnemonicParsing="false" text="Рік зарахування" onAction="#changeMenuViewListener"/>
+            <RadioMenuItem fx:id="itemForm" selected="true" mnemonicParsing="false" text="Форма навчання" onAction="#changeMenuViewListener"/>
          </items>
       </Menu>
 
