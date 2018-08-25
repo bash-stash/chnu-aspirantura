@@ -24,9 +24,6 @@ public class ControllerLogin {
     public static String login;
     private String password;
 
-    public void initialize() {
-
-    }
 
 
     public void login(ActionEvent event) {

@@ -2,3 +2,5 @@
 [INFO ] 2018.08.25 02:28:34.964 Utils: Properties saved!
 [INFO ] 2018.08.25 02:28:37.015 Utils: Properties saved!
 [INFO ] 2018.08.25 02:28:37.050 Utils: Properties saved!
+[DEBUG] 2018.08.25 03:16:40.909 Utils: Cfg is set up successfully!| Data:jdbc:mysql://localhost:3306/mydb?characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC|root|, trying to connect..
+[DEBUG] 2018.08.25 03:16:41.105 Utils: Connected successfully!

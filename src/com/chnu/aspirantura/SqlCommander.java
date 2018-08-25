@@ -25,73 +25,28 @@ import java.util.ArrayList;
 
 import static java.sql.Types.NULL;
 
-/* *
- * ALTER TABLE tablename AUTO_INCREMENT = 1
- * */
-
 public class SqlCommander {
 
 
-    static String url;
-    static String name;
-    static String password;
-    static FileWriter fileWriterLogsOnDbConnect;
-    static FileWriter fileWriterLogsOnDbChange;
+    private static String url;
+    private static String name;
+    private static String password;
+    private static FileWriter fileWriterLogsOnDbChange;
 
     static {
 
+        Settings.loadDatabaseProperties();
+
         try {
-            FileReader fileReader = new FileReader("db.cfg");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            url = "jdbc:mysql://" + Settings.getDatabaseProperty("database.host") + ":" + Settings.getDatabaseProperty("database.port") + "/" + Settings.getDatabaseProperty("database.name") + "?characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            name = Settings.getDatabaseProperty("database.user");
+            password = Settings.getDatabaseProperty("database.pass");
 
-            url = "jdbc:mysql://" + bufferedReader.readLine() + ":" + bufferedReader.readLine() + "/"+bufferedReader.readLine()+"?characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            name = bufferedReader.readLine();
-            password = bufferedReader.readLine();
-
-            System.out.println("Cfg is set up successfully, trying to connect..");
-            Connection connection = DriverManager.getConnection(url, name, password);
-            writeDbLog(null, "Cfg is set up successfully!| Data:" + url + "|" + name + "|" + ", trying to connect..");
-            System.out.println("Connected successfully!");
-            writeDbLog(null, "Connected successfully!");
-        } catch (IOException e) {
-            System.out.println("Error reading cfg file! Loading default values for connecting to db..");
-            writeDbLog(e, "Error reading cfg file! Loading default values for connecting to db..");
-            loadDefaultValues();
+            Utils.logger.debug("Cfg is set up successfully, trying to connect..");
+            DriverManager.getConnection(url, name, password);
+            Utils.logger.debug("Connected successfully!");
         } catch (Exception e) {
-
-            System.out.println("Connection failed: " + e.getMessage());
-            e.printStackTrace();
-            System.out.println("Loading default values..");
-            writeDbLog(e, "Connection failed!" + e.getMessage() + "| ");
-            writeDbLog(null, "Loading default values..");
-            loadDefaultValues();
-        }
-        System.out.println("_______________________");
-    }
-
-
-    public static void loadDefaultValues() {
-        url = "jdbc:mysql://localhost:3306/mydb?characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        name = "root";
-        password = "";
-        System.out.println(url + "|" + name + "|" + password);
-
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(url, name, password);
-            System.out.println("Connected successfully with default values!");
-            writeDbLog(null, "Connected successfully with default values!");
-        } catch (Exception e) {
-            System.out.println("Connection failed with default values: " + e.getMessage());
-            writeDbLog(e, "Connection failed with default values!");
-
-        }finally{
-            if(connection!=null)
-                try {
-                    connection.close();
-                }catch (Exception e){
-
-                }
+            Utils.logger.debug("Connection failed: " + e.getMessage());
         }
     }
 
@@ -112,47 +67,32 @@ public class SqlCommander {
         }
 
     }
-
-    public static void writeDbLog(Exception e, String message) {
+    private static Connection getConnection(){
+        Connection connection = null;
         try {
-            java.util.Date date = new java.util.Date();
-            DateFormat format2 = new SimpleDateFormat("EEE dd.MM.yyyy H:m:s:S");
-            String dateAsString = format2.format(date);
-
-
-            if (message != null || e != null) {
-                if (fileWriterLogsOnDbConnect == null) {
-                    fileWriterLogsOnDbConnect = new FileWriter("logsOnDbConnect.txt", true);
-                    fileWriterLogsOnDbConnect.write("\n\n\n\n\n********[NEW APPLICATION START]********");
-                }
-                fileWriterLogsOnDbConnect.write("\n[" + dateAsString + "]----------------");
-                if (message != null) fileWriterLogsOnDbConnect.write("\n\t" + message);
-                if (e != null) fileWriterLogsOnDbConnect.write("\r\n\t" + e.getLocalizedMessage());
-                fileWriterLogsOnDbConnect.write("\r\n--------------------------------------------");
-                fileWriterLogsOnDbConnect.flush();
-            }
-        } catch (IOException ee) {
+            connection = DriverManager.getConnection(url, name, password);
+        }catch (Exception e){
 
         }
 
+        return connection;
     }
 
 
     /************************************************
      AUTHORIZATION BLOCK
      ************************************************/
-    public static int login(String login,String passwordLocal) {
-        Connection connection = null;
+    public static int login(String login, String passwordLocal) {
+        Connection connection = getConnection();
         try {
-            connection = DriverManager.getConnection(url, name, password);
             Statement statement;
             statement = connection.createStatement();
-            ResultSet result1 = statement.executeQuery("SELECT password FROM authorization WHERE login='"+login+"'");
+            ResultSet result1 = statement.executeQuery("SELECT password FROM authorization WHERE login='" + login + "'");
 
             while (result1.next()) {
-                if (result1.getString("password").equals(passwordLocal)){
+                if (result1.getString("password").equals(passwordLocal)) {
                     return 1;
-                }else{
+                } else {
                     //password is wrong
                     return -1;
                 }
@@ -163,19 +103,18 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return -2;
-        }catch (ConnectException exe){
+        } catch (ConnectException exe) {
             return -2;
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
-
 
 
     /************************************************
@@ -183,12 +122,11 @@ public class SqlCommander {
      ************************************************/
 
     public static ObservableList<ObjectFaculty> getAllFaculty() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectFaculty> list = FXCollections.observableArrayList();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT * FROM faculty");
@@ -200,15 +138,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -217,11 +152,10 @@ public class SqlCommander {
 
 
     public static void addNewFaculty(String nameFaculty) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO faculty(name,status) VALUES(?,'Активно')";
@@ -234,25 +168,22 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
     public static void editFaculty(int id, String newName, String status) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE faculty SET name = ?,status=? WHERE id=?";
@@ -267,15 +198,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -283,11 +211,10 @@ public class SqlCommander {
 
 
     public static ObjectFaculty getFaculty(int idX) {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObjectFaculty s = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT name,id,status FROM faculty WHERE id=?";
             preparedStatement = connection.prepareStatement(query);
@@ -301,14 +228,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -322,11 +247,10 @@ public class SqlCommander {
 
 
     public static ObservableList<ObjectNakaz> getAllNakazi() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectNakaz> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT nakaz.id, nakaz.about, nakaz.nom_nakaz, nakaz.date_nakaz, nakaz_type.value " +
@@ -349,18 +273,15 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
+        }   catch (ParseException e) {
             e.printStackTrace();
             return null;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -368,16 +289,11 @@ public class SqlCommander {
     }
 
 
-
-
-
-
     public static String getAboutNakaz(int idX) {
-        Connection connection = null;
+        Connection connection = getConnection();
         String s = "";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT about FROM nakaz WHERE id=?";
             preparedStatement = connection.prepareStatement(query);
@@ -391,14 +307,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -406,11 +320,10 @@ public class SqlCommander {
     }
 
     public static ObjectNakaz getNakaz(int idX) {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObjectNakaz nakaz = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "SELECT nakaz.id, nakaz.about, nakaz.nom_nakaz, nakaz.date_nakaz, nakaz_type.value " + "\n" +
@@ -437,16 +350,14 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        }  catch (ParseException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -454,12 +365,11 @@ public class SqlCommander {
     }
 
     public static ObservableList<ObjectNakaz> getNakazByType(int type) {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectNakaz> list = FXCollections.observableArrayList();
         ObjectNakaz o = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "SELECT nakaz.id, nakaz.about, nakaz.nom_nakaz, nakaz.date_nakaz FROM nakaz WHERE nakaz.type =?";
@@ -485,16 +395,14 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        }  catch (ParseException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -503,11 +411,10 @@ public class SqlCommander {
 
 
     public static void addNewNakaz(String newNumber, String about, int type, LocalDate date) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
 
@@ -525,15 +432,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -541,11 +445,10 @@ public class SqlCommander {
 
 
     public static void editNakaz(String newNumber, String about, int type, LocalDate date, int id) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE nakaz SET about = ?,nom_nakaz=?,date_nakaz=? ,type=?  WHERE id=?";
@@ -563,19 +466,16 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
-
 
 
     /************************************************
@@ -583,11 +483,10 @@ public class SqlCommander {
      ************************************************/
 
     public static ObservableList<ObjectVykladach> getAllVykladachiBySpeciality(int idX) {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectVykladach> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT name,id FROM vykladachi " +
                     "JOIN kerivnik_speciality ON kerivnik_speciality.id_nav_kerivnik = vykladachi.id WHERE id_speciality=?";
@@ -600,19 +499,15 @@ public class SqlCommander {
             }
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }finally{
+        }   finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -621,12 +516,11 @@ public class SqlCommander {
 
 
     public static ObservableList<ObjectVykladach> getAllVykladachi() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectVykladach> list = FXCollections.observableArrayList();
         ObjectVykladach o = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT * FROM vykladachi");
@@ -640,14 +534,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -656,12 +548,11 @@ public class SqlCommander {
 
 
     public static void addNewVykladach(String nameVykladach) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "INSERT INTO vykladachi(name) VALUES(?)";
             preparedStatement = connection.prepareStatement(query);
@@ -674,25 +565,22 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
     public static void editVykladach(int id, String newName, ObservableList<ObjectSpeciality> specialities) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE vykladachi SET name = ? WHERE id=?";
@@ -705,14 +593,12 @@ public class SqlCommander {
             setSpecialitiesVykladach(id, specialities);
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -720,11 +606,10 @@ public class SqlCommander {
     }
 
     private static void setSpecialitiesVykladach(int id, ObservableList<ObjectSpeciality> specialities) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "DELETE FROM kerivnik_speciality WHERE id_nav_kerivnik=?";
@@ -747,14 +632,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -762,12 +645,11 @@ public class SqlCommander {
 
     public static ObservableList<ObjectSpeciality> getSpecialityByNavKerivnik(int idKerivnik) {
 
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectSpeciality> list = FXCollections.observableArrayList();
         ObjectSpeciality o = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT name,id,code,status,faculty_id FROM specialities " +
                     "JOIN kerivnik_speciality id_speciality ON specialities.id = id_speciality.id_speciality WHERE id_nav_kerivnik=?";
@@ -803,14 +685,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -823,11 +703,10 @@ public class SqlCommander {
      ************************************************/
 
     public static ObservableList<ObjectTypeNakazi> getAllTypeNakazi() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectTypeNakazi> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT * FROM nakaz_type");
@@ -840,14 +719,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -855,11 +732,10 @@ public class SqlCommander {
     }
 
     public static void addNewNakazType(String valueType) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO nakaz_type(value) VALUES(?)";
@@ -870,17 +746,14 @@ public class SqlCommander {
             writeLog("INSERT INTO nakaz_type(value) VALUES('" + valueType + "')");
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -892,11 +765,10 @@ public class SqlCommander {
      ************************************************/
 
     public static ObservableList<ObjectSpeciality> getAllSpeciality() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectSpeciality> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT id, name, status, code,faculty_id FROM specialities");
@@ -927,15 +799,12 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }finally{
+        }   finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -944,12 +813,11 @@ public class SqlCommander {
 
     public static ArrayList<Integer> getAllKerivniksOfSpeciality(int idX) {
 
-        Connection connection = null;
+        Connection connection = getConnection();
         ArrayList<Integer> list = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT id_nav_kerivnik FROM kerivnik_speciality WHERE id_speciality=?";
 
@@ -963,14 +831,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -979,11 +845,10 @@ public class SqlCommander {
 
 
     public static void addNewSpeciality(String nameX, String codeX, int faculty_idX, int kafedra_idX) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query;
             if (faculty_idX != -1)
@@ -1025,14 +890,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1040,11 +903,10 @@ public class SqlCommander {
 
 
     public static void editSpeciality(int idX, String nameX, String codex, String statusX, int faculty_idX, int kafedra_idX) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
 
@@ -1106,14 +968,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1124,11 +984,10 @@ public class SqlCommander {
      ************************************************/
 
     public static ObservableList<ObjectKafedra> getAllKafedras() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectKafedra> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT kafedra.id, kafedra.name, kafedra.room, specialities.name FROM kafedra LEFT OUTER JOIN  specialities  ON kafedra.speciality_id = specialities.id");
@@ -1143,16 +1002,12 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-        finally{
+        }   finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1162,11 +1017,10 @@ public class SqlCommander {
 
     public static ObjectKafedra getKafedra(int speciality_idX) {
 
-        Connection connection = null;
+        Connection connection = getConnection();
         ObjectKafedra o = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT name,id,room FROM kafedra WHERE speciality_id=?";
 
@@ -1181,15 +1035,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1198,11 +1049,10 @@ public class SqlCommander {
 
 
     public static void addNewKafedra(String nameX, String roomX) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO kafedra(name,room) VALUES(?,?)";
@@ -1215,28 +1065,24 @@ public class SqlCommander {
             writeLog("INSERT INTO kafedra(name,room) VALUES('" + nameX + "','" + roomX + "')");
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
     public static void editKafedra(int id, String nameX, String roomX) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE kafedra SET name= ?,room=? WHERE id=?";
@@ -1250,18 +1096,14 @@ public class SqlCommander {
             writeLog("UPDATE kafedra SET name= '" + nameX + "',room='" + roomX + "' WHERE id=" + id);
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1273,12 +1115,11 @@ public class SqlCommander {
      ************************************************/
 
 
-    public static void addNewDiscipline(String nameX, int idVykl, int idType, int nomSymestr, int idSpeciality, int nomCourse,int form) {
-        Connection connection = null;
+    public static void addNewDiscipline(String nameX, int idVykl, int idType, int nomSymestr, int idSpeciality, int nomCourse, int form) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO disciplines (name,semestr,status,control_type,vykladach_id,course,form) VALUES (?,?,'Активно',?,?,?,?)";
@@ -1293,7 +1134,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog("INSERT INTO disciplines (name,semestr,status,control_type,vykladach_id,course,form) VALUES ('" + nameX + "'," + nomSymestr + ",'Активно'," + idType + "," + idVykl + ","+nomCourse+","+form+")");
+            writeLog("INSERT INTO disciplines (name,semestr,status,control_type,vykladach_id,course,form) VALUES ('" + nameX + "'," + nomSymestr + ",'Активно'," + idType + "," + idVykl + "," + nomCourse + "," + form + ")");
 
 
             Statement statement = connection.createStatement();
@@ -1314,29 +1155,25 @@ public class SqlCommander {
             writeLog("INSERT INTO speciality_disciplines (id_speciality, id_disciplines) VALUES (" + idSpeciality + "," + idDiscipline + ")");
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-    public static void editDiscipline(String nameX, int idVykl, int idType, int nomSymestr, int idSpeciality, int id, String statusX, int courseX,int formX) {
-        Connection connection = null;
+    public static void editDiscipline(String nameX, int idVykl, int idType, int nomSymestr, int idSpeciality, int id, String statusX, int courseX, int formX) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE disciplines SET name=?,status=?,semestr=? ,control_type=?,vykladach_id=?, course=? , form =? WHERE id=?";
@@ -1353,7 +1190,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog("UPDATE disciplines SET name='" + nameX + "',status='" + statusX + "',semestr=" + nomSymestr + " ,control_type=" + idType + ",vykladach_id=" + idVykl + ",course="+courseX+",form="+formX+"  WHERE id=" + id);
+            writeLog("UPDATE disciplines SET name='" + nameX + "',status='" + statusX + "',semestr=" + nomSymestr + " ,control_type=" + idType + ",vykladach_id=" + idVykl + ",course=" + courseX + ",form=" + formX + "  WHERE id=" + id);
 
 
             PreparedStatement preparedStatement2;
@@ -1370,14 +1207,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1385,21 +1220,20 @@ public class SqlCommander {
 
 
     public static ObservableList<ObjectDiscipline> getAllDisciplines(int form) {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectDiscipline> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT disciplines.name,disciplines.id, disciplines.status, disciplines.semestr, vykladachi.name, discipline_type.type, disciplines.course, disciplines.form " +
-                    "FROM disciplines INNER JOIN vykladachi ON disciplines.vykladach_id = vykladachi.id INNER JOIN discipline_type ON disciplines.control_type = discipline_type.id   "+((form!=0)?"WHERE disciplines.form="+form:"")+" ORDER BY disciplines.id asc");
+                    "FROM disciplines INNER JOIN vykladachi ON disciplines.vykladach_id = vykladachi.id INNER JOIN discipline_type ON disciplines.control_type = discipline_type.id   " + ((form != 0) ? "WHERE disciplines.form=" + form : "") + " ORDER BY disciplines.id asc");
 
 
             while (result1.next()) {
                 ObjectDiscipline o = new ObjectDiscipline(result1.getInt("id"),
                         result1.getString("name"), result1.getString("status"),
-                        result1.getInt("semestr"), result1.getString(6),result1.getInt("course"));
+                        result1.getInt("semestr"), result1.getString(6), result1.getInt("course"));
                 o.setVykladach(result1.getString(5));
                 o.setSpeciality(getSpecialityByDisciplineId(result1.getInt("id")).getName());
                 o.setFormValue(result1.getInt(8));
@@ -1410,15 +1244,12 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }finally{
+        }   finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1428,11 +1259,10 @@ public class SqlCommander {
 
     public static ObjectSpeciality getSpecialityByDisciplineId(int discipline_idX) {
 
-        Connection connection = null;
+        Connection connection = getConnection();
         ObjectSpeciality o = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "SELECT name,id,code FROM specialities " +
                     "JOIN speciality_disciplines discipline ON specialities.id = discipline.id_speciality WHERE id_disciplines=?";
@@ -1449,14 +1279,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1469,11 +1297,10 @@ public class SqlCommander {
      ************************************************/
 
     public static ObservableList<ObjectTypeDiscipl> getAllTypeDiscipline() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectTypeDiscipl> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
             ResultSet result1 = statement.executeQuery("SELECT * FROM discipline_type");
@@ -1485,14 +1312,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1501,11 +1326,10 @@ public class SqlCommander {
 
 
     public static void addNewDisciplineType(String valueType) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO discipline_type(type) VALUES(?)";
@@ -1517,14 +1341,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1534,11 +1356,10 @@ public class SqlCommander {
      ASPIRANT BLOCK
      ************************************************/
 
-    public static void addNewAspirant(String pib, LocalDate birthdayData, int idKerivnik, int idSpecialilty, int idContacts, int idPassport, int idStatus,int year,int male, short form,FileInputStream fis,long fileLenght) {
-        Connection connection = null;
+    public static void addNewAspirant(String pib, LocalDate birthdayData, int idKerivnik, int idSpecialilty, int idContacts, int idPassport, int idStatus, int year, int male, short form, FileInputStream fis, long fileLenght) {
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form,photo) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
@@ -1553,12 +1374,12 @@ public class SqlCommander {
             preparedStatement.setInt(8, year);
             preparedStatement.setInt(9, male);
             preparedStatement.setInt(10, form);
-            if (fis==null)preparedStatement.setBinaryStream(11, null, 0);
+            if (fis == null) preparedStatement.setBinaryStream(11, null, 0);
             else preparedStatement.setBinaryStream(11, fis, (int) fileLenght);
             preparedStatement.execute();
 
             writeLog("INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form) " +
-                    "VALUES('" + pib + "','" + Date.valueOf(birthdayData) + "'," + idPassport + "," + idKerivnik + "," + idSpecialilty + "," + idContacts + "," + idStatus + ","+year+","+male+","+form+")");
+                    "VALUES('" + pib + "','" + Date.valueOf(birthdayData) + "'," + idPassport + "," + idKerivnik + "," + idSpecialilty + "," + idContacts + "," + idStatus + "," + year + "," + male + "," + form + ")");
 
 
             int idAspirant = -1;
@@ -1569,9 +1390,8 @@ public class SqlCommander {
             }
 
 
-
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT disciplines.name, disciplines.control_type, disciplines.course, disciplines.semestr, vykladachi.name FROM disciplines INNER JOIN vykladachi on vykladachi.id = disciplines.vykladach_id INNER JOIN speciality_disciplines  ON disciplines.id = speciality_disciplines.id_disciplines WHERE disciplines.status='Активно' AND disciplines.form="+form+" AND speciality_disciplines.id_speciality="+idSpecialilty);
+            resultSet = statement.executeQuery("SELECT disciplines.name, disciplines.control_type, disciplines.course, disciplines.semestr, vykladachi.name FROM disciplines INNER JOIN vykladachi on vykladachi.id = disciplines.vykladach_id INNER JOIN speciality_disciplines  ON disciplines.id = speciality_disciplines.id_disciplines WHERE disciplines.status='Активно' AND disciplines.form=" + form + " AND speciality_disciplines.id_speciality=" + idSpecialilty);
 
 
             while (resultSet.next()) {
@@ -1586,29 +1406,22 @@ public class SqlCommander {
                 preparedStatement.setString(1, disName);
                 preparedStatement.setString(2, vyklName);
                 preparedStatement.setInt(3, controlType);
-                preparedStatement.setInt(4,course);
+                preparedStatement.setInt(4, course);
                 preparedStatement.setInt(5, semestr);
                 preparedStatement.setInt(6, idAspirant);
                 preparedStatement.execute();
-                writeLog("INSERT INTO results(name_discipline,name_vykl,discipline_type,course,semestr,aspirant_id)  VALUES('" + disName + "','" + vyklName + "', '"+controlType+"', "+course+", "+semestr+","+idAspirant+")");
+                writeLog("INSERT INTO results(name_discipline,name_vykl,discipline_type,course,semestr,aspirant_id)  VALUES('" + disName + "','" + vyklName + "', '" + controlType + "', " + course + ", " + semestr + "," + idAspirant + ")");
             }
-
-
-
-
-
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1617,10 +1430,9 @@ public class SqlCommander {
     public static int addNewPassportData(String nameData, String seriaData, String numberData, String publishedBy, LocalDate datePublished, String identificatorData) {
         int id = -1;
 
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO passport(name,seria,number,published_by,published_date,identificator) VALUES(?,?,?,?,?,?)";
@@ -1644,17 +1456,14 @@ public class SqlCommander {
             }
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1663,10 +1472,9 @@ public class SqlCommander {
 
     public static int getLastApirantId() {
         int idAspirant = -1;
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
 
 
             Statement statement = connection.createStatement();
@@ -1678,14 +1486,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1693,36 +1499,32 @@ public class SqlCommander {
     }
 
 
-
     public static ObservableList<ObjectStudyForm> getAllForms() {
 
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectStudyForm> list = FXCollections.observableArrayList();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
-            String query = "SELECT id,form FROM study_form ORDER BY id asc";
+            String query = "SELECT id,form FROM study_form ORDER BY id ASC";
 
 
             preparedStatement = connection.prepareStatement(query);
             ResultSet result1 = preparedStatement.executeQuery();
 
             while (result1.next()) {
-                list.add(new ObjectStudyForm(result1.getInt("id"),result1.getString("form")));
+                list.add(new ObjectStudyForm(result1.getInt("id"), result1.getString("form")));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1733,10 +1535,9 @@ public class SqlCommander {
     public static int addStatusData(LocalDate dateX, int idNakaz, int idAspirant) {
         int statusId = -1;
 
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES(?,?,?,?)";
@@ -1747,7 +1548,7 @@ public class SqlCommander {
             preparedStatement.setString(4, ControllerLogin.login);
             preparedStatement.execute();
 
-            writeLog("INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('" + Date.valueOf(dateX) + "'," + idNakaz + "," + idAspirant + ", '"+ControllerLogin.login+"')");
+            writeLog("INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('" + Date.valueOf(dateX) + "'," + idNakaz + "," + idAspirant + ", '" + ControllerLogin.login + "')");
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT max(id) FROM status");
@@ -1758,14 +1559,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1775,11 +1574,10 @@ public class SqlCommander {
     public static int addNewContactsData(String telephoneData, String emailData, String addressData) {
         int id = -1;
 
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO contacts(phone,email,address) VALUES(?,?,?)";
@@ -1800,14 +1598,12 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1815,14 +1611,13 @@ public class SqlCommander {
     }
 
     public static ObservableList<ObjectAspirant> getAllAspirants() {
-        Connection connection = null;
+        Connection connection = getConnection();
         ObservableList<ObjectAspirant> list = FXCollections.observableArrayList();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             Statement statement;
             statement = connection.createStatement();
-            ResultSet result1 = statement.executeQuery("SELECT  aspirant.id,aspirant.name, aspirant.birthday, vykladachi.name, specialities.name, aspirant.id_status,aspirant.notes, kafedra.room, aspirant.year, sf.form, aspirant.is_male FROM aspirant INNER JOIN  vykladachi ON aspirant.id_nav_kerivnik = vykladachi.id INNER JOIN specialities ON specialities.id = aspirant.id_speciality  INNER JOIN kafedra ON kafedra.speciality_id = aspirant.id_speciality  INNER JOIN study_form sf ON aspirant.study_form = sf.id ORDER BY aspirant.id asc");
+            ResultSet result1 = statement.executeQuery("SELECT  aspirant.id,aspirant.name, aspirant.birthday, vykladachi.name, specialities.name, aspirant.id_status,aspirant.notes, kafedra.room, aspirant.year, sf.form, aspirant.is_male FROM aspirant INNER JOIN  vykladachi ON aspirant.id_nav_kerivnik = vykladachi.id INNER JOIN specialities ON specialities.id = aspirant.id_speciality  INNER JOIN kafedra ON kafedra.speciality_id = aspirant.id_speciality  INNER JOIN study_form sf ON aspirant.study_form = sf.id ORDER BY aspirant.id ASC");
 
 
             java.util.Date date;
@@ -1840,7 +1635,7 @@ public class SqlCommander {
                 o.setNote(result1.getString(7));
 
                 o.setForm(result1.getString(10));
-                o.setMale(result1.getInt(11)==1? "Чоловіча":"Жіноча" );
+                o.setMale(result1.getInt(11) == 1 ? "Чоловіча" : "Жіноча");
 
                 list.add(o);
             }
@@ -1848,17 +1643,14 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
+        }   catch (ParseException e) {
             e.printStackTrace();
-            return null;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1867,11 +1659,10 @@ public class SqlCommander {
     }
 
     public static void addStatus(ObjectAspirant o, LocalDate dateX, int aspirantId, int nakazId) {
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(?,?,?,?)";
@@ -1883,10 +1674,9 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
+            writeLog("INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(" + aspirantId + "," + nakazId + ",'" + Date.valueOf(dateX) + "','" + ControllerLogin.login + "')");
 
-            writeLog("INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(" + aspirantId + "," + nakazId + ",'" + Date.valueOf(dateX) + "','"+ControllerLogin.login+"')");
-
-            int maxStatusId=-1;
+            int maxStatusId = -1;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT max(id) FROM status");
 
@@ -1900,33 +1690,30 @@ public class SqlCommander {
             preparedStatement.setInt(1, maxStatusId);
             preparedStatement.setInt(2, aspirantId);
             preparedStatement.execute();
-            writeLog("UPDATE aspirant SET id_status="+maxStatusId+" WHERE id="+aspirantId);
+            writeLog("UPDATE aspirant SET id_status=" + maxStatusId + " WHERE id=" + aspirantId);
 
             o.setStatusId(maxStatusId);
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-    public static String getTypeByNakaz(int idX){
+    public static String getTypeByNakaz(int idX) {
 
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = ("SELECT id_nakaz FROM status WHERE id=?");
@@ -1934,7 +1721,7 @@ public class SqlCommander {
             preparedStatement.setInt(1, idX);
             ResultSet result1 = preparedStatement.executeQuery();
 
-            int nakaz=-1;
+            int nakaz = -1;
             while (result1.next()) {
                 nakaz = result1.getInt(1);
             }
@@ -1946,24 +1733,20 @@ public class SqlCommander {
             ResultSet result2 = preparedStatement.executeQuery();
 
 
-            while (result2.next()){
+            while (result2.next()) {
                 return result2.getString(1);
             }
-
 
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }finally{
+        }   finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -1971,16 +1754,13 @@ public class SqlCommander {
     }
 
 
-
-
-    public static ObjectContacts getContactsByAspirant(int idX){
+    public static ObjectContacts getContactsByAspirant(int idX) {
 
         ObjectContacts o = null;
-        Connection connection = null;
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT aspirant.id_contacts, contacts.email,contacts.phone,contacts.address FROM aspirant INNER JOIN  contacts ON aspirant.id_contacts = contacts.id WHERE aspirant.id=?");
             preparedStatement = connection.prepareStatement(query);
@@ -1994,16 +1774,12 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        } finally {
 
-        }finally{
-
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -2014,10 +1790,9 @@ public class SqlCommander {
     public static ObjectPassport getPassportByAspirant(int idX) {
         ObjectPassport o = null;
 
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT aspirant.id_passport, passport.seria,passport.number,passport.identificator, passport.published_by, passport.published_date FROM aspirant INNER JOIN  passport ON aspirant.id_passport = passport.id WHERE aspirant.id=?");
             preparedStatement = connection.prepareStatement(query);
@@ -2025,12 +1800,9 @@ public class SqlCommander {
             ResultSet result1 = preparedStatement.executeQuery();
 
 
-
             java.util.Date date;
             DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
             DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
-
-
 
 
             while (result1.next()) {
@@ -2038,23 +1810,20 @@ public class SqlCommander {
                 date = originalFormat.parse(result1.getDate("published_date").toString());
                 date = targetFormat.parse(targetFormat.format(date));
                 LocalDate dateLocal = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                o = new ObjectPassport(result1.getString("seria"), result1.getString("number"), result1.getString("published_by"),dateLocal,result1.getString("identificator"));
+                o = new ObjectPassport(result1.getString("seria"), result1.getString("number"), result1.getString("published_by"), dateLocal, result1.getString("identificator"));
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
+        }   catch (ParseException e) {
             e.printStackTrace();
-            return null;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -2062,14 +1831,12 @@ public class SqlCommander {
     }
 
 
-
     public static InputStream getAspirantPhoto(int idX) {
         InputStream o = null;
 
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT photo FROM aspirant WHERE aspirant.id=?");
             preparedStatement = connection.prepareStatement(query);
@@ -2083,27 +1850,24 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
+        } finally {
 
-        } finally{
-
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
         return o;
     }
 
-    public static ObjectNakaz getNakazZarahByAspirantId(int idX){
+    public static ObjectNakaz getNakazZarahByAspirantId(int idX) {
 
         ObjectNakaz o = null;
-        Connection connection = null;
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT id_nakaz FROM status INNER JOIN  nakaz ON nakaz.id = status.id_nakaz WHERE nakaz.type=4 AND aspirant_id=?");
             preparedStatement = connection.prepareStatement(query);
@@ -2115,20 +1879,15 @@ public class SqlCommander {
             }
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        } finally {
 
-        }finally{
-
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -2136,17 +1895,15 @@ public class SqlCommander {
     }
 
 
-
-    public static void editAspirant(int idX,String nameX,LocalDate date,int kerivnik,int idSpecialilty,int idNakaz,int year,int male, short form,FileInputStream fis,long fileLenght){
-        Connection connection = null;
+    public static void editAspirant(int idX, String nameX, LocalDate date, int kerivnik, int idSpecialilty, int idNakaz, int year, int male, short form, FileInputStream fis, long fileLenght) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query;
-            if (fis!=null) {
+            if (fis != null) {
                 query = "UPDATE aspirant SET name=?, birthday=?, id_nav_kerivnik=?, id_speciality=?,year=?, is_male=?,study_form=?,photo=? WHERE id=?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, nameX);
@@ -2158,7 +1915,7 @@ public class SqlCommander {
                 preparedStatement.setInt(7, form);
                 preparedStatement.setBinaryStream(8, fis, (int) fileLenght);
                 preparedStatement.setInt(9, idX);
-            }else{
+            } else {
                 query = "UPDATE aspirant SET name=?, birthday=?, id_nav_kerivnik=?, id_speciality=?,year=?, is_male=?,study_form=? WHERE id=?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, nameX);
@@ -2176,37 +1933,35 @@ public class SqlCommander {
 
             writeLog(String.format("UPDATE aspirant SET name=%s, birthday=%s, id_nav_kerivnik=%d, id_speciality=%d, year=%d, male=%d,form=%d WHERE id=%d", nameX, date.toString(), kerivnik, idSpecialilty, year, male, form, idX));
 
-            query = ("UPDATE status r JOIN nakaz n on n.id=r.id_nakaz  SET id_nakaz =?  WHERE (aspirant_id=? AND n.type=4) ");
+            query = ("UPDATE status r JOIN nakaz n ON n.id=r.id_nakaz  SET id_nakaz =?  WHERE (aspirant_id=? AND n.type=4) ");
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, idNakaz);
             preparedStatement.setInt(2, idX);
             preparedStatement.execute();
 
-            writeLog(String.format("UPDATE status r JOIN nakaz n on n.id=r.id_nakaz  SET id_nakaz =%d  WHERE (aspirant_id=%d AND n.type=4)",idNakaz,idX));
+            writeLog(String.format("UPDATE status r JOIN nakaz n on n.id=r.id_nakaz  SET id_nakaz =%d  WHERE (aspirant_id=%d AND n.type=4)", idNakaz, idX));
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-
-    public static void editNote(int aspirantId,String text) {
-        Connection connection = null;
+    public static void editNote(int aspirantId, String text) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE aspirant SET notes= ? WHERE id=?";
@@ -2217,63 +1972,56 @@ public class SqlCommander {
 
             preparedStatement.execute();
 
-            writeLog("UPDATE aspirant SET notes = '"+text+"' WHERE id="+aspirantId);
+            writeLog("UPDATE aspirant SET notes = '" + text + "' WHERE id=" + aspirantId);
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-    public static void editMark(int id,String mark) {
-        Connection connection = null;
+    public static void editMark(int id, String mark) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = "UPDATE results SET mark= ? WHERE id=?";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, mark);
             preparedStatement.setInt(2, id);
             preparedStatement.execute();
-            writeLog("UPDATE results SET mark = '"+mark+"' WHERE id="+id);
+            writeLog("UPDATE results SET mark = '" + mark + "' WHERE id=" + id);
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally{
+        }  finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-
-    public static void editPassportData(int idX,String nameX, String seriaData,String numberData,String publishedByData,LocalDate datePublishedData,int identificatorData){
-        Connection connection = null;
+    public static void editPassportData(int idX, String nameX, String seriaData, String numberData, String publishedByData, LocalDate datePublishedData, int identificatorData) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = ("SELECT id_passport FROM aspirant WHERE id=?");
@@ -2281,7 +2029,7 @@ public class SqlCommander {
             preparedStatement.setInt(1, idX);
             ResultSet result1 = preparedStatement.executeQuery();
 
-            int idP =0;
+            int idP = 0;
             while (result1.next()) {
                 idP = result1.getInt(1);
             }
@@ -2298,27 +2046,26 @@ public class SqlCommander {
             preparedStatement.setInt(7, idP);
             preparedStatement.execute();
 
-            writeLog(String.format("UPDATE passport SET name=%s,seria=%s, number=%s, published_by=%s,published_date=%s,identificator=%d WHERE id=%d",nameX,seriaData,numberData,publishedByData,datePublishedData.toString(),identificatorData,idP));
-        }catch (Exception e){
+            writeLog(String.format("UPDATE passport SET name=%s,seria=%s, number=%s, published_by=%s,published_date=%s,identificator=%d WHERE id=%d", nameX, seriaData, numberData, publishedByData, datePublishedData.toString(), identificatorData, idP));
+        } catch (Exception e) {
 
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-    public static void editContacts(int idX,String telephoneData,String emailData,String addressData){
-        Connection connection = null;
+    public static void editContacts(int idX, String telephoneData, String emailData, String addressData) {
+        Connection connection = getConnection();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = ("SELECT id_contacts FROM aspirant WHERE id=?");
@@ -2342,28 +2089,26 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
+            writeLog(String.format("UPDATE contacts SET phone=%s,address=%s, email=%s WHERE id=?", telephoneData, addressData, emailData, idP));
+        } catch (Exception e) {
 
-            writeLog(String.format("UPDATE contacts SET phone=%s,address=%s, email=%s WHERE id=?",telephoneData,addressData,emailData,idP));
-        }catch (Exception e){
+        } finally {
 
-        }finally{
-
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
-    public static ArrayList<ObjectHistoryAspirant> getAspirantHistory(int idX){
-        Connection connection = null;
+    public static ArrayList<ObjectHistoryAspirant> getAspirantHistory(int idX) {
+        Connection connection = getConnection();
         ArrayList<ObjectHistoryAspirant> list = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT status.date, status.madeBy, nn.value,n.nom_nakaz,n.date_nakaz  FROM status INNER JOIN  nakaz n ON status.id_nakaz = n.id INNER JOIN  nakaz_type nn ON n.type = nn.type WHERE status.aspirant_id=? ORDER BY  status.id DESC ");
             preparedStatement = connection.prepareStatement(query);
@@ -2385,24 +2130,20 @@ public class SqlCommander {
                 dateNakaz = targetFormat.parse(targetFormat.format(dateNakaz));
 
 
-                list.add(new ObjectHistoryAspirant(date,result1.getString(2),result1.getString(3),result1.getString(4),dateNakaz));
+                list.add(new ObjectHistoryAspirant(date, result1.getString(2), result1.getString(3), result1.getString(4), dateNakaz));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-
         } catch (ParseException e) {
             e.printStackTrace();
-        } finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
@@ -2410,48 +2151,42 @@ public class SqlCommander {
     }
 
 
-
     public static ObservableList<ObjectResult> getAllResultsByApirantId(int aspirantId) {
-        Connection connection = null;
-        ObservableList<ObjectResult> list  = FXCollections.observableArrayList();
+        Connection connection = getConnection();
+        ObservableList<ObjectResult> list = FXCollections.observableArrayList();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
-            String query = ("SELECT name_discipline,name_vykl,discipline_type.type,mark,course,semestr,results.id FROM results INNER JOIN discipline_type on discipline_type.id = results.discipline_type WHERE aspirant_id=?");
+            String query = ("SELECT name_discipline,name_vykl,discipline_type.type,mark,course,semestr,results.id FROM results INNER JOIN discipline_type ON discipline_type.id = results.discipline_type WHERE aspirant_id=?");
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, aspirantId);
             ResultSet result1 = preparedStatement.executeQuery();
 
 
             while (result1.next()) {
-                list.add(new ObjectResult(result1.getString(1),result1.getString(2),result1.getString(4),result1.getString(3),result1.getInt(5),result1.getInt(6),result1.getInt(7)));
+                list.add(new ObjectResult(result1.getString(1), result1.getString(2), result1.getString(4), result1.getString(3), result1.getInt(5), result1.getInt(6), result1.getInt(7)));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-            } finally{
+        }   finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
         return list;
     }
 
-    public static void editScienceWork(String nameX,String where,String link,LocalDate date,int workId){
-        Connection connection = null;
+    public static void editScienceWork(String nameX, String where, String link, LocalDate date, int workId) {
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
 
             String query = "UPDATE science_work SET name=?,`where`=?, link=?, date=? WHERE id=?";
@@ -2465,28 +2200,26 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog(String.format(" UPDATE science_work SET name=%s,`where`=%s, link=%s, date=%s WHERE id=%d",nameX,where,link,Date.valueOf(date).toString(),workId));
-        }catch (Exception e){
+            writeLog(String.format(" UPDATE science_work SET name=%s,`where`=%s, link=%s, date=%s WHERE id=%d", nameX, where, link, Date.valueOf(date).toString(), workId));
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
     }
 
 
-    public static void addScienceWork(String nameX,String where,String link,LocalDate date,int aspirantId){
-        Connection connection = null;
+    public static void addScienceWork(String nameX, String where, String link, LocalDate date, int aspirantId) {
+        Connection connection = getConnection();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
-            PreparedStatement preparedStatement;
 
+            PreparedStatement preparedStatement;
 
 
             String query = "INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES(?,?,?,?,?)";
@@ -2499,33 +2232,28 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-
-            writeLog("INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES('" + nameX + "','" + where+"','"+link+"','" + Date.valueOf(date) + "',"+aspirantId+")");
-
+            writeLog("INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES('" + nameX + "','" + where + "','" + link + "','" + Date.valueOf(date) + "'," + aspirantId + ")");
 
 
-
-
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
         }
     }
 
-    public static ArrayList<ObjectScienceWork> getAspirantScienceWorks(int idX){
-        Connection connection = null;
+    public static ArrayList<ObjectScienceWork> getAspirantScienceWorks(int idX) {
+        Connection connection = getConnection();
         ArrayList<ObjectScienceWork> list = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT science_work.name, science_work.where,science_work.date,science_work.link,science_work.id  FROM science_work WHERE aspirant_id=? ORDER BY  id DESC ");
             preparedStatement = connection.prepareStatement(query);
@@ -2543,37 +2271,32 @@ public class SqlCommander {
                 date = originalFormat.parse(result1.getDate(3).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
-                list.add(new ObjectScienceWork(result1.getInt(5),date,result1.getString(2),result1.getString(1),result1.getString(4)));
+                list.add(new ObjectScienceWork(result1.getInt(5), date, result1.getString(2), result1.getString(1), result1.getString(4)));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-
         } catch (ParseException e) {
             e.printStackTrace();
-        } finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }
         return list;
     }
 
-    public static ObjectScienceWork getAspirantScienceWork(int idX){
-        Connection connection = null;
+    public static ObjectScienceWork getAspirantScienceWork(int idX) {
+        Connection connection = getConnection();
         ObjectScienceWork obj = null;
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(url, name, password);
+
             PreparedStatement preparedStatement;
             String query = ("SELECT science_work.name, science_work.where,science_work.date,science_work.link,science_work.id  FROM science_work WHERE science_work.id=? ");
             preparedStatement = connection.prepareStatement(query);
@@ -2591,24 +2314,20 @@ public class SqlCommander {
                 date = originalFormat.parse(result1.getDate(3).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
-                obj = new ObjectScienceWork(result1.getInt(5),date,result1.getString(2),result1.getString(1),result1.getString(4));
+                obj = new ObjectScienceWork(result1.getInt(5), date, result1.getString(2), result1.getString(1), result1.getString(4));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-
         } catch (ParseException e) {
             e.printStackTrace();
-        } finally{
+        } finally {
 
-            if(connection!=null)
+            if (connection != null)
                 try {
                     connection.close();
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
         }

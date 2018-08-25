@@ -132,7 +132,7 @@ public class ControllerMenu {
 
     private  void manageItemView(TableView tableView, String parametr, RadioMenuItem radio, TableColumn column){
 
-        boolean value = Settings.getSettings(parametr).equals("true");
+        boolean value = Settings.getProperty(parametr).equals("true");
         radio.setSelected(value);
 
         if (value) tableView.getColumns().add(column);

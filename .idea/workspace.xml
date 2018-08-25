@@ -2,45 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34c68f81-d9c4-4857-bc7c-7e2b4d66add4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/logsOnDbConnect.txt" afterPath="$PROJECT_DIR$/logsOnDbConnect.txt" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_add_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_add_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_add_edit_science_work.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_add_edit_science_work.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_edit_info_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_edit_info_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_mark.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_mark.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_note.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_note.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_history_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_history_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_info_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_info_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_results_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_results_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_science_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_science_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/aspirant/view_aspirant.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/aspirant/view_aspirant.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/discipline/form_add_discipline.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/discipline/form_add_discipline.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/discipline/form_edit_discipline.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/discipline/form_edit_discipline.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/discipline/form_settings_add_discipline_type.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/discipline/form_settings_add_discipline_type.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/discipline/form_settings_discipline.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/discipline/form_settings_discipline.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/discipline/view_discipline.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/discipline/view_discipline.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/faculty/form_add_faculty.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/faculty/form_add_faculty.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/faculty/form_edit_faculty.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/faculty/form_edit_faculty.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/faculty/view_faculty.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/faculty/view_faculty.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/form_login.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/form_login.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/kafedra/form_add_kafedra.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/kafedra/form_add_kafedra.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/kafedra/form_edit_kafedra.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/kafedra/form_edit_kafedra.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/kafedra/view_kafedra.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/kafedra/view_kafedra.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/menu_right.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/menu_right.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_add_nakaz.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_add_nakaz.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_edit_nakaz.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_edit_nakaz.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_settings_add_nakaz_type.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_settings_add_nakaz_type.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_settings_nakazi.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_settings_nakazi.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_show_nakaz.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/nakaz/form_show_nakaz.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/nakaz/view_nakazi.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/nakaz/view_nakazi.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/settings/main.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/settings/main.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/speciality/form_add_speciality.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/speciality/form_add_speciality.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/speciality/form_edit_speciality.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/speciality/form_edit_speciality.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/speciality/view_speciality.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/speciality/view_speciality.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/vykladach/form_add_vykladach.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/vykladach/form_add_vykladach.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/vykladach/form_edit_vykladach.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/vykladach/form_edit_vykladach.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/vykladach/view_vykladachi.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/vykladach/view_vykladachi.fxml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/common.properties" afterPath="$PROJECT_DIR$/common.properties" />
+      <change beforePath="$PROJECT_DIR$/logs/app.log" afterPath="$PROJECT_DIR$/logs/app.log" />
+      <change beforePath="$PROJECT_DIR$/logsOnDbConnect.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -96,28 +65,15 @@
       <file leaf-file-name="ControllerFormAddSpeciality.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/speciality/ControllerFormAddSpeciality.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
+            <state relative-caret-position="-603">
               <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form_actions_aspirant.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form_praktica_aspirant.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_praktica_aspirant.fxml">
+      <file leaf-file-name="form_show_history_aspirant.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_history_aspirant.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -129,8 +85,99 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log4j2.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/log4j2.properties">
+      <file leaf-file-name="SqlCommander.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="44" column="60" lean-forward="false" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+              <folding>
+                <marker date="1535156259753" expanded="true" signature="3184:3246" ph="SELECT passw... authorization" />
+                <marker date="1535156259753" expanded="true" signature="4433:4454" ph="SELECT * FRO... faculty" />
+                <marker date="1535156259753" expanded="true" signature="5122:5174" ph="INSERT INTO faculty... " />
+                <marker date="1535156259753" expanded="true" signature="5927:5974" ph="UPDATE faculty... " />
+                <marker date="1535156259753" expanded="true" signature="6839:6884" ph="SELECT name,... faculty" />
+                <marker date="1535156259753" expanded="true" signature="7999:8180" ph="SELECT nakaz... nakaz" />
+                <marker date="1535156259753" expanded="true" signature="9358:9392" ph="SELECT about... nakaz" />
+                <marker date="1535156259753" expanded="true" signature="10185:10368" ph="SELECT nakaz... nakaz" />
+                <marker date="1535156259753" expanded="true" signature="11843:11937" ph="SELECT nakaz... nakaz" />
+                <marker date="1535156259753" expanded="true" signature="13247:13315" ph="INSERT INTO nakaz... " />
+                <marker date="1535156259753" expanded="true" signature="14335:14406" ph="UPDATE nakaz... " />
+                <marker date="1535156259753" expanded="true" signature="15680:15837" ph="SELECT name,... vykladachi" />
+                <marker date="1535156259753" expanded="true" signature="16916:16940" ph="SELECT * FRO... vykladachi" />
+                <marker date="1535156259753" expanded="true" signature="17694:17732" ph="INSERT INTO vykladachi... " />
+                <marker date="1535156259753" expanded="true" signature="18541:18582" ph="UPDATE vykladachi... " />
+                <marker date="1535156259753" expanded="true" signature="19450:19505" ph="DELETE FROM kerivnik_speciality... " />
+                <marker date="1535156259753" expanded="true" signature="19770:19846" ph="INSERT INTO kerivnik_speciality... " />
+                <marker date="1535156259753" expanded="true" signature="20891:21083" ph="SELECT name,... specialities" />
+                <marker date="1535156259753" expanded="true" signature="22860:22884" ph="SELECT * FRO... nakaz_type" />
+                <marker date="1535156259753" expanded="true" signature="23530:23569" ph="INSERT INTO nakaz_type... " />
+                <marker date="1535156259753" expanded="true" signature="24583:24641" ph="SELECT id, n... specialities" />
+                <marker date="1535156259753" expanded="true" signature="26047:26116" ph="SELECT id_na... kerivnik_speciality" />
+                <marker date="1535156259753" expanded="true" signature="27004:27083" ph="INSERT INTO specialities... " />
+                <marker date="1535156259753" expanded="true" signature="27112:27178" ph="INSERT INTO specialities... " />
+                <marker date="1535156259753" expanded="true" signature="27970:28002" ph="SELECT max(i... specialities" />
+                <marker date="1535156259753" expanded="true" signature="28231:28278" ph="UPDATE kafedra... " />
+                <marker date="1535156259753" expanded="true" signature="29167:29238" ph="UPDATE specialities... " />
+                <marker date="1535156259753" expanded="true" signature="30278:30321" ph="select id fr... kafedra" />
+                <marker date="1535156259753" expanded="true" signature="30540:30588" ph="UPDATE kafedra... " />
+                <marker date="1535156259753" expanded="true" signature="30950:30996" ph="UPDATE kafedra... " />
+                <marker date="1535156259753" expanded="true" signature="32149:32300" ph="SELECT kafed... kafedra" />
+                <marker date="1535156259753" expanded="true" signature="33153:33207" ph="SELECT name,... kafedra" />
+                <marker date="1535156259753" expanded="true" signature="34064:34106" ph="INSERT INTO kafedra... " />
+                <marker date="1535156259753" expanded="true" signature="34900:34944" ph="UPDATE kafedra... " />
+                <marker date="1535156259753" expanded="true" signature="35990:36104" ph="INSERT INTO disciplines... " />
+                <marker date="1535156259753" expanded="true" signature="36868:36899" ph="SELECT max(i... disciplines" />
+                <marker date="1535156259753" expanded="true" signature="37073:37152" ph="INSERT INTO speciality_disciplines... " />
+                <marker date="1535156259753" expanded="true" signature="38143:38253" ph="UPDATE disciplines... " />
+                <marker date="1535156259753" expanded="true" signature="39084:39157" ph="UPDATE speciality_disciplines... " />
+                <marker date="1535156259753" expanded="true" signature="40140:40572" ph="SELECT disci... disciplines" />
+                <marker date="1535156259753" expanded="true" signature="41693:41863" ph="SELECT name,... specialities" />
+                <marker date="1535156259753" expanded="true" signature="43021:43050" ph="SELECT * FRO... discipline_type" />
+                <marker date="1535156259753" expanded="true" signature="43699:43742" ph="INSERT INTO discipline_type... " />
+                <marker date="1535156259753" expanded="true" signature="44760:44919" ph="INSERT INTO aspirant... " />
+                <marker date="1535156259753" expanded="true" signature="46240:46268" ph="SELECT max(i... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="46479:46873" ph="SELECT disci... disciplines" />
+                <marker date="1535156259753" expanded="true" signature="47231:47340" ph="INSERT INTO results... " />
+                <marker date="1535156259753" expanded="true" signature="48649:48750" ph="INSERT INTO passport... " />
+                <marker date="1535156259753" expanded="true" signature="49630:49658" ph="SELECT max(i... passport" />
+                <marker date="1535156259753" expanded="true" signature="50302:50330" ph="SELECT max(i... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="51024:51070" ph="SELECT id,fo... study_form" />
+                <marker date="1535156259753" expanded="true" signature="51898:51966" ph="INSERT INTO status... " />
+                <marker date="1535156259753" expanded="true" signature="52619:52645" ph="SELECT max(i... status" />
+                <marker date="1535156259753" expanded="true" signature="53309:53364" ph="INSERT INTO contacts... " />
+                <marker date="1535156259753" expanded="true" signature="53912:53940" ph="SELECT max(i... contacts" />
+                <marker date="1535156259753" expanded="true" signature="54683:55163" ph="SELECT aspir... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="56650:56718" ph="INSERT INTO status... " />
+                <marker date="1535156259753" expanded="true" signature="57405:57431" ph="SELECT max(i... status" />
+                <marker date="1535156259753" expanded="true" signature="57563:57606" ph="UPDATE aspirant... " />
+                <marker date="1535156259753" expanded="true" signature="58426:58464" ph="SELECT id_na... status" />
+                <marker date="1535156259753" expanded="true" signature="58794:58897" ph="SELECT nakaz... nakaz" />
+                <marker date="1535156259753" expanded="true" signature="59737:59905" ph="SELECT aspir... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="60817:61040" ph="SELECT aspir... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="62515:62561" ph="SELECT photo... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="63392:63504" ph="SELECT id_na... status" />
+                <marker date="1535156259753" expanded="true" signature="64494:64618" ph="UPDATE aspirant... " />
+                <marker date="1535156259753" expanded="true" signature="65255:65371" ph="UPDATE aspirant... " />
+                <marker date="1535156259753" expanded="true" signature="66195:66295" ph="UPDATE status... " />
+                <marker date="1535156259753" expanded="true" signature="67148:67187" ph="UPDATE aspirant... " />
+                <marker date="1535156259753" expanded="true" signature="67960:67997" ph="UPDATE results... " />
+                <marker date="1535156259753" expanded="true" signature="68874:68917" ph="SELECT id_pa... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="69241:69345" ph="UPDATE passport... " />
+                <marker date="1535156259753" expanded="true" signature="70596:70639" ph="SELECT id_co... aspirant" />
+                <marker date="1535156259753" expanded="true" signature="70964:71021" ph="UPDATE contacts... " />
+                <marker date="1535156259753" expanded="true" signature="72017:72242" ph="SELECT statu... status" />
+                <marker date="1535156259753" expanded="true" signature="73844:74036" ph="SELECT name_... results" />
+                <marker date="1535156259753" expanded="true" signature="75033:75100" ph="UPDATE science_work... " />
+                <marker date="1535156259753" expanded="true" signature="76183:76261" ph="INSERT INTO science_work... " />
+                <marker date="1535156259753" expanded="true" signature="77451:77604" ph="SELECT scien... science_work" />
+                <marker date="1535156259753" expanded="true" signature="78946:79085" ph="SELECT scien... science_work" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logs/app.log">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -139,44 +186,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resources/fxml/menu.fxml">
+      <file leaf-file-name="Settings.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerFormAddVykladach.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerFormAddVykladach.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerVykladach.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerVykladach.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectVykladach.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ObjectVykladach.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="366">
+              <caret line="89" column="23" lean-forward="false" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -204,9 +218,20 @@
       <find>paneVykladachi</find>
       <find>itemStatus</find>
       <find>8.0.121</find>
+      <find>Connection connection = null;</find>
+      <find>Connection connection = null;</find>
+      <find>Class\.forName\(\&quot;com\.mysql\.jdbc\.Driver\&quot;\)\;\n            connection \= DriverManager\.getConnection\(url\, name\, password\)\;</find>
+      <find>catch \(ClassNotFoundException e\) \{\n            e\.printStackTrace\(\)\;\n        \}</find>
+      <find>catch \(ClassNotFoundException e\) \{\n            e\.printStackTrace\(\)\;\n            return null\;\n        \}</find>
+      <find>catch \(ClassNotFoundException e\) \{\n            e\.printStackTrace\(\)\;\n            return null\;\n\n        \}</find>
+      <find>catch \(ClassNotFoundException e\) \{\n\n        \}</find>
     </findStrings>
     <replaceStrings>
       <replace>8.0.111</replace>
+      <replace>Connection connection = getConnection();</replace>
+      <replace />
+      <replace />
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -221,15 +246,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenuRight.java" />
         <option value="$PROJECT_DIR$/src/resources/fxml/menu.fxml" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Logger.java" />
         <option value="$PROJECT_DIR$/src/resources/log4j2.properties" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Utils.java" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Main.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ControllerAddAspirant.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ControllerActions.java" />
@@ -255,6 +276,12 @@
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/LoadWindow.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerEditVykladach.java" />
         <option value="$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java" />
+        <option value="$PROJECT_DIR$/database.properties" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java" />
+        <option value="$PROJECT_DIR$/logs/app.log" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
       </list>
     </option>
   </component>
@@ -326,6 +353,34 @@
               <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="speciality" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="fxml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="fxml" type="462c0819:PsiDirectoryNode" />
+              <item name="aspirant" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -459,6 +514,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -475,10 +533,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14390000" />
+    <option name="totallyTimeSpent" value="16426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -499,10 +558,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5557103" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5557103" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28984576" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28984576" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -537,6 +596,40 @@
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Get Gist" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286908" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3356546" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5557103" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2506427" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -553,70 +646,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/MaskField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectAspirant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectContacts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectHistoryAspirant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectPassport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectScienceWork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -841,14 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerFormAddVykladach.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerVykladach.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -873,34 +894,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="82" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenuRight.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="13" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="174" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="23" column="30" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -921,18 +918,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/speciality/ControllerFormAddSpeciality.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/fxml/menu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="532">
+          <caret line="33" column="56" lean-forward="true" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -951,15 +940,26 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/log4j2.properties">
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerFormAddVykladach.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="76">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/fxml/menu.fxml">
+    <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_results_aspirant.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -968,6 +968,186 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/speciality/ControllerFormAddSpeciality.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-603">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_show_history_aspirant.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="112" column="26" lean-forward="true" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="89" column="23" lean-forward="false" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logsOnDbConnect.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/app.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/log4j2.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="44" column="60" lean-forward="false" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+          <folding>
+            <marker date="1535156259753" expanded="true" signature="3184:3246" ph="SELECT passw... authorization" />
+            <marker date="1535156259753" expanded="true" signature="4433:4454" ph="SELECT * FRO... faculty" />
+            <marker date="1535156259753" expanded="true" signature="5122:5174" ph="INSERT INTO faculty... " />
+            <marker date="1535156259753" expanded="true" signature="5927:5974" ph="UPDATE faculty... " />
+            <marker date="1535156259753" expanded="true" signature="6839:6884" ph="SELECT name,... faculty" />
+            <marker date="1535156259753" expanded="true" signature="7999:8180" ph="SELECT nakaz... nakaz" />
+            <marker date="1535156259753" expanded="true" signature="9358:9392" ph="SELECT about... nakaz" />
+            <marker date="1535156259753" expanded="true" signature="10185:10368" ph="SELECT nakaz... nakaz" />
+            <marker date="1535156259753" expanded="true" signature="11843:11937" ph="SELECT nakaz... nakaz" />
+            <marker date="1535156259753" expanded="true" signature="13247:13315" ph="INSERT INTO nakaz... " />
+            <marker date="1535156259753" expanded="true" signature="14335:14406" ph="UPDATE nakaz... " />
+            <marker date="1535156259753" expanded="true" signature="15680:15837" ph="SELECT name,... vykladachi" />
+            <marker date="1535156259753" expanded="true" signature="16916:16940" ph="SELECT * FRO... vykladachi" />
+            <marker date="1535156259753" expanded="true" signature="17694:17732" ph="INSERT INTO vykladachi... " />
+            <marker date="1535156259753" expanded="true" signature="18541:18582" ph="UPDATE vykladachi... " />
+            <marker date="1535156259753" expanded="true" signature="19450:19505" ph="DELETE FROM kerivnik_speciality... " />
+            <marker date="1535156259753" expanded="true" signature="19770:19846" ph="INSERT INTO kerivnik_speciality... " />
+            <marker date="1535156259753" expanded="true" signature="20891:21083" ph="SELECT name,... specialities" />
+            <marker date="1535156259753" expanded="true" signature="22860:22884" ph="SELECT * FRO... nakaz_type" />
+            <marker date="1535156259753" expanded="true" signature="23530:23569" ph="INSERT INTO nakaz_type... " />
+            <marker date="1535156259753" expanded="true" signature="24583:24641" ph="SELECT id, n... specialities" />
+            <marker date="1535156259753" expanded="true" signature="26047:26116" ph="SELECT id_na... kerivnik_speciality" />
+            <marker date="1535156259753" expanded="true" signature="27004:27083" ph="INSERT INTO specialities... " />
+            <marker date="1535156259753" expanded="true" signature="27112:27178" ph="INSERT INTO specialities... " />
+            <marker date="1535156259753" expanded="true" signature="27970:28002" ph="SELECT max(i... specialities" />
+            <marker date="1535156259753" expanded="true" signature="28231:28278" ph="UPDATE kafedra... " />
+            <marker date="1535156259753" expanded="true" signature="29167:29238" ph="UPDATE specialities... " />
+            <marker date="1535156259753" expanded="true" signature="30278:30321" ph="select id fr... kafedra" />
+            <marker date="1535156259753" expanded="true" signature="30540:30588" ph="UPDATE kafedra... " />
+            <marker date="1535156259753" expanded="true" signature="30950:30996" ph="UPDATE kafedra... " />
+            <marker date="1535156259753" expanded="true" signature="32149:32300" ph="SELECT kafed... kafedra" />
+            <marker date="1535156259753" expanded="true" signature="33153:33207" ph="SELECT name,... kafedra" />
+            <marker date="1535156259753" expanded="true" signature="34064:34106" ph="INSERT INTO kafedra... " />
+            <marker date="1535156259753" expanded="true" signature="34900:34944" ph="UPDATE kafedra... " />
+            <marker date="1535156259753" expanded="true" signature="35990:36104" ph="INSERT INTO disciplines... " />
+            <marker date="1535156259753" expanded="true" signature="36868:36899" ph="SELECT max(i... disciplines" />
+            <marker date="1535156259753" expanded="true" signature="37073:37152" ph="INSERT INTO speciality_disciplines... " />
+            <marker date="1535156259753" expanded="true" signature="38143:38253" ph="UPDATE disciplines... " />
+            <marker date="1535156259753" expanded="true" signature="39084:39157" ph="UPDATE speciality_disciplines... " />
+            <marker date="1535156259753" expanded="true" signature="40140:40572" ph="SELECT disci... disciplines" />
+            <marker date="1535156259753" expanded="true" signature="41693:41863" ph="SELECT name,... specialities" />
+            <marker date="1535156259753" expanded="true" signature="43021:43050" ph="SELECT * FRO... discipline_type" />
+            <marker date="1535156259753" expanded="true" signature="43699:43742" ph="INSERT INTO discipline_type... " />
+            <marker date="1535156259753" expanded="true" signature="44760:44919" ph="INSERT INTO aspirant... " />
+            <marker date="1535156259753" expanded="true" signature="46240:46268" ph="SELECT max(i... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="46479:46873" ph="SELECT disci... disciplines" />
+            <marker date="1535156259753" expanded="true" signature="47231:47340" ph="INSERT INTO results... " />
+            <marker date="1535156259753" expanded="true" signature="48649:48750" ph="INSERT INTO passport... " />
+            <marker date="1535156259753" expanded="true" signature="49630:49658" ph="SELECT max(i... passport" />
+            <marker date="1535156259753" expanded="true" signature="50302:50330" ph="SELECT max(i... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="51024:51070" ph="SELECT id,fo... study_form" />
+            <marker date="1535156259753" expanded="true" signature="51898:51966" ph="INSERT INTO status... " />
+            <marker date="1535156259753" expanded="true" signature="52619:52645" ph="SELECT max(i... status" />
+            <marker date="1535156259753" expanded="true" signature="53309:53364" ph="INSERT INTO contacts... " />
+            <marker date="1535156259753" expanded="true" signature="53912:53940" ph="SELECT max(i... contacts" />
+            <marker date="1535156259753" expanded="true" signature="54683:55163" ph="SELECT aspir... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="56650:56718" ph="INSERT INTO status... " />
+            <marker date="1535156259753" expanded="true" signature="57405:57431" ph="SELECT max(i... status" />
+            <marker date="1535156259753" expanded="true" signature="57563:57606" ph="UPDATE aspirant... " />
+            <marker date="1535156259753" expanded="true" signature="58426:58464" ph="SELECT id_na... status" />
+            <marker date="1535156259753" expanded="true" signature="58794:58897" ph="SELECT nakaz... nakaz" />
+            <marker date="1535156259753" expanded="true" signature="59737:59905" ph="SELECT aspir... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="60817:61040" ph="SELECT aspir... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="62515:62561" ph="SELECT photo... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="63392:63504" ph="SELECT id_na... status" />
+            <marker date="1535156259753" expanded="true" signature="64494:64618" ph="UPDATE aspirant... " />
+            <marker date="1535156259753" expanded="true" signature="65255:65371" ph="UPDATE aspirant... " />
+            <marker date="1535156259753" expanded="true" signature="66195:66295" ph="UPDATE status... " />
+            <marker date="1535156259753" expanded="true" signature="67148:67187" ph="UPDATE aspirant... " />
+            <marker date="1535156259753" expanded="true" signature="67960:67997" ph="UPDATE results... " />
+            <marker date="1535156259753" expanded="true" signature="68874:68917" ph="SELECT id_pa... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="69241:69345" ph="UPDATE passport... " />
+            <marker date="1535156259753" expanded="true" signature="70596:70639" ph="SELECT id_co... aspirant" />
+            <marker date="1535156259753" expanded="true" signature="70964:71021" ph="UPDATE contacts... " />
+            <marker date="1535156259753" expanded="true" signature="72017:72242" ph="SELECT statu... status" />
+            <marker date="1535156259753" expanded="true" signature="73844:74036" ph="SELECT name_... results" />
+            <marker date="1535156259753" expanded="true" signature="75033:75100" ph="UPDATE science_work... " />
+            <marker date="1535156259753" expanded="true" signature="76183:76261" ph="INSERT INTO science_work... " />
+            <marker date="1535156259753" expanded="true" signature="77451:77604" ph="SELECT scien... science_work" />
+            <marker date="1535156259753" expanded="true" signature="78946:79085" ph="SELECT scien... science_work" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
