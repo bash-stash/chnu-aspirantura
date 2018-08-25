@@ -1,6 +1,19 @@
-[INFO ] 2018.08.25 02:28:34.934 Utils: Properties saved!
-[INFO ] 2018.08.25 02:28:34.964 Utils: Properties saved!
-[INFO ] 2018.08.25 02:28:37.015 Utils: Properties saved!
-[INFO ] 2018.08.25 02:28:37.050 Utils: Properties saved!
 [DEBUG] 2018.08.25 03:16:40.909 Utils: Cfg is set up successfully!| Data:jdbc:mysql://localhost:3306/mydb?characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC|root|, trying to connect..
 [DEBUG] 2018.08.25 03:16:41.105 Utils: Connected successfully!
+[DEBUG] 2018.08.25 03:27:50.092 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:27:50.341 Utils: Connected successfully!
+[DEBUG] 2018.08.25 03:27:58.161 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АМ-101',date_nakaz=2018-06-07 ,type=5  WHERE id=6
+[DEBUG] 2018.08.25 03:29:03.428 file: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:29:03.618 file: Connected successfully!
+[DEBUG] 2018.08.25 03:29:09.483 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АВ-11',date_nakaz=2018-05-24 ,type=3  WHERE id=2
+[DEBUG] 2018.08.25 03:30:39.687 file: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:30:39.880 file: Connected successfully!
+[DEBUG] 2018.08.25 03:30:46.119 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АХ-123asd',date_nakaz=2018-06-13 ,type=4  WHERE id=3
+[DEBUG] 2018.08.25 03:37:29.002 file: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:37:29.226 file: Connected successfully!
+[DEBUG] 2018.08.25 03:37:57.591 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АХ-123',date_nakaz=2018-06-12 ,type=4  WHERE id=3
+[DEBUG] 2018.08.25 03:38:59.549 file: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:38:59.758 file: Connected successfully!
+[DEBUG] 2018.08.25 03:39:07.163 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АК-12342',date_nakaz=2017-06-03 ,type=4  WHERE id=4
+[DEBUG] 2018.08.25 03:39:52.101 dblogs: 123
+[DEBUG] 2018.08.25 03:40:12.048 dblogs: 123

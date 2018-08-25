@@ -78,6 +78,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        launch(args);
+        Utils.dbLogger.debug("123");
+//        launch(args);
     }
 }

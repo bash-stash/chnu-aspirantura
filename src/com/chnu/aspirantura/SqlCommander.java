@@ -52,26 +52,14 @@ public class SqlCommander {
 
 
     public static void writeLog(String toWrite) {
-
-        try {
-            if (fileWriterLogsOnDbChange == null) fileWriterLogsOnDbChange = new FileWriter("logsOnDbChange.txt", true);
-
-            java.util.Date date = new java.util.Date();
-            DateFormat format2 = new SimpleDateFormat("EEE dd.MM.yyyy H:m:s:S");
-            String dateAsString = format2.format(date);
-
-            fileWriterLogsOnDbChange.write("\r\n[" + dateAsString + "] " + toWrite);
-            fileWriterLogsOnDbChange.flush();
-        } catch (IOException e) {
-
-        }
-
+        Utils.dbLogger.debug(toWrite);
     }
-    private static Connection getConnection(){
+
+    private static Connection getConnection() {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(url, name, password);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -168,7 +156,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -198,7 +186,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -228,7 +216,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -273,7 +261,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
             return null;
         } finally {
@@ -307,7 +295,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -350,7 +338,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         } finally {
 
@@ -395,7 +383,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         } finally {
 
@@ -432,7 +420,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -466,7 +454,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -502,7 +490,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -534,7 +522,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -565,7 +553,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -593,7 +581,7 @@ public class SqlCommander {
             setSpecialitiesVykladach(id, specialities);
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -632,7 +620,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -685,7 +673,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -719,7 +707,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -748,7 +736,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -799,7 +787,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -831,7 +819,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -890,7 +878,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -968,7 +956,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1002,7 +990,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1035,7 +1023,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1067,7 +1055,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1098,7 +1086,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1157,7 +1145,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1207,7 +1195,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1244,7 +1232,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1279,7 +1267,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1312,7 +1300,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1341,7 +1329,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1416,7 +1404,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1458,7 +1446,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1476,7 +1464,6 @@ public class SqlCommander {
         try {
 
 
-
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT max(id) FROM aspirant");
             while (resultSet.next()) {
@@ -1486,7 +1473,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1519,7 +1506,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1559,7 +1546,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1598,7 +1585,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1643,7 +1630,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         } finally {
 
@@ -1697,7 +1684,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1741,7 +1728,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -1816,7 +1803,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         } finally {
 
@@ -1977,7 +1964,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -2005,7 +1992,7 @@ public class SqlCommander {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }  finally {
+        } finally {
 
             if (connection != null)
                 try {
@@ -2171,7 +2158,7 @@ public class SqlCommander {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        }   finally {
+        } finally {
 
             if (connection != null)
                 try {
