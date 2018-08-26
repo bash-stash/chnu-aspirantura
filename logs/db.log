@@ -1,0 +1,26 @@
+[DEBUG] 2018.08.25 03:52:08 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:52:08 | Connected successfully!
+[DEBUG] 2018.08.25 03:52:16 | UPDATE nakaz SET about = '',nom_nakaz='АХ-1231',date_nakaz=2018-06-11 ,type=4  WHERE id=3
+[DEBUG] 2018.08.25 03:55:29 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:55:29 | Connected successfully!
+[DEBUG] 2018.08.26 16:44:54 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:44:55 | Connected successfully!
+[DEBUG] 2018.08.26 16:45:22 | INSERT INTO passport(name,seria,number,published_by,published_date,identificator)VALUES('123','22','123123','123123','2018-08-01','123')
+[DEBUG] 2018.08.26 16:45:22 | INSERT INTO contacts(phone,email,address) VALUES('+38(123)123-1231','123123','123123')
+[DEBUG] 2018.08.26 16:45:22 | INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('2018-08-26',1,1, 'admin')
+[DEBUG] 2018.08.26 16:45:22 | INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form) VALUES('123','2018-08-08',1,1,1,1,1,2018,0,1)
+[DEBUG] 2018.08.26 16:45:27 | UPDATE aspirant SET notes = '1123' WHERE id=1
+[DEBUG] 2018.08.26 16:51:35 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:51:35 | Connected successfully!
+[DEBUG] 2018.08.26 16:54:24 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:54:25 | Connected successfully!
+[DEBUG] 2018.08.26 16:58:09 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:58:09 | Connected successfully!
+[DEBUG] 2018.08.26 17:02:00 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:02:00 | Connected successfully!
+[DEBUG] 2018.08.26 17:14:56 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:14:56 | Connected successfully!
+[DEBUG] 2018.08.26 17:16:48 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:16:48 | Connected successfully!
+[DEBUG] 2018.08.26 17:20:53 | Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:20:54 | Connected successfully!

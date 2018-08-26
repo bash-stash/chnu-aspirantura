@@ -17,3 +17,38 @@
 [DEBUG] 2018.08.25 03:39:07.163 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АК-12342',date_nakaz=2017-06-03 ,type=4  WHERE id=4
 [DEBUG] 2018.08.25 03:39:52.101 dblogs: 123
 [DEBUG] 2018.08.25 03:40:12.048 dblogs: 123
+[DEBUG] 2018.08.25 03:44:55.398 dblogs: 123
+[DEBUG] 2018.08.25 03:45:26.616 dblogs: 123
+[DEBUG] 2018.08.25 03:46:03.060 dblogs: 123
+[DEBUG] 2018.08.25 03:46:45.307 dblogs: 123
+[DEBUG] 2018.08.25 03:49:47.961 dblogs: 123
+[DEBUG] 2018.08.25 03:50:33.890 dblogs: 123
+[DEBUG] 2018.08.25 03:50:44.954 dblogs: 123
+[DEBUG] 2018.08.25 03:50:53.601 dblogs: 123
+[DEBUG] 2018.08.25 03:51:00.515 dblogs: 123
+[DEBUG] 2018.08.25 03:52:08.616 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:52:08.819 Utils: Connected successfully!
+[DEBUG] 2018.08.25 03:52:16.149 dblogs: UPDATE nakaz SET about = '',nom_nakaz='АХ-1231',date_nakaz=2018-06-11 ,type=4  WHERE id=3
+[DEBUG] 2018.08.25 03:55:29.458 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.25 03:55:29.660 Utils: Connected successfully!
+[DEBUG] 2018.08.26 16:44:54.653 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:44:55.510 Utils: Connected successfully!
+[DEBUG] 2018.08.26 16:45:22.484 dblogs: INSERT INTO passport(name,seria,number,published_by,published_date,identificator)VALUES('123','22','123123','123123','2018-08-01','123')
+[DEBUG] 2018.08.26 16:45:22.561 dblogs: INSERT INTO contacts(phone,email,address) VALUES('+38(123)123-1231','123123','123123')
+[DEBUG] 2018.08.26 16:45:22.737 dblogs: INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('2018-08-26',1,1, 'admin')
+[DEBUG] 2018.08.26 16:45:22.794 dblogs: INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form) VALUES('123','2018-08-08',1,1,1,1,1,2018,0,1)
+[DEBUG] 2018.08.26 16:45:27.786 dblogs: UPDATE aspirant SET notes = '1123' WHERE id=1
+[DEBUG] 2018.08.26 16:51:35.603 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:51:35.805 Utils: Connected successfully!
+[DEBUG] 2018.08.26 16:54:24.853 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:54:25.048 Utils: Connected successfully!
+[DEBUG] 2018.08.26 16:58:09.335 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 16:58:09.521 Utils: Connected successfully!
+[DEBUG] 2018.08.26 17:02:00.240 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:02:00.422 Utils: Connected successfully!
+[DEBUG] 2018.08.26 17:14:56.505 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:14:56.771 Utils: Connected successfully!
+[DEBUG] 2018.08.26 17:16:48.084 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:16:48.276 Utils: Connected successfully!
+[DEBUG] 2018.08.26 17:20:53.876 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.26 17:20:54.080 Utils: Connected successfully!

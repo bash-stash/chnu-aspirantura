@@ -5,11 +5,14 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.RegionUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
+
 /**
  * Excel report builder.
  *
@@ -41,12 +44,14 @@ public class XlsxBuilder {
      */
     private int nextColumnIdx = 0;
     private Map<Set<StyleAttribute>, CellStyle> styleBank = new HashMap<Set<StyleAttribute>, CellStyle>();
+
     /**
      * Creates new instance.
      */
     public XlsxBuilder() {
         workbook = new XSSFWorkbook();
     }
+
     /**
      * Starts sheet.
      *
@@ -60,6 +65,7 @@ public class XlsxBuilder {
         rowStyleAttributes = new HashSet<StyleAttribute>();
         return this;
     }
+
     /**
      * Sets auto sizing columns.
      *
@@ -70,17 +76,26 @@ public class XlsxBuilder {
         sheet.autoSizeColumn(idx);
         return this;
     }
+
+    public XlsxBuilder setAutoSizeAllColumns() {
+        for (int i = 0; i < 9; i++) {
+            sheet.autoSizeColumn(i);
+        }
+        return this;
+    }
+
     /**
      * Sets column size.
      *
      * @param idx column index, starting from 0
-     * @param m number of 'M' standard characters to use for size calculation
+     * @param m   number of 'M' standard characters to use for size calculation
      * @return this instance
      */
     public XlsxBuilder setColumnSize(int idx, int m) {
         sheet.setColumnWidth(idx, (m + 1) * 256);
         return this;
     }
+
     /**
      * Starts new row.
      *
@@ -93,6 +108,7 @@ public class XlsxBuilder {
         rowStyleAttributes = new HashSet<StyleAttribute>();
         return this;
     }
+
     /**
      * Sets row top border as thin.
      *
@@ -104,6 +120,7 @@ public class XlsxBuilder {
         rowStyleAttributes.add(StyleAttribute.THIN_TOP_BORDER);
         return this;
     }
+
     /**
      * Sets row top border as thick.
      *
@@ -115,6 +132,7 @@ public class XlsxBuilder {
         rowStyleAttributes.add(StyleAttribute.THICK_TOP_BORDER);
         return this;
     }
+
     /**
      * Sets row bottom border as thin.
      *
@@ -126,6 +144,7 @@ public class XlsxBuilder {
         rowStyleAttributes.add(StyleAttribute.THIN_BOTTOM_BORDER);
         return this;
     }
+
     /**
      * Sets row bottom border as thick.
      *
@@ -137,6 +156,7 @@ public class XlsxBuilder {
         rowStyleAttributes.add(StyleAttribute.THICK_BOTTOM_BORDER);
         return this;
     }
+
     /**
      * Sets row height to capture the title.
      *
@@ -147,6 +167,7 @@ public class XlsxBuilder {
         row.setHeightInPoints(30);
         return this;
     }
+
     /**
      * Adds title column.
      *
@@ -161,6 +182,7 @@ public class XlsxBuilder {
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
+
     /**
      * Adds simple left aligned text.
      *
@@ -175,6 +197,12 @@ public class XlsxBuilder {
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
+
+
+    public void setSheet(Sheet sheet) {
+        this.sheet = sheet;
+    }
+
     /**
      * Adds simple center aligned text.
      *
@@ -189,6 +217,7 @@ public class XlsxBuilder {
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
+
     /**
      * Adds simple center aligned text.
      *
@@ -203,12 +232,67 @@ public class XlsxBuilder {
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
-    /**
-     * Adds bold left aligned text.
-     *
-     * @param text text
-     * @return this instance
-     */
+
+    public XlsxBuilder addTitleToColumn(int regionId, String text) {
+        CellRangeAddress region = sheet.getMergedRegion(regionId);
+
+        int colIndex = region.getFirstColumn();
+        int rowNum = region.getFirstRow();
+
+        Cell cell = sheet.getRow(rowNum).getCell(colIndex);
+        CellStyle style = getCellStyle(StyleAttribute.ALIGN_CENTER, StyleAttribute.BOLD);
+        style.setWrapText(true);
+        cell.setCellStyle(style);
+
+        if (regionId==0) sheet.setColumnWidth(cell.getColumnIndex(), (text.length() +1) * 256);
+        else if(regionId==1) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
+        else if(regionId==2) sheet.setColumnWidth(cell.getColumnIndex(), (9) * 256);
+        else if(regionId==3) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length()) * 256));
+        else if(regionId==4) sheet.setColumnWidth(cell.getColumnIndex(), (14) * 256);
+        else if(regionId==5) sheet.setColumnWidth(cell.getColumnIndex(), (14) * 256);
+        else if(regionId==6) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length()/2+1) * 256));
+        else if(regionId==7) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==8) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==9) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==10) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==11) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==12) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==13) sheet.setColumnWidth(cell.getColumnIndex(), (22) * 256);
+        else if(regionId==14) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
+        else if(regionId==15) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
+        else if(regionId==16) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
+        else if(regionId==17) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
+        else if(regionId==18) sheet.setColumnWidth(cell.getColumnIndex(), (13) * 256);
+
+        cell.setCellValue(StringUtils.stripToEmpty(text));
+        return this;
+    }
+
+    public Sheet getSheet() {
+        return sheet;
+    }
+
+    public XlsxBuilder addMergedColumn(int numRow, int untilRow, int numCol, int untilCol, boolean border) {
+        CellRangeAddress cellRangeAddress = new CellRangeAddress(numRow, untilRow, numCol, untilCol);
+        sheet.addMergedRegion(cellRangeAddress);
+        return this;
+    }
+
+    public void setBordersToMergedCells() {
+        List<CellRangeAddress> mergedRegions = new ArrayList<>();
+        for (int i = 0; i < sheet.getNumMergedRegions(); i++) {
+            mergedRegions.add(sheet.getMergedRegion(i));
+        }
+
+        for (CellRangeAddress rangeAddress : mergedRegions) {
+            RegionUtil.setBorderTop(CellStyle.BORDER_THIN, rangeAddress, sheet, workbook);
+            RegionUtil.setBorderLeft(CellStyle.BORDER_THIN, rangeAddress, sheet, workbook);
+            RegionUtil.setBorderRight(CellStyle.BORDER_THIN, rangeAddress, sheet, workbook);
+            RegionUtil.setBorderBottom(CellStyle.BORDER_THIN, rangeAddress, sheet, workbook);
+        }
+    }
+
+
     public XlsxBuilder addBoldTextLeftAlignedColumn(String text) {
         Cell cell = row.createCell(nextColumnIdx);
         CellStyle style = getCellStyle(StyleAttribute.ALIGN_LEFT, StyleAttribute.BOLD);
@@ -217,12 +301,8 @@ public class XlsxBuilder {
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
-    /**
-     * Adds bold center aligned text.
-     *
-     * @param text text
-     * @return this instance
-     */
+
+
     public XlsxBuilder addBoldTextCenterAlignedColumn(String text) {
         Cell cell = row.createCell(nextColumnIdx);
         CellStyle style = getCellStyle(StyleAttribute.ALIGN_CENTER, StyleAttribute.BOLD);
@@ -231,6 +311,17 @@ public class XlsxBuilder {
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
+
+    public XlsxBuilder addSameBoldTextCenterAlignedColumn(String text) {
+        sheet.getRow(1);
+        Cell cell = sheet.getRow(0).getCell(2);
+        CellStyle style = getCellStyle(StyleAttribute.ALIGN_CENTER, StyleAttribute.BOLD);
+        cell.setCellStyle(style);
+        cell.setCellValue(StringUtils.stripToEmpty(text));
+        return this;
+    }
+
+
     /**
      * Builds the result object.
      * Object cannot be reused after calling this method.
@@ -250,6 +341,7 @@ public class XlsxBuilder {
         }
         return bos.toByteArray();
     }
+
     /**
      * Returns cell style.
      *
@@ -264,45 +356,42 @@ public class XlsxBuilder {
             return styleBank.get(allattrs);
         }
         CellStyle style = workbook.createCellStyle();
-        Font font = workbook.createFont();
-        style.setFont(font);
-        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        Font txtFont = workbook.createFont();
+//        txtFont.setFontName("Arial");
+        txtFont.setFontHeightInPoints((short)8);
+        style.setFont(txtFont);
+        style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+        style.setAlignment(CellStyle.ALIGN_CENTER);
         for (StyleAttribute attr : allattrs) {
             if (attr.equals(StyleAttribute.TITLE_SIZE)) {
-                font.setFontHeightInPoints((short) 18);
-            }
-            else if (attr.equals(StyleAttribute.BOLD)) {
-                font.setBold(true);
-            }
-            else if (attr.equals(StyleAttribute.THIN_TOP_BORDER)) {
-                style.setBorderTop(BorderStyle.THIN);
-            }
-            else if (attr.equals(StyleAttribute.THIN_BOTTOM_BORDER)) {
-                style.setBorderBottom(BorderStyle.THIN);
-            }
-            else if (attr.equals(StyleAttribute.THICK_TOP_BORDER)) {
-                style.setBorderTop(BorderStyle.THICK);
-            }
-            else if (attr.equals(StyleAttribute.THICK_BOTTOM_BORDER)) {
-                style.setBorderBottom(BorderStyle.THICK);
-            }
-            else if (attr.equals(StyleAttribute.ALIGN_LEFT)) {
-                style.setAlignment(HorizontalAlignment.LEFT);
-            }
-            else if (attr.equals(StyleAttribute.ALIGN_CENTER)) {
-                style.setAlignment(HorizontalAlignment.CENTER);
-            }
-            else {
+                txtFont.setFontHeightInPoints((short) 18);
+            } else if (attr.equals(StyleAttribute.BOLD)) {
+                txtFont.setBoldweight(Font.BOLDWEIGHT_NORMAL);
+            } else if (attr.equals(StyleAttribute.THIN_TOP_BORDER)) {
+                style.setBorderTop(CellStyle.BORDER_THIN);
+            } else if (attr.equals(StyleAttribute.THIN_BOTTOM_BORDER)) {
+                style.setBorderBottom(CellStyle.BORDER_THIN);
+            } else if (attr.equals(StyleAttribute.THICK_TOP_BORDER)) {
+                style.setBorderTop(CellStyle.BORDER_THICK);
+            } else if (attr.equals(StyleAttribute.THICK_BOTTOM_BORDER)) {
+                style.setBorderBottom(CellStyle.BORDER_THICK);
+            } else if (attr.equals(StyleAttribute.ALIGN_LEFT)) {
+                style.setAlignment(CellStyle.ALIGN_LEFT);
+            } else if (attr.equals(StyleAttribute.ALIGN_CENTER)) {
+
+            } else {
                 throw new RuntimeException("unknown cell style attribute: " + attr);
             }
         }
         styleBank.put(allattrs, style);
         return style;
     }
+
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
+
     /**
      * Possible style attributes.
      */
@@ -339,5 +428,7 @@ public class XlsxBuilder {
          * Center alignment.
          */
         ALIGN_CENTER
-    };
+    }
+
+    ;
 }

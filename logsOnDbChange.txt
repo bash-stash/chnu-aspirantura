@@ -1,2 +1,0 @@
-
-[Сб 25.08.2018 3:17:9:273] INSERT INTO nakaz (about,nom_nakaz,date_nakaz,type) VALUES ('','АА-12',2018-08-25,2)
