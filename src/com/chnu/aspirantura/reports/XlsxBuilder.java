@@ -4,6 +4,7 @@ import com.enterprisemath.utils.ValidationUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.RegionUtil;
@@ -212,8 +213,22 @@ public class XlsxBuilder {
     public XlsxBuilder addTextCenterAlignedColumn(String text) {
         Cell cell = row.createCell(nextColumnIdx);
         CellStyle style = getCellStyle(StyleAttribute.ALIGN_CENTER);
+        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+        style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
         cell.setCellStyle(style);
-        cell.setCellValue(StringUtils.stripToEmpty(text));
+
+
+
+        try{
+
+            System.out.println(Integer.parseInt(text));
+            cell.setCellValue(Integer.parseInt(text));
+            cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        }catch (Exception e){
+            cell.setCellValue(StringUtils.stripToEmpty(text));
+        }
         nextColumnIdx = nextColumnIdx + 1;
         return this;
     }
@@ -241,28 +256,28 @@ public class XlsxBuilder {
 
         Cell cell = sheet.getRow(rowNum).getCell(colIndex);
         CellStyle style = getCellStyle(StyleAttribute.ALIGN_CENTER, StyleAttribute.BOLD);
+        style.setFillBackgroundColor(IndexedColors.WHITE.getIndex());
         style.setWrapText(true);
         cell.setCellStyle(style);
-
-        if (regionId==0) sheet.setColumnWidth(cell.getColumnIndex(), (text.length() +1) * 256);
-        else if(regionId==1) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
-        else if(regionId==2) sheet.setColumnWidth(cell.getColumnIndex(), (9) * 256);
-        else if(regionId==3) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length()) * 256));
-        else if(regionId==4) sheet.setColumnWidth(cell.getColumnIndex(), (14) * 256);
-        else if(regionId==5) sheet.setColumnWidth(cell.getColumnIndex(), (14) * 256);
-        else if(regionId==6) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length()/2+1) * 256));
-        else if(regionId==7) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
-        else if(regionId==8) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
-        else if(regionId==9) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
-        else if(regionId==10) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        if (regionId==0) sheet.setColumnWidth(cell.getColumnIndex(), (text.length()) * 256);
+        else if(regionId==1) sheet.setColumnWidth(cell.getColumnIndex(), (8) * 256);
+        else if(regionId==2) sheet.setColumnWidth(cell.getColumnIndex(), (6) * 256);
+        else if(regionId==3) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length())* 256));
+        else if(regionId==4) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==5) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==6) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length()/2-7) * 256));
+        else if(regionId==7) sheet.setColumnWidth(cell.getColumnIndex(), (9) * 256);
+        else if(regionId==8) sheet.setColumnWidth(cell.getColumnIndex(), (9) * 256);
+        else if(regionId==9) sheet.setColumnWidth(cell.getColumnIndex(), (9) * 256);
+        else if(regionId==10) sheet.setColumnWidth(cell.getColumnIndex(), (9) * 256);
         else if(regionId==11) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
         else if(regionId==12) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
         else if(regionId==13) sheet.setColumnWidth(cell.getColumnIndex(), (22) * 256);
         else if(regionId==14) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
         else if(regionId==15) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
-        else if(regionId==16) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
-        else if(regionId==17) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
-        else if(regionId==18) sheet.setColumnWidth(cell.getColumnIndex(), (13) * 256);
+        else if(regionId==16) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==17) sheet.setColumnWidth(cell.getColumnIndex(), (10) * 256);
+        else if(regionId==18) sheet.setColumnWidth(cell.getColumnIndex(), (11) * 256);
 
         cell.setCellValue(StringUtils.stripToEmpty(text));
         return this;
@@ -306,6 +321,7 @@ public class XlsxBuilder {
     public XlsxBuilder addBoldTextCenterAlignedColumn(String text) {
         Cell cell = row.createCell(nextColumnIdx);
         CellStyle style = getCellStyle(StyleAttribute.ALIGN_CENTER, StyleAttribute.BOLD);
+
         cell.setCellStyle(style);
         cell.setCellValue(StringUtils.stripToEmpty(text));
         nextColumnIdx = nextColumnIdx + 1;
@@ -357,8 +373,8 @@ public class XlsxBuilder {
         }
         CellStyle style = workbook.createCellStyle();
         Font txtFont = workbook.createFont();
-//        txtFont.setFontName("Arial");
-        txtFont.setFontHeightInPoints((short)8);
+        txtFont.setFontName("Times New Roman");
+        txtFont.setFontHeightInPoints((short)7);
         style.setFont(txtFont);
         style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
         style.setAlignment(CellStyle.ALIGN_CENTER);

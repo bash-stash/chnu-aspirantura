@@ -89,15 +89,15 @@ public class ReportMaker {
     private void manageRowsHeight(XlsxBuilder xlsxBuilder) {
         Sheet sheet = xlsxBuilder.getSheet();
 
-        sheet.getRow(0).setHeightInPoints((2*sheet.getDefaultRowHeightInPoints()));
+        sheet.getRow(0).setHeightInPoints((2 * sheet.getDefaultRowHeightInPoints()));
         sheet.getRow(1).setHeightInPoints((sheet.getDefaultRowHeightInPoints()));
-        sheet.getRow(2).setHeightInPoints((2*sheet.getDefaultRowHeightInPoints()));
+        sheet.getRow(2).setHeightInPoints((2 * sheet.getDefaultRowHeightInPoints()));
 
         xlsxBuilder.setSheet(sheet);
     }
 
 
-    private void setTitles(XlsxBuilder xlsxBuilder){
+    private void setTitles(XlsxBuilder xlsxBuilder) {
         xlsxBuilder.addTitleToColumn(0, "Найменування\nспеціальностей");
         xlsxBuilder.addTitleToColumn(1, "Код\nспеціаль-\nності");
         xlsxBuilder.addTitleToColumn(2, "№\nрядка");
@@ -118,7 +118,21 @@ public class ReportMaker {
         xlsxBuilder.addTitleToColumn(17, "Кількість\nжінок, які\nзакінчили\nаспірантуру\n(з суми граф\n3 та 5)");
         xlsxBuilder.addTitleToColumn(18, "Кількість\n жінок,\nзарахованих до\nаспірантури\n(з суми граф\n1 та 2)");
 
-
+        xlsxBuilder.
+                addTextCenterAlignedColumn("А").
+                addTextCenterAlignedColumn("Б").
+                addTextCenterAlignedColumn("В").
+                addTextCenterAlignedColumn("1").
+                addTextCenterAlignedColumn("2").
+                addTextCenterAlignedColumn("3").
+                addTextCenterAlignedColumn("4").
+                addTextCenterAlignedColumn("5").
+                addTextCenterAlignedColumn("6").
+                addTextCenterAlignedColumn("7").
+                addTextCenterAlignedColumn("8").
+                addTextCenterAlignedColumn("9").
+                addTextCenterAlignedColumn("10").
+                addTextCenterAlignedColumn("11");
 
 
         xlsxBuilder.setBordersToMergedCells();
@@ -126,16 +140,16 @@ public class ReportMaker {
     }
 
 
-    private void writeReportToFile(XlsxBuilder xlsxBuilder){
+    private void writeReportToFile(XlsxBuilder xlsxBuilder) {
 
-    byte[] report = xlsxBuilder.build();
+        byte[] report = xlsxBuilder.build();
         try (FileOutputStream fos = new FileOutputStream("report.xlsx")) {
-        fos.write(report);
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+            fos.write(report);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
