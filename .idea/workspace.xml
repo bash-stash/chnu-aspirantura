@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34c68f81-d9c4-4857-bc7c-7e2b4d66add4" name="Default" comment="Small fixes added">
+    <list default="true" id="34c68f81-d9c4-4857-bc7c-7e2b4d66add4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/logs/app.log" afterPath="$PROJECT_DIR$/logs/app.log" />
-      <change beforePath="$PROJECT_DIR$/logs/db.log" afterPath="$PROJECT_DIR$/logs/db.log" />
-      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" />
+      <change beforePath="$PROJECT_DIR$/settings.dat" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -100,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SqlCommander.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SqlCommander.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1947">
@@ -187,6 +184,16 @@
                 <marker date="1535365357999" expanded="true" signature="76933:77086" ph="SELECT scien... science_work" />
                 <marker date="1535365357999" expanded="true" signature="78428:78567" ph="SELECT scien... science_work" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -297,6 +304,7 @@
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -354,133 +362,6 @@
             <path>
               <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
               <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirant" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="discipline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="reports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="speciality" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-              <item name="aspirant" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-              <item name="reports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.poi:poi:3.9" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.poi:poi:3.9" type="70bed36:NamedLibraryElementNode" />
-              <item name="poi-3.9.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.poi:poi:3.9" type="70bed36:NamedLibraryElementNode" />
-              <item name="poi-3.9.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="poi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.poi:poi:3.9" type="70bed36:NamedLibraryElementNode" />
-              <item name="poi-3.9.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="poi" type="462c0819:PsiDirectoryNode" />
-              <item name="ss" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.apache.poi:poi:3.9" type="70bed36:NamedLibraryElementNode" />
-              <item name="poi-3.9.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="poi" type="462c0819:PsiDirectoryNode" />
-              <item name="ss" type="462c0819:PsiDirectoryNode" />
-              <item name="usermodel" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -658,7 +539,7 @@
       <workItem from="1535199272473" duration="327000" />
       <workItem from="1535290668252" duration="9702000" />
       <workItem from="1535300581362" duration="7290000" />
-      <workItem from="1535362990071" duration="2499000" />
+      <workItem from="1535362990071" duration="2738000" />
     </task>
     <task id="LOCAL-00001" summary="Report year form added">
       <created>1535364793131</created>
@@ -667,11 +548,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535364793131</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Small fixes added">
+      <created>1535365516336</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535365516336</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38558000" />
+    <option name="totallyTimeSpent" value="38797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -691,14 +579,14 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3356546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3356546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4637883" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37743732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5404884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5404884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -793,13 +681,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/kafedra/ControllerEditKafedra.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/kafedra/ControllerFormAddKafedra.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1258,6 +1139,14 @@
             <marker date="1535365357999" expanded="true" signature="76933:77086" ph="SELECT scien... science_work" />
             <marker date="1535365357999" expanded="true" signature="78428:78567" ph="SELECT scien... science_work" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
