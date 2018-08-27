@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34c68f81-d9c4-4857-bc7c-7e2b4d66add4" name="Default" comment="">
+    <list default="true" id="34c68f81-d9c4-4857-bc7c-7e2b4d66add4" name="Default" comment="Small fixes added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/common.properties" afterPath="$PROJECT_DIR$/common.properties" />
       <change beforePath="$PROJECT_DIR$/logs/app.log" afterPath="$PROJECT_DIR$/logs/app.log" />
       <change beforePath="$PROJECT_DIR$/logs/db.log" afterPath="$PROJECT_DIR$/logs/db.log" />
-      <change beforePath="$PROJECT_DIR$/report.xlsx" afterPath="$PROJECT_DIR$/report.xlsx" />
-      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/reports/ReportMaker.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/reports/ReportMaker.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/reports/XlsxBuilder.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/reports/XlsxBuilder.java" />
-      <change beforePath="$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" afterPath="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,21 +60,142 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ReportMaker.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReportMaker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/reports/ReportMaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="166">
               <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report_aspirants.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml">
+      <file leaf-file-name="ControllerMenu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="154" lean-forward="false" selection-start-line="9" selection-start-column="154" selection-end-line="9" selection-end-column="154" />
+            <state relative-caret-position="328">
+              <caret line="158" column="52" lean-forward="false" selection-start-line="158" selection-start-column="52" selection-end-line="158" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControllerDiscipline.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="78" column="106" lean-forward="false" selection-start-line="78" selection-start-column="106" selection-end-line="78" selection-end-column="106" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControllerAddAspirant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ControllerAddAspirant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SqlCommander.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1947">
+              <caret line="2084" column="21" lean-forward="true" selection-start-line="2084" selection-start-column="21" selection-end-line="2084" selection-end-column="21" />
+              <folding>
+                <marker date="1535365357999" expanded="true" signature="2719:2781" ph="SELECT passw... authorization" />
+                <marker date="1535365357999" expanded="true" signature="3968:3989" ph="SELECT * FRO... faculty" />
+                <marker date="1535365357999" expanded="true" signature="4657:4709" ph="INSERT INTO faculty... " />
+                <marker date="1535365357999" expanded="true" signature="5461:5508" ph="UPDATE faculty... " />
+                <marker date="1535365357999" expanded="true" signature="6372:6417" ph="SELECT name,... faculty" />
+                <marker date="1535365357999" expanded="true" signature="7531:7712" ph="SELECT nakaz... nakaz" />
+                <marker date="1535365357999" expanded="true" signature="8888:8922" ph="SELECT about... nakaz" />
+                <marker date="1535365357999" expanded="true" signature="9714:9897" ph="SELECT nakaz... nakaz" />
+                <marker date="1535365357999" expanded="true" signature="11371:11465" ph="SELECT nakaz... nakaz" />
+                <marker date="1535365357999" expanded="true" signature="12774:12842" ph="INSERT INTO nakaz... " />
+                <marker date="1535365357999" expanded="true" signature="13861:13932" ph="UPDATE nakaz... " />
+                <marker date="1535365357999" expanded="true" signature="15205:15362" ph="SELECT name,... vykladachi" />
+                <marker date="1535365357999" expanded="true" signature="16439:16463" ph="SELECT * FRO... vykladachi" />
+                <marker date="1535365357999" expanded="true" signature="17216:17254" ph="INSERT INTO vykladachi... " />
+                <marker date="1535365357999" expanded="true" signature="18062:18103" ph="UPDATE vykladachi... " />
+                <marker date="1535365357999" expanded="true" signature="18970:19025" ph="DELETE FROM kerivnik_speciality... " />
+                <marker date="1535365357999" expanded="true" signature="19290:19366" ph="INSERT INTO kerivnik_speciality... " />
+                <marker date="1535365357999" expanded="true" signature="20410:20602" ph="SELECT name,... specialities" />
+                <marker date="1535365357999" expanded="true" signature="22378:22402" ph="SELECT * FRO... nakaz_type" />
+                <marker date="1535365357999" expanded="true" signature="23047:23086" ph="INSERT INTO nakaz_type... " />
+                <marker date="1535365357999" expanded="true" signature="24099:24157" ph="SELECT id, n... specialities" />
+                <marker date="1535365357999" expanded="true" signature="25561:25630" ph="SELECT id_na... kerivnik_speciality" />
+                <marker date="1535365357999" expanded="true" signature="26517:26596" ph="INSERT INTO specialities... " />
+                <marker date="1535365357999" expanded="true" signature="26625:26691" ph="INSERT INTO specialities... " />
+                <marker date="1535365357999" expanded="true" signature="27483:27515" ph="SELECT max(i... specialities" />
+                <marker date="1535365357999" expanded="true" signature="27744:27791" ph="UPDATE kafedra... " />
+                <marker date="1535365357999" expanded="true" signature="28679:28750" ph="UPDATE specialities... " />
+                <marker date="1535365357999" expanded="true" signature="29790:29833" ph="select id fr... kafedra" />
+                <marker date="1535365357999" expanded="true" signature="30052:30100" ph="UPDATE kafedra... " />
+                <marker date="1535365357999" expanded="true" signature="30462:30508" ph="UPDATE kafedra... " />
+                <marker date="1535365357999" expanded="true" signature="31660:31811" ph="SELECT kafed... kafedra" />
+                <marker date="1535365357999" expanded="true" signature="32662:32716" ph="SELECT name,... kafedra" />
+                <marker date="1535365357999" expanded="true" signature="33572:33614" ph="INSERT INTO kafedra... " />
+                <marker date="1535365357999" expanded="true" signature="34407:34451" ph="UPDATE kafedra... " />
+                <marker date="1535365357999" expanded="true" signature="35496:35610" ph="INSERT INTO disciplines... " />
+                <marker date="1535365357999" expanded="true" signature="36374:36405" ph="SELECT max(i... disciplines" />
+                <marker date="1535365357999" expanded="true" signature="36579:36658" ph="INSERT INTO speciality_disciplines... " />
+                <marker date="1535365357999" expanded="true" signature="37648:37758" ph="UPDATE disciplines... " />
+                <marker date="1535365357999" expanded="true" signature="38589:38662" ph="UPDATE speciality_disciplines... " />
+                <marker date="1535365357999" expanded="true" signature="39644:40076" ph="SELECT disci... disciplines" />
+                <marker date="1535365357999" expanded="true" signature="41195:41365" ph="SELECT name,... specialities" />
+                <marker date="1535365357999" expanded="true" signature="42522:42551" ph="SELECT * FRO... discipline_type" />
+                <marker date="1535365357999" expanded="true" signature="43199:43242" ph="INSERT INTO discipline_type... " />
+                <marker date="1535365357999" expanded="true" signature="44259:44418" ph="INSERT INTO aspirant... " />
+                <marker date="1535365357999" expanded="true" signature="45739:45767" ph="SELECT max(i... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="45978:46372" ph="SELECT disci... disciplines" />
+                <marker date="1535365357999" expanded="true" signature="46730:46839" ph="INSERT INTO results... " />
+                <marker date="1535365357999" expanded="true" signature="48147:48248" ph="INSERT INTO passport... " />
+                <marker date="1535365357999" expanded="true" signature="49128:49156" ph="SELECT max(i... passport" />
+                <marker date="1535365357999" expanded="true" signature="49798:49826" ph="SELECT max(i... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="50519:50565" ph="SELECT id,fo... study_form" />
+                <marker date="1535365357999" expanded="true" signature="51392:51460" ph="INSERT INTO status... " />
+                <marker date="1535365357999" expanded="true" signature="52113:52139" ph="SELECT max(i... status" />
+                <marker date="1535365357999" expanded="true" signature="52802:52857" ph="INSERT INTO contacts... " />
+                <marker date="1535365357999" expanded="true" signature="53405:53433" ph="SELECT max(i... contacts" />
+                <marker date="1535365357999" expanded="true" signature="54175:54655" ph="SELECT aspir... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="56140:56208" ph="INSERT INTO status... " />
+                <marker date="1535365357999" expanded="true" signature="56895:56921" ph="SELECT max(i... status" />
+                <marker date="1535365357999" expanded="true" signature="57053:57096" ph="UPDATE aspirant... " />
+                <marker date="1535365357999" expanded="true" signature="57915:57953" ph="SELECT id_na... status" />
+                <marker date="1535365357999" expanded="true" signature="58283:58386" ph="SELECT nakaz... nakaz" />
+                <marker date="1535365357999" expanded="true" signature="59224:59392" ph="SELECT aspir... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="60304:60527" ph="SELECT aspir... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="62000:62046" ph="SELECT photo... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="62877:62989" ph="SELECT id_na... status" />
+                <marker date="1535365357999" expanded="true" signature="63979:64103" ph="UPDATE aspirant... " />
+                <marker date="1535365357999" expanded="true" signature="64740:64856" ph="UPDATE aspirant... " />
+                <marker date="1535365357999" expanded="true" signature="65680:65780" ph="UPDATE status... " />
+                <marker date="1535365357999" expanded="true" signature="66633:66672" ph="UPDATE aspirant... " />
+                <marker date="1535365357999" expanded="true" signature="67444:67481" ph="UPDATE results... " />
+                <marker date="1535365357999" expanded="true" signature="68357:68400" ph="SELECT id_pa... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="68724:68828" ph="UPDATE passport... " />
+                <marker date="1535365357999" expanded="true" signature="70079:70122" ph="SELECT id_co... aspirant" />
+                <marker date="1535365357999" expanded="true" signature="70447:70504" ph="UPDATE contacts... " />
+                <marker date="1535365357999" expanded="true" signature="71501:71726" ph="SELECT statu... status" />
+                <marker date="1535365357999" expanded="true" signature="73328:73520" ph="SELECT name_... results" />
+                <marker date="1535365357999" expanded="true" signature="74515:74582" ph="UPDATE science_work... " />
+                <marker date="1535365357999" expanded="true" signature="75665:75743" ph="INSERT INTO science_work... " />
+                <marker date="1535365357999" expanded="true" signature="76933:77086" ph="SELECT scien... science_work" />
+                <marker date="1535365357999" expanded="true" signature="78428:78567" ph="SELECT scien... science_work" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resources/fxml/menu.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -117,6 +236,7 @@
       <find>setColumnSize</find>
       <find>setColumnWidth</find>
       <find>runLater</find>
+      <find>UPDATE contacts SET</find>
     </findStrings>
     <replaceStrings>
       <replace>8.0.111</replace>
@@ -151,7 +271,6 @@
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ControllerShowScience.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/MaskField.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ObjectAspirant.java" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/faculty/ControllerEditFaculty.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/faculty/ControllerFaculty.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/nakaz/ControllerNakazi.java" />
@@ -162,12 +281,10 @@
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/LoadWindow.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/vykladach/ControllerEditVykladach.java" />
         <option value="$PROJECT_DIR$/src/resources/fxml/aspirant/form_actions_aspirant.fxml" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerLogin.java" />
         <option value="$PROJECT_DIR$/database.properties" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Settings.java" />
         <option value="$PROJECT_DIR$/logs/app.log" />
-        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
         <option value="$PROJECT_DIR$/src/resources/log4j2.xml" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/Utils.java" />
         <option value="$PROJECT_DIR$/logs/db.log" />
@@ -177,6 +294,9 @@
         <option value="$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/reports/XlsxBuilder.java" />
         <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/reports/ReportMaker.java" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java" />
+        <option value="$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java" />
       </list>
     </option>
   </component>
@@ -250,6 +370,20 @@
               <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="aspirant" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chnu-aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="aspirantura" type="462c0819:PsiDirectoryNode" />
+              <item name="discipline" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chnu-aspirantura" type="b2602c69:ProjectViewProjectNode" />
@@ -524,15 +658,24 @@
       <workItem from="1535199272473" duration="327000" />
       <workItem from="1535290668252" duration="9702000" />
       <workItem from="1535300581362" duration="7290000" />
-      <workItem from="1535362990071" duration="1788000" />
+      <workItem from="1535362990071" duration="2499000" />
     </task>
+    <task id="LOCAL-00001" summary="Report year form added">
+      <created>1535364793131</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1535364793131</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37847000" />
+    <option name="totallyTimeSpent" value="38558000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -548,14 +691,14 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3356546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3356546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4637883" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4637883" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37743732" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5404884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5404884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UML design tool window" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -636,7 +779,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Report year form added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Report year form added" />
+    <MESSAGE value="Small fixes added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small fixes added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -649,20 +793,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/faculty/ControllerFaculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/faculty/ObjectFaculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/kafedra/ControllerEditKafedra.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -796,17 +926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/fxml/menu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="33" column="56" lean-forward="true" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/fxml/aspirant/form_praktica_aspirant.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -874,13 +993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/speciality/ControllerFormAddSpeciality.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-603">
@@ -924,13 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/LoadWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -942,13 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -988,17 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="154" lean-forward="false" selection-start-line="9" selection-start-column="154" selection-end-line="9" selection-end-column="154" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/reports/XlsxBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -1023,11 +1110,154 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/fxml/reports/report_aspirants.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="154" lean-forward="false" selection-start-line="9" selection-start-column="154" selection-end-line="9" selection-end-column="154" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/reports/ReportMaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="166">
           <caret line="108" column="0" lean-forward="false" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/fxml/menu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/ControllerMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="158" column="52" lean-forward="false" selection-start-line="158" selection-start-column="52" selection-end-line="158" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/discipline/ControllerDiscipline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="78" column="106" lean-forward="false" selection-start-line="78" selection-start-column="106" selection-end-line="78" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/aspirant/ControllerAddAspirant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chnu/aspirantura/SqlCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1947">
+          <caret line="2084" column="21" lean-forward="true" selection-start-line="2084" selection-start-column="21" selection-end-line="2084" selection-end-column="21" />
+          <folding>
+            <marker date="1535365357999" expanded="true" signature="2719:2781" ph="SELECT passw... authorization" />
+            <marker date="1535365357999" expanded="true" signature="3968:3989" ph="SELECT * FRO... faculty" />
+            <marker date="1535365357999" expanded="true" signature="4657:4709" ph="INSERT INTO faculty... " />
+            <marker date="1535365357999" expanded="true" signature="5461:5508" ph="UPDATE faculty... " />
+            <marker date="1535365357999" expanded="true" signature="6372:6417" ph="SELECT name,... faculty" />
+            <marker date="1535365357999" expanded="true" signature="7531:7712" ph="SELECT nakaz... nakaz" />
+            <marker date="1535365357999" expanded="true" signature="8888:8922" ph="SELECT about... nakaz" />
+            <marker date="1535365357999" expanded="true" signature="9714:9897" ph="SELECT nakaz... nakaz" />
+            <marker date="1535365357999" expanded="true" signature="11371:11465" ph="SELECT nakaz... nakaz" />
+            <marker date="1535365357999" expanded="true" signature="12774:12842" ph="INSERT INTO nakaz... " />
+            <marker date="1535365357999" expanded="true" signature="13861:13932" ph="UPDATE nakaz... " />
+            <marker date="1535365357999" expanded="true" signature="15205:15362" ph="SELECT name,... vykladachi" />
+            <marker date="1535365357999" expanded="true" signature="16439:16463" ph="SELECT * FRO... vykladachi" />
+            <marker date="1535365357999" expanded="true" signature="17216:17254" ph="INSERT INTO vykladachi... " />
+            <marker date="1535365357999" expanded="true" signature="18062:18103" ph="UPDATE vykladachi... " />
+            <marker date="1535365357999" expanded="true" signature="18970:19025" ph="DELETE FROM kerivnik_speciality... " />
+            <marker date="1535365357999" expanded="true" signature="19290:19366" ph="INSERT INTO kerivnik_speciality... " />
+            <marker date="1535365357999" expanded="true" signature="20410:20602" ph="SELECT name,... specialities" />
+            <marker date="1535365357999" expanded="true" signature="22378:22402" ph="SELECT * FRO... nakaz_type" />
+            <marker date="1535365357999" expanded="true" signature="23047:23086" ph="INSERT INTO nakaz_type... " />
+            <marker date="1535365357999" expanded="true" signature="24099:24157" ph="SELECT id, n... specialities" />
+            <marker date="1535365357999" expanded="true" signature="25561:25630" ph="SELECT id_na... kerivnik_speciality" />
+            <marker date="1535365357999" expanded="true" signature="26517:26596" ph="INSERT INTO specialities... " />
+            <marker date="1535365357999" expanded="true" signature="26625:26691" ph="INSERT INTO specialities... " />
+            <marker date="1535365357999" expanded="true" signature="27483:27515" ph="SELECT max(i... specialities" />
+            <marker date="1535365357999" expanded="true" signature="27744:27791" ph="UPDATE kafedra... " />
+            <marker date="1535365357999" expanded="true" signature="28679:28750" ph="UPDATE specialities... " />
+            <marker date="1535365357999" expanded="true" signature="29790:29833" ph="select id fr... kafedra" />
+            <marker date="1535365357999" expanded="true" signature="30052:30100" ph="UPDATE kafedra... " />
+            <marker date="1535365357999" expanded="true" signature="30462:30508" ph="UPDATE kafedra... " />
+            <marker date="1535365357999" expanded="true" signature="31660:31811" ph="SELECT kafed... kafedra" />
+            <marker date="1535365357999" expanded="true" signature="32662:32716" ph="SELECT name,... kafedra" />
+            <marker date="1535365357999" expanded="true" signature="33572:33614" ph="INSERT INTO kafedra... " />
+            <marker date="1535365357999" expanded="true" signature="34407:34451" ph="UPDATE kafedra... " />
+            <marker date="1535365357999" expanded="true" signature="35496:35610" ph="INSERT INTO disciplines... " />
+            <marker date="1535365357999" expanded="true" signature="36374:36405" ph="SELECT max(i... disciplines" />
+            <marker date="1535365357999" expanded="true" signature="36579:36658" ph="INSERT INTO speciality_disciplines... " />
+            <marker date="1535365357999" expanded="true" signature="37648:37758" ph="UPDATE disciplines... " />
+            <marker date="1535365357999" expanded="true" signature="38589:38662" ph="UPDATE speciality_disciplines... " />
+            <marker date="1535365357999" expanded="true" signature="39644:40076" ph="SELECT disci... disciplines" />
+            <marker date="1535365357999" expanded="true" signature="41195:41365" ph="SELECT name,... specialities" />
+            <marker date="1535365357999" expanded="true" signature="42522:42551" ph="SELECT * FRO... discipline_type" />
+            <marker date="1535365357999" expanded="true" signature="43199:43242" ph="INSERT INTO discipline_type... " />
+            <marker date="1535365357999" expanded="true" signature="44259:44418" ph="INSERT INTO aspirant... " />
+            <marker date="1535365357999" expanded="true" signature="45739:45767" ph="SELECT max(i... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="45978:46372" ph="SELECT disci... disciplines" />
+            <marker date="1535365357999" expanded="true" signature="46730:46839" ph="INSERT INTO results... " />
+            <marker date="1535365357999" expanded="true" signature="48147:48248" ph="INSERT INTO passport... " />
+            <marker date="1535365357999" expanded="true" signature="49128:49156" ph="SELECT max(i... passport" />
+            <marker date="1535365357999" expanded="true" signature="49798:49826" ph="SELECT max(i... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="50519:50565" ph="SELECT id,fo... study_form" />
+            <marker date="1535365357999" expanded="true" signature="51392:51460" ph="INSERT INTO status... " />
+            <marker date="1535365357999" expanded="true" signature="52113:52139" ph="SELECT max(i... status" />
+            <marker date="1535365357999" expanded="true" signature="52802:52857" ph="INSERT INTO contacts... " />
+            <marker date="1535365357999" expanded="true" signature="53405:53433" ph="SELECT max(i... contacts" />
+            <marker date="1535365357999" expanded="true" signature="54175:54655" ph="SELECT aspir... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="56140:56208" ph="INSERT INTO status... " />
+            <marker date="1535365357999" expanded="true" signature="56895:56921" ph="SELECT max(i... status" />
+            <marker date="1535365357999" expanded="true" signature="57053:57096" ph="UPDATE aspirant... " />
+            <marker date="1535365357999" expanded="true" signature="57915:57953" ph="SELECT id_na... status" />
+            <marker date="1535365357999" expanded="true" signature="58283:58386" ph="SELECT nakaz... nakaz" />
+            <marker date="1535365357999" expanded="true" signature="59224:59392" ph="SELECT aspir... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="60304:60527" ph="SELECT aspir... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="62000:62046" ph="SELECT photo... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="62877:62989" ph="SELECT id_na... status" />
+            <marker date="1535365357999" expanded="true" signature="63979:64103" ph="UPDATE aspirant... " />
+            <marker date="1535365357999" expanded="true" signature="64740:64856" ph="UPDATE aspirant... " />
+            <marker date="1535365357999" expanded="true" signature="65680:65780" ph="UPDATE status... " />
+            <marker date="1535365357999" expanded="true" signature="66633:66672" ph="UPDATE aspirant... " />
+            <marker date="1535365357999" expanded="true" signature="67444:67481" ph="UPDATE results... " />
+            <marker date="1535365357999" expanded="true" signature="68357:68400" ph="SELECT id_pa... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="68724:68828" ph="UPDATE passport... " />
+            <marker date="1535365357999" expanded="true" signature="70079:70122" ph="SELECT id_co... aspirant" />
+            <marker date="1535365357999" expanded="true" signature="70447:70504" ph="UPDATE contacts... " />
+            <marker date="1535365357999" expanded="true" signature="71501:71726" ph="SELECT statu... status" />
+            <marker date="1535365357999" expanded="true" signature="73328:73520" ph="SELECT name_... results" />
+            <marker date="1535365357999" expanded="true" signature="74515:74582" ph="UPDATE science_work... " />
+            <marker date="1535365357999" expanded="true" signature="75665:75743" ph="INSERT INTO science_work... " />
+            <marker date="1535365357999" expanded="true" signature="76933:77086" ph="SELECT scien... science_work" />
+            <marker date="1535365357999" expanded="true" signature="78428:78567" ph="SELECT scien... science_work" />
+          </folding>
         </state>
       </provider>
     </entry>

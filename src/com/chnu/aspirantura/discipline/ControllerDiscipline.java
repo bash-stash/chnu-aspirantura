@@ -72,12 +72,12 @@ public class ControllerDiscipline {
 
         tableDisciplineId.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, Integer>("id"));
         tableDisciplineName.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("name"));
-        tableDisciplineSemestr.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("semestr"));
+        tableDisciplineSpeciality.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("speciality"));
         tableDisciplineCourse.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("course"));
+        tableDisciplineSemestr.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("semestr"));
         tableDisciplineType.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("typeKontrol"));
         tableDisciplineVykladach.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("vykladach"));
         tableDisciplineStatus.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("status"));
-        tableDisciplineSpeciality.setCellValueFactory(new PropertyValueFactory<ObjectDiscipline, String>("speciality"));
 
         initData(formValue);
 

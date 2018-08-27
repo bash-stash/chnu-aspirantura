@@ -2076,7 +2076,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog(String.format("UPDATE contacts SET phone=%s,address=%s, email=%s WHERE id=?", telephoneData, addressData, emailData, idP));
+            writeLog(String.format("UPDATE contacts SET phone=%s,address=%s, email=%s WHERE id=%s", telephoneData, addressData, emailData, idP));
         } catch (Exception e) {
 
         } finally {

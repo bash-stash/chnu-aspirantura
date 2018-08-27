@@ -49,8 +49,8 @@ public class ControllerMenu {
         viewItems.setVisible(false);
 
         if (id.equals("itemKafedri")) paneKafedra = switchActivity(paneKafedra, "paneKafedra", "/fxml/kafedra/view_kafedra.fxml", "Кафедра");
-        else if (id.equals("itemVykladachi")) paneDiscipline = switchActivity(paneDiscipline, "paneDiscipline", "/fxml/discipline/view_discipline.fxml", "Дисципліни");
-        else if (id.equals("itemDiscipline")) paneVykladachi = switchActivity(paneVykladachi, "paneVykladachi", "/fxml/vykladach/view_vykladachi.fxml", "Викладачі");
+        else if (id.equals("itemDiscipline")) paneDiscipline = switchActivity(paneDiscipline, "paneDiscipline", "/fxml/discipline/view_discipline.fxml", "Дисципліни");
+        else if (id.equals("itemVykladachi")) paneVykladachi = switchActivity(paneVykladachi, "paneVykladachi", "/fxml/vykladach/view_vykladachi.fxml", "Викладачі");
         else if (id.equals("itemSpeciality")) paneSpeciality = switchActivity(paneSpeciality, "paneSpeciality", "/fxml/speciality/view_speciality.fxml", "Спеціальності");
         else if (id.equals("itemFaculty")) paneFaculty = switchActivity(paneFaculty, "paneFaculty", "/fxml/faculty/view_faculty.fxml", "Факультети");
         else if (id.equals("itemNakazi")) paneNakazi = switchActivity(paneNakazi, "paneNakazi", "/fxml/nakaz/view_nakazi.fxml", "Накази");
@@ -101,12 +101,12 @@ public class ControllerMenu {
 
         if (activePane.getId().equals("paneAspirant")) {
                 if (radioMenuItem.getId().equals("itemName")) Settings.setSettings("item.name.aspirantura.checked", String.valueOf(isSelected));
-                else if (radioMenuItem.getId().equals("itemStatus")) Settings.setSettings("item.status.aspirantura.checked", String.valueOf(isSelected));
                 else if (radioMenuItem.getId().equals("itemBirthday"))  Settings.setSettings("item.birthday.aspirantura.checked", String.valueOf(isSelected));
                 else if (radioMenuItem.getId().equals("itemSpecialityView"))  Settings.setSettings("item.speciality.aspirantura.checked", String.valueOf(isSelected));
                 else if (radioMenuItem.getId().equals("itemKerivnikView"))  Settings.setSettings("item.kerivnik.aspirantura.checked", String.valueOf(isSelected));
                 else if (radioMenuItem.getId().equals("itemNote"))  Settings.setSettings("item.note.aspirantura.checked", String.valueOf(isSelected));
                 else if (radioMenuItem.getId().equals("itemYear"))  Settings.setSettings("item.year.aspirantura.checked", String.valueOf(isSelected));
+                else if (radioMenuItem.getId().equals("itemStatus")) Settings.setSettings("item.status.aspirantura.checked", String.valueOf(isSelected));
                 else if (radioMenuItem.getId().equals("itemForm"))  Settings.setSettings("item.form.aspirantura.checked", String.valueOf(isSelected));
         }
         manageMenuViewItems();
@@ -117,12 +117,12 @@ public class ControllerMenu {
     public void initialize() throws IOException {
         Settings.loadProperties();
 
-        radioMenuItemsAspirantura.add(itemBirthday);
         radioMenuItemsAspirantura.add(itemName);
-        radioMenuItemsAspirantura.add(itemStatus);
+        radioMenuItemsAspirantura.add(itemBirthday);
         radioMenuItemsAspirantura.add(itemKerivnikView);
         radioMenuItemsAspirantura.add(itemSpecialityView);
         radioMenuItemsAspirantura.add(itemForm);
+        radioMenuItemsAspirantura.add(itemStatus);
         radioMenuItemsAspirantura.add(itemYear);
         radioMenuItemsAspirantura.add(itemNote);
 
@@ -152,11 +152,11 @@ public class ControllerMenu {
             tableView = controllerAspirant.table;
 
             manageItemView(tableView, "item.name.aspirantura.checked", itemName, controllerAspirant.tableAspirantName);
-            manageItemView(tableView, "item.status.aspirantura.checked", itemStatus, controllerAspirant.tableAspirantStatus);
             manageItemView(tableView, "item.birthday.aspirantura.checked", itemBirthday, controllerAspirant.tableAspirantDate);
             manageItemView(tableView, "item.kerivnik.aspirantura.checked", itemKerivnikView, controllerAspirant.tableAspirantKerivnik);
             manageItemView(tableView, "item.speciality.aspirantura.checked", itemSpecialityView, controllerAspirant.tableAspirantSpeciality);
             manageItemView(tableView, "item.form.aspirantura.checked", itemForm, controllerAspirant.tableAspirantForm);
+            manageItemView(tableView, "item.status.aspirantura.checked", itemStatus, controllerAspirant.tableAspirantStatus);
             manageItemView(tableView, "item.year.aspirantura.checked", itemYear, controllerAspirant.tableAspirantYear);
             manageItemView(tableView, "item.note.aspirantura.checked", itemNote, controllerAspirant.tableAspirantNote);
 
