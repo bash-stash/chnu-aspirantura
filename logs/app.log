@@ -52,3 +52,39 @@
 [DEBUG] 2018.08.26 17:16:48.276 Utils: Connected successfully!
 [DEBUG] 2018.08.26 17:20:53.876 Utils: Cfg is set up successfully, trying to connect..
 [DEBUG] 2018.08.26 17:20:54.080 Utils: Connected successfully!
+[DEBUG] 2018.08.27 12:55:55.579 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 12:55:56.365 Utils: Connected successfully!
+[ERROR] 2018.08.27 12:56:03.829 Utils: Report formatting: For input string: ""
+[DEBUG] 2018.08.27 12:56:31.533 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 12:56:31.834 Utils: Connected successfully!
+[DEBUG] 2018.08.27 12:57:18.338 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 12:57:18.521 Utils: Connected successfully!
+[ERROR] 2018.08.27 12:57:25.576 Utils: Report formatting: null
+[DEBUG] 2018.08.27 12:58:05.928 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 12:58:06.123 Utils: Connected successfully!
+[ERROR] 2018.08.27 12:58:16.107 Utils: Report formatting: null
+[DEBUG] 2018.08.27 12:59:21.455 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 12:59:21.652 Utils: Connected successfully!
+[DEBUG] 2018.08.27 12:59:57.262 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 12:59:57.446 Utils: Connected successfully!
+[ERROR] 2018.08.27 13:00:00.911 Utils: Report formatting: For input string: ""
+[DEBUG] 2018.08.27 13:01:52.261 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 13:01:52.459 Utils: Connected successfully!
+[DEBUG] 2018.08.27 13:04:09.890 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 13:04:10.092 Utils: Connected successfully!
+[DEBUG] 2018.08.27 13:04:18.535 dblogs: INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(1,2,'2018-08-27','admin')
+[DEBUG] 2018.08.27 13:04:18.668 dblogs: UPDATE aspirant SET id_status=2 WHERE id=1
+[DEBUG] 2018.08.27 13:07:29.995 Utils: Cfg is set up successfully, trying to connect..
+[DEBUG] 2018.08.27 13:07:30.188 Utils: Connected successfully!
+[DEBUG] 2018.08.27 13:08:18.029 dblogs: INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES('123','123','123','2018-08-15',1)
+[DEBUG] 2018.08.27 13:08:55.063 dblogs:  UPDATE science_work SET name=123,`where`=123123, link=123, date=2018-08-14 WHERE id=1
+[DEBUG] 2018.08.27 13:09:13.151 dblogs: INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES('asda','asd','asd','2018-08-16',1)
+[DEBUG] 2018.08.27 13:09:21.763 dblogs:  UPDATE science_work SET name=asda1,`where`=asd, link=asd, date=2018-08-15 WHERE id=2
+[DEBUG] 2018.08.27 13:10:45.074 dblogs: UPDATE vykladachi SET name = ' Шерстюк Людмила Валеріївна' WHERE id=4
+[DEBUG] 2018.08.27 13:10:45.166 dblogs: DELETE FROM kerivnik_speciality WHERE id_nav_kerivnik=4
+[DEBUG] 2018.08.27 13:10:45.207 dblogs: INSERT INTO kerivnik_speciality (id_nav_kerivnik,id_speciality) VALUES (4,4)
+[DEBUG] 2018.08.27 13:10:45.240 dblogs: INSERT INTO kerivnik_speciality (id_nav_kerivnik,id_speciality) VALUES (4,1)
+[DEBUG] 2018.08.27 13:10:45.323 dblogs: INSERT INTO kerivnik_speciality (id_nav_kerivnik,id_speciality) VALUES (4,3)
+[DEBUG] 2018.08.27 13:10:45.357 dblogs: INSERT INTO kerivnik_speciality (id_nav_kerivnik,id_speciality) VALUES (4,2)
+[DEBUG] 2018.08.27 13:10:54.639 dblogs: UPDATE vykladachi SET name = ' Шерстюк Людмила Валеріївна' WHERE id=4
+[DEBUG] 2018.08.27 13:10:54.700 dblogs: DELETE FROM kerivnik_speciality WHERE id_nav_kerivnik=4

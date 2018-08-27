@@ -1,10 +1,9 @@
 package com.chnu.aspirantura.reports;
 
-import com.chnu.aspirantura.ControllerLogin;
-import com.chnu.aspirantura.Main;
-import com.chnu.aspirantura.aspirant.ObjectAspirant;
+import com.chnu.aspirantura.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Sheet;
 
@@ -12,13 +11,21 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ReportMaker {
 
+    static private int year = 2018;
+
     @FXML
+
     private Label title;
+    @FXML
+
+    private Label resultLabel;
+
+    @FXML
+    private TextField yearField;
+
 
 
     public void initialize() {
@@ -27,16 +34,24 @@ public class ReportMaker {
 
     public static void main(String[] args) throws IOException, ParseException {
         ReportMaker reportMaker = new ReportMaker();
-        reportMaker.makeReport2();
-
+        reportMaker.makeReport(year);
     }
 
-    public void apply() throws ParseException, IOException {
+    public void apply() {
 
-        makeReport2();
+        String s = "Сформовано!";
 
-        Stage stage = (Stage) title.getScene().getWindow();
-        stage.close();
+        try {
+            year = Integer.parseInt(yearField.getText());
+            makeReport(year);
+        }catch (Exception e){
+            s = "Виникла помилка";
+            Utils.logger.error("Report formatting: "+e.getMessage());
+        }
+
+        resultLabel.setText(s);
+        resultLabel.setVisible(true);
+
     }
 
     public void cancel() {
@@ -44,28 +59,28 @@ public class ReportMaker {
         stage.close();
     }
 
-    public XlsxBuilder mergeCells(XlsxBuilder xlsxBuilder) {
+    private XlsxBuilder mergeCells(XlsxBuilder xlsxBuilder) {
         xlsxBuilder.
                 startRow().
-                addMergedColumn(0, 2, 0, 0, true).
-                addMergedColumn(0, 2, 1, 1, true).
-                addMergedColumn(0, 2, 2, 2, true).
-                addMergedColumn(0, 0, 3, 4, true).
-                addMergedColumn(1, 2, 3, 3, true).
-                addMergedColumn(1, 2, 4, 4, true).
-                addMergedColumn(0, 0, 5, 8, true).
-                addMergedColumn(1, 1, 5, 6, true).
-                addMergedColumn(1, 1, 7, 8, true).
-                addMergedColumn(2, 2, 5, 5, true).
-                addMergedColumn(2, 2, 6, 6, true).
-                addMergedColumn(2, 2, 7, 7, true).
-                addMergedColumn(2, 2, 8, 8, true).
-                addMergedColumn(0, 0, 9, 10, true).
-                addMergedColumn(1, 2, 9, 9, true).
-                addMergedColumn(1, 2, 10, 10, true).
-                addMergedColumn(0, 2, 11, 11, true).
-                addMergedColumn(0, 2, 12, 12, true).
-                addMergedColumn(0, 2, 13, 13, true).
+                addMergedColumn(0, 2, 0, 0).
+                addMergedColumn(0, 2, 1, 1).
+                addMergedColumn(0, 2, 2, 2).
+                addMergedColumn(0, 0, 3, 4).
+                addMergedColumn(1, 2, 3, 3).
+                addMergedColumn(1, 2, 4, 4).
+                addMergedColumn(0, 0, 5, 8).
+                addMergedColumn(1, 1, 5, 6).
+                addMergedColumn(1, 1, 7, 8).
+                addMergedColumn(2, 2, 5, 5).
+                addMergedColumn(2, 2, 6, 6).
+                addMergedColumn(2, 2, 7, 7).
+                addMergedColumn(2, 2, 8, 8).
+                addMergedColumn(0, 0, 9, 10).
+                addMergedColumn(1, 2, 9, 9).
+                addMergedColumn(1, 2, 10, 10).
+                addMergedColumn(0, 2, 11, 11).
+                addMergedColumn(0, 2, 12, 12).
+                addMergedColumn(0, 2, 13, 13).
                 startRow().
                 startRow().
                 startRow();
@@ -74,7 +89,7 @@ public class ReportMaker {
     }
 
 
-    public void makeReport2() {
+    private void makeReport(int year) {
 
         XlsxBuilder xlsxBuilder = new XlsxBuilder();
         xlsxBuilder.startSheet("Форма № 1-нк");
@@ -83,8 +98,18 @@ public class ReportMaker {
         setTitles(xlsxBuilder);
         manageRowsHeight(xlsxBuilder);
 
+        addDataToReport(xlsxBuilder,year);
+
         writeReportToFile(xlsxBuilder);
     }
+
+
+    private void addDataToReport(XlsxBuilder xlsxBuilder,int year){
+
+
+
+    }
+
 
     private void manageRowsHeight(XlsxBuilder xlsxBuilder) {
         Sheet sheet = xlsxBuilder.getSheet();
@@ -134,7 +159,6 @@ public class ReportMaker {
                 addTextCenterAlignedColumn("10").
                 addTextCenterAlignedColumn("11");
 
-
         xlsxBuilder.setBordersToMergedCells();
 
     }
@@ -150,76 +174,5 @@ public class ReportMaker {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-    public void makeReport() {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss ");
-
-        String filter = (String) Main.controllerAspirant.searchType.getValue();
-        String filterValue = Main.controllerAspirant.textToFind.getText();
-
-
-        XlsxBuilder xlsxBuilder = new XlsxBuilder();
-
-        xlsxBuilder.startSheet("Звіт аспіранти").                            // start with sheet
-                startRow().                                          // then go row by row
-                setRowTitleHeight().                                 // set row style, add borders and so on
-                addTitleTextColumn("Звіт аспіранти").                    // add columns
-                startRow().                                          // another row
-                addBoldTextLeftAlignedColumn((filterValue.equals("") ? "" : "Фільтр - " + filter + " = " + filterValue)).
-                startRow().                                          // another row
-                setRowTitleHeight().                                 // row styling
-                setRowThinBottomBorder().
-                addBoldTextLeftAlignedColumn("Створив: " + ControllerLogin.login + "     Дата:  " + dateFormat.format(new Date())).
-                startRow().                                          // empty row
-                startRow().                                          // header row
-                setRowTitleHeight().
-                setRowThickTopBorder().
-                setRowThickBottomBorder().
-                addBoldTextCenterAlignedColumn("№").
-                addBoldTextCenterAlignedColumn("Ім'я").
-                addBoldTextCenterAlignedColumn("Дата народження").
-                addBoldTextCenterAlignedColumn("Науковий керівник").
-                addBoldTextCenterAlignedColumn("Спеціальність").
-                addBoldTextCenterAlignedColumn("Статус").
-                addBoldTextCenterAlignedColumn("Рік зарахування").
-                startRow();
-
-        for (ObjectAspirant aspirant : Main.controllerAspirant.table.getItems()) {
-            xlsxBuilder.addBoldTextCenterAlignedColumn(String.valueOf(aspirant.getId())).
-                    addTextLeftAlignedColumn(aspirant.getName()).
-                    addTextLeftAlignedColumn(aspirant.getDate()).
-                    addTextLeftAlignedColumn(aspirant.getKerivnik()).
-                    addTextLeftAlignedColumn(aspirant.getSpeciality()).
-                    addTextLeftAlignedColumn(aspirant.getStatusLabel()).
-                    addTextLeftAlignedColumn(String.valueOf(aspirant.getYear())).
-                    startRow();
-        }
-
-        xlsxBuilder.setRowThinTopBorder().
-                startRow().
-                startRow().                                          // footer row
-                addTextLeftAlignedColumn("").
-                setColumnSize(0, "XXXX".length()).          // setting up column sizes at the end of the sheet
-                setAutoSizeColumn(1).
-                setAutoSizeColumn(2).
-                setAutoSizeColumn(3).
-                setAutoSizeColumn(4).
-                setAutoSizeColumn(5).
-                setAutoSizeColumn(6).
-                setAutoSizeColumn(7);
-
-        byte[] report = xlsxBuilder.build();
-
-        try (FileOutputStream fos = new FileOutputStream("report.xlsx")) {
-            fos.write(report);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 }

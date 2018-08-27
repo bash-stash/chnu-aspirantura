@@ -222,8 +222,6 @@ public class XlsxBuilder {
 
 
         try{
-
-            System.out.println(Integer.parseInt(text));
             cell.setCellValue(Integer.parseInt(text));
             cell.setCellType(Cell.CELL_TYPE_NUMERIC);
         }catch (Exception e){
@@ -287,7 +285,7 @@ public class XlsxBuilder {
         return sheet;
     }
 
-    public XlsxBuilder addMergedColumn(int numRow, int untilRow, int numCol, int untilCol, boolean border) {
+    public XlsxBuilder addMergedColumn(int numRow, int untilRow, int numCol, int untilCol) {
         CellRangeAddress cellRangeAddress = new CellRangeAddress(numRow, untilRow, numCol, untilCol);
         sheet.addMergedRegion(cellRangeAddress);
         return this;
