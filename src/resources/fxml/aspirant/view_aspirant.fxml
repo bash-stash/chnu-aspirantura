@@ -24,7 +24,7 @@
          <children>
             <ScrollPane layoutY="-1.0" nodeOrientation="LEFT_TO_RIGHT" pannable="true" prefHeight="133.0" prefWidth="1000.0" style="-fx-focus-color: transperent;" vbarPolicy="NEVER" vmax="0.0">
                <content>
-                  <SplitPane dividerPositions="0.1219758064516129, 0.2469758064516129, 0.3719758064516129, 0.4969758064516129, 0.6219758064516129, 0.7469758064516129, 0.8719758064516129, 0.9969758064516129" prefHeight="133.0" style="-fx-focus-color: trasnperent;">
+                  <SplitPane dividerPositions="0.1219758064516129, 0.2469758064516129, 0.3719758064516129, 0.4969758064516129, 0.6219758064516129, 0.7469758064516129, 0.8719758064516129" prefHeight="133.0" style="-fx-focus-color: trasnperent;">
                     <items>
                       <AnchorPane maxWidth="118.0" minHeight="0.0" minWidth="118.0" onMouseClicked="#loadFormAddAspirant" prefHeight="91.0" styleClass="pane">
                            <children>
@@ -34,23 +34,6 @@
                                  </image>
                               </ImageView>
                               <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="72.0" maxHeight="40.0" maxWidth="110.0" prefHeight="92.0" prefWidth="110.0" text="Прийом в аспірантуру" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </AnchorPane>
-                         <AnchorPane maxWidth="118.0" minHeight="0.0" minWidth="118.0" onMouseClicked="#loadFormPractica" prefHeight="91.0">
-                           <children>
-                              <ImageView fitHeight="48.0" fitWidth="66.0" layoutX="25.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/setting_practic.png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="72.0" maxHeight="40.0" maxWidth="110.0" prefHeight="92.0" prefWidth="110.0" text="Оформлення практики" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -152,7 +135,7 @@
                                     <Image url="@../../img/settings.png" />
                                  </image>
                               </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="77.0" maxHeight="40.0" maxWidth="110.0" prefHeight="92.0" prefWidth="110.0" text="Налаштування команд" textAlignment="CENTER" wrapText="true">
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="77.0" maxHeight="40.0" maxWidth="110.0" prefHeight="92.0" prefWidth="110.0" text="Налаштування " textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

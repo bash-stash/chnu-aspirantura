@@ -160,7 +160,6 @@ public class ControllerAspirant {
                 }
             });
             MenuItem mi5 = new MenuItem("Переглянути результати навчання");
-            mi5.setOnAction(mi4.getOnAction());
             mi5.setOnAction((ActionEvent event) -> {
 
                 ObjectAspirant item = table.getSelectionModel().getSelectedItem();
@@ -176,9 +175,27 @@ public class ControllerAspirant {
             });
 
 
+            MenuItem mi6 = new MenuItem("Переглянути практики");
+            mi6.setOnAction((ActionEvent event) -> {
+
+                ObjectAspirant item = table.getSelectionModel().getSelectedItem();
+                ControllerShowPractice.aspirantId = item.getId();
+                ControllerShowPractice.aspirantName = item.getName();
+
+                try {
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_practice_aspirant.fxml","Відділ аспірантури | Практика | " + item.getName(),600,500,null,2,0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            });
+
+
+
+
 
             ContextMenu menu = new ContextMenu();
-            menu.getItems().addAll(mi1, mi2,new SeparatorMenuItem(),mi5,mi4,new SeparatorMenuItem(),mi3);
+            menu.getItems().addAll(mi1, mi2,new SeparatorMenuItem(),mi6,mi5,mi4,new SeparatorMenuItem(),mi3);
             table.setContextMenu(menu);
 
             tableAspirantId.setCellValueFactory(new PropertyValueFactory<ObjectAspirant, Integer>("id"));
@@ -274,24 +291,6 @@ public class ControllerAspirant {
 
 
 
-    @FXML public void loadFormPractica(Event event) throws IOException {
-
-        ControllerPraktika.aspirantsData = aspirantsData;
-
-        ObjectAspirant as = table.getSelectionModel().getSelectedItem();
-
-        if(as!=null) {
-            System.out.println(as.getName());
-            ControllerPraktika.actionId = as.getId();
-            ControllerPraktika.aspirant = as;
-        }
-        try {
-            LoadWindow.loader.openWindow("/fxml/aspirant/form_praktica_aspirant.fxml","Відділ аспірантури | Оформлення практики",500,325,null,2,0);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
 

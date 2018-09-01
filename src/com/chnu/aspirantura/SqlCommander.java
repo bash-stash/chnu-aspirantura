@@ -13,7 +13,8 @@ import com.chnu.aspirantura.vykladach.ObjectVykladach;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.ConnectException;
 import java.sql.*;
 import java.text.DateFormat;
@@ -22,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import static java.sql.Types.NULL;
 
@@ -31,7 +34,8 @@ public class SqlCommander {
     private static String url;
     private static String name;
     private static String password;
-    private static FileWriter fileWriterLogsOnDbChange;
+
+    private static Calendar gmt = Calendar.getInstance(TimeZone.getTimeZone("EST"));
 
     static {
 
@@ -250,7 +254,7 @@ public class SqlCommander {
             DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
 
             while (result1.next()) {
-                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
+                date = originalFormat.parse(result1.getDate("date_nakaz", gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 list.add(new ObjectNakaz(result1.getInt("id"), result1.getString("nom_nakaz"),
@@ -327,7 +331,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
+                date = originalFormat.parse(result1.getDate("date_nakaz", gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 nakaz = new ObjectNakaz(result1.getInt("id"), result1.getString("nom_nakaz"),
@@ -372,7 +376,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
+                date = originalFormat.parse(result1.getDate("date_nakaz", gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 o = new ObjectNakaz(result1.getInt("id"), result1.getString("nom_nakaz"), date, null);
@@ -411,7 +415,7 @@ public class SqlCommander {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, about);
             preparedStatement.setString(2, newNumber);
-            preparedStatement.setDate(3, java.sql.Date.valueOf(date));
+            preparedStatement.setDate(3, java.sql.Date.valueOf(date), gmt);
             preparedStatement.setInt(4, type);
             preparedStatement.execute();
 
@@ -444,7 +448,7 @@ public class SqlCommander {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, about);
             preparedStatement.setString(2, newNumber);
-            preparedStatement.setDate(3, java.sql.Date.valueOf(date));
+            preparedStatement.setDate(3, java.sql.Date.valueOf(date), gmt);
             preparedStatement.setInt(4, type);
             preparedStatement.setInt(5, id);
             preparedStatement.execute();
@@ -1353,7 +1357,7 @@ public class SqlCommander {
             String query = "INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form,photo) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, pib);
-            preparedStatement.setDate(2, Date.valueOf(birthdayData));
+            preparedStatement.setDate(2, Date.valueOf(birthdayData), gmt);
             preparedStatement.setInt(3, idPassport);
             preparedStatement.setInt(4, idKerivnik);
             preparedStatement.setInt(5, idSpecialilty);
@@ -1429,7 +1433,7 @@ public class SqlCommander {
             preparedStatement.setString(2, seriaData);
             preparedStatement.setString(3, numberData);
             preparedStatement.setString(4, publishedBy);
-            preparedStatement.setDate(5, Date.valueOf(datePublished));
+            preparedStatement.setDate(5, Date.valueOf(datePublished), gmt);
             preparedStatement.setString(6, identificatorData);
             preparedStatement.execute();
 
@@ -1529,7 +1533,7 @@ public class SqlCommander {
 
             String query = "INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES(?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setDate(1, Date.valueOf(dateX));
+            preparedStatement.setDate(1, Date.valueOf(dateX), gmt);
             preparedStatement.setInt(2, idAspirant);
             preparedStatement.setInt(3, idNakaz);
             preparedStatement.setString(4, ControllerLogin.login);
@@ -1614,7 +1618,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate(3).toString());
+                date = originalFormat.parse(result1.getDate(3, gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
                 ObjectAspirant o = new ObjectAspirant(result1.getInt(1), result1.getString(2), result1.getString(5),
                         date, result1.getString(4), result1.getInt(6), result1.getInt(9));
@@ -1656,7 +1660,7 @@ public class SqlCommander {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, aspirantId);
             preparedStatement.setInt(2, nakazId);
-            preparedStatement.setDate(3, Date.valueOf(dateX));
+            preparedStatement.setDate(3, Date.valueOf(dateX), gmt);
             preparedStatement.setString(4, ControllerLogin.login);
             preparedStatement.execute();
 
@@ -1794,7 +1798,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate("published_date").toString());
+                date = originalFormat.parse(result1.getDate("published_date", gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
                 LocalDate dateLocal = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 o = new ObjectPassport(result1.getString("seria"), result1.getString("number"), result1.getString("published_by"), dateLocal, result1.getString("identificator"));
@@ -1894,7 +1898,7 @@ public class SqlCommander {
                 query = "UPDATE aspirant SET name=?, birthday=?, id_nav_kerivnik=?, id_speciality=?,year=?, is_male=?,study_form=?,photo=? WHERE id=?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, nameX);
-                preparedStatement.setDate(2, Date.valueOf(date));
+                preparedStatement.setDate(2, Date.valueOf(date), gmt);
                 preparedStatement.setInt(3, kerivnik);
                 preparedStatement.setInt(4, idSpecialilty);
                 preparedStatement.setInt(5, year);
@@ -1906,7 +1910,7 @@ public class SqlCommander {
                 query = "UPDATE aspirant SET name=?, birthday=?, id_nav_kerivnik=?, id_speciality=?,year=?, is_male=?,study_form=? WHERE id=?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, nameX);
-                preparedStatement.setDate(2, Date.valueOf(date));
+                preparedStatement.setDate(2, Date.valueOf(date), gmt);
                 preparedStatement.setInt(3, kerivnik);
                 preparedStatement.setInt(4, idSpecialilty);
                 preparedStatement.setInt(5, year);
@@ -2028,7 +2032,7 @@ public class SqlCommander {
             preparedStatement.setString(2, seriaData);
             preparedStatement.setString(3, numberData);
             preparedStatement.setString(4, publishedByData);
-            preparedStatement.setDate(5, Date.valueOf(datePublishedData));
+            preparedStatement.setDate(5, Date.valueOf(datePublishedData), gmt);
             preparedStatement.setInt(6, identificatorData);
             preparedStatement.setInt(7, idP);
             preparedStatement.execute();
@@ -2110,10 +2114,10 @@ public class SqlCommander {
 
 
             while (result1.next()) {
-                date = originalFormat.parse(result1.getDate(1).toString());
+                date = originalFormat.parse(result1.getDate(1, gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
-                dateNakaz = originalFormat.parse(result1.getDate(5).toString());
+                dateNakaz = originalFormat.parse(result1.getDate(5, gmt).toString());
                 dateNakaz = targetFormat.parse(targetFormat.format(dateNakaz));
 
 
@@ -2182,7 +2186,7 @@ public class SqlCommander {
             preparedStatement.setString(1, nameX);
             preparedStatement.setString(2, where);
             preparedStatement.setString(3, link);
-            preparedStatement.setDate(4, Date.valueOf(date));
+            preparedStatement.setDate(4, Date.valueOf(date), gmt);
             preparedStatement.setInt(5, workId);
             preparedStatement.execute();
 
@@ -2214,7 +2218,7 @@ public class SqlCommander {
             preparedStatement.setString(1, nameX);
             preparedStatement.setString(2, where);
             preparedStatement.setString(3, link);
-            preparedStatement.setDate(4, Date.valueOf(date));
+            preparedStatement.setDate(4, Date.valueOf(date), gmt);
             preparedStatement.setInt(5, aspirantId);
             preparedStatement.execute();
 
@@ -2255,7 +2259,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate(3).toString());
+                date = originalFormat.parse(result1.getDate(3, gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 list.add(new ObjectScienceWork(result1.getInt(5), date, result1.getString(2), result1.getString(1), result1.getString(4)));
@@ -2298,7 +2302,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate(3).toString());
+                date = originalFormat.parse(result1.getDate(3, gmt).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 obj = new ObjectScienceWork(result1.getInt(5), date, result1.getString(2), result1.getString(1), result1.getString(4));
@@ -2319,5 +2323,182 @@ public class SqlCommander {
                 }
         }
         return obj;
+    }
+
+    public static ArrayList<ObjectPractice> getAspirantPractice(int aspirantId) {
+        Connection connection = getConnection();
+        ArrayList<ObjectPractice> list = new ArrayList<>();
+
+        try {
+
+            PreparedStatement preparedStatement;
+            String query = ("SELECT name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,id FROM practics WHERE aspirant_id=? ORDER BY id DESC ");
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, aspirantId);
+            ResultSet result1 = preparedStatement.executeQuery();
+
+
+            java.util.Date dateFrom;
+            java.util.Date dateTill;
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+
+            while (result1.next()) {
+
+                dateFrom = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(9, gmt).toString())));
+                dateTill = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(10, gmt).toString())));
+
+
+                list.add(new ObjectPractice(result1.getString(1), result1.getString(2), dateFrom, dateTill, result1.getString(3),
+                        result1.getString(4), result1.getInt(5), result1.getString(6),
+                        result1.getString(7), result1.getString(8), result1.getInt(11)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+        return list;
+    }
+
+
+    public static void editPractice(String name_, String organization_, String markNational_, String markECTIS_, int markPoints_, String credits_, LocalDate dateFrom_, LocalDate dateTill_, String workDescription_, String namesCommission_, int workId) {
+        Connection connection = getConnection();
+        try {
+
+            PreparedStatement preparedStatement;
+
+            String query = "UPDATE practics SET name_practice=?,organization=?,mark_national_scale=?,mark_ectis=?,mark_points=?,credits=?,work_description=?," +
+                    "commission_names=?,started=?,ended=? WHERE id=?";
+
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name_);
+            preparedStatement.setString(2, organization_);
+            preparedStatement.setString(3, markNational_);
+            preparedStatement.setString(4, markECTIS_);
+            preparedStatement.setInt(5, markPoints_);
+            preparedStatement.setString(6, credits_);
+            preparedStatement.setString(7, workDescription_);
+            preparedStatement.setString(8, namesCommission_);
+            preparedStatement.setDate(9, Date.valueOf(dateFrom_), gmt);
+            preparedStatement.setDate(10, Date.valueOf(dateTill_), gmt);
+            preparedStatement.setInt(11, workId);
+            preparedStatement.execute();
+
+
+            writeLog(String.format("UPDATE practics SET name_practice='%s',organization='%s',mark_national_scale='%s',mark_ectis='%s',mark_points=%d,credits='%s',work_description='%s', commission_names='%s',started='%s',ended='%s' WHERE id=%d", name_, organization_, markNational_, markECTIS_, markPoints_, credits_, dateFrom_, dateTill_, workDescription_, namesCommission_, workId));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+
+    }
+
+
+    public static void addPractice(String name_, String organization_, String markNational_, String markECTIS_, int markPoints_, String credits_, LocalDate dateFrom_, LocalDate dateTill_, String workDescription_, String namesCommission_, int aspirantId) {
+        Connection connection = getConnection();
+        try {
+
+            PreparedStatement preparedStatement;
+            Date date = Date.valueOf(dateFrom_);
+
+            String query = "INSERT INTO practics(name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,aspirant_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, name_);
+            preparedStatement.setString(2, organization_);
+            preparedStatement.setString(3, markNational_);
+            preparedStatement.setString(4, markECTIS_);
+            preparedStatement.setInt(5, markPoints_);
+            preparedStatement.setString(6, credits_);
+            preparedStatement.setString(7, workDescription_);
+            preparedStatement.setString(8, namesCommission_);
+            preparedStatement.setDate(9, Date.valueOf(dateFrom_), gmt);
+            preparedStatement.setDate(10, Date.valueOf(dateTill_), gmt);
+            preparedStatement.setInt(11, aspirantId);
+            preparedStatement.execute();
+
+
+            writeLog("INSERT INTO practics(name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,aspirant_id) " +
+                    "VALUES('" + name_ + "','" + organization_ + "','" + markNational_ + "','" + markECTIS_ + "'," + markPoints_ + ",'" + credits_ + "','" + workDescription_ + "','" + namesCommission_ + "','" + Date.valueOf(dateFrom_) + "','" + Date.valueOf(dateTill_) + "' , " + aspirantId + ")");
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+        }
+
+    }
+
+    public static ObjectPractice getAspirantPracticeById(int id) {
+        Connection connection = getConnection();
+        ObjectPractice practice = null;
+
+        try {
+
+            PreparedStatement preparedStatement;
+            String query = ("SELECT name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,id FROM practics WHERE id=?");
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            ResultSet result1 = preparedStatement.executeQuery();
+
+
+            java.util.Date dateFrom;
+            java.util.Date dateTill;
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+
+            while (result1.next()) {
+
+                dateFrom = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(9, gmt).toString())));
+                dateTill = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(10, gmt).toString())));
+
+
+                practice = new ObjectPractice(result1.getString(1), result1.getString(2), dateFrom, dateTill, result1.getString(3),
+                        result1.getString(4), result1.getInt(5), result1.getString(6),
+                        result1.getString(7), result1.getString(8), result1.getInt(11));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+        return practice;
     }
 }

@@ -31,8 +31,6 @@ public class ControllerAddEditScienceWork {
         datePicker.setValue(ld);
         }
 
-        System.out.println(aspirantId+" aspit");
-
         if (work==null) apply.setText("Додати");
 
         if (work!=null){

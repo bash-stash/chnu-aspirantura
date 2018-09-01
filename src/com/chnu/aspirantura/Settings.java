@@ -33,7 +33,7 @@ public class Settings {
 
     public static void savePropertiesToFile() {
         try (FileOutputStream out = new FileOutputStream(APP_COMMON)) {
-            properties.store(out, null);
+            properties.store(out, "");
         } catch (Exception e) {
             Utils.logger.error("Error saving properties to file: "+e.getMessage());
         }
@@ -43,7 +43,7 @@ public class Settings {
 
     public static void savePropertiesToFile(Properties p, final String name) {
         try (FileOutputStream out = new FileOutputStream(name)) {
-            p.store(out, null);
+            p.store(out,"");
         } catch (Exception e) {
            Utils.logger.error("Error saving properties to file: "+e.getMessage());
         }
