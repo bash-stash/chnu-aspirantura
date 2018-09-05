@@ -123,7 +123,10 @@ public class ControllerAspirant {
                     LoadWindow.loader.openWindow("/fxml/aspirant/form_edit_info_aspirant.fxml","Відділ аспірантури | " + item.getName(),600,730,null,2,0);
                     if (addedNew){
                         addedNew=false;
+                        int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                         loadData();
+                        System.out.println(i);
+                        table.getSelectionModel().select(i);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -267,7 +270,10 @@ public class ControllerAspirant {
                 }
             });
 
+            int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
             loadData();
+            System.out.println(i);
+            table.getSelectionModel().select(i);
             searchResultCount.setText("Всього результатів: " + aspirantsData.size());
 
 
@@ -333,7 +339,10 @@ public class ControllerAspirant {
             LoadWindow.loader.openWindow("/fxml/aspirant/form_actions_aspirant.fxml",title,515,200,null,2,0);
             if (addedNew){
                 addedNew=false;
+                int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                 loadData();
+                System.out.println(i);
+                table.getSelectionModel().select(i);
             }
             ControllerActions.actionId=0;
             ControllerActions.aspirant=null;
@@ -350,7 +359,10 @@ public class ControllerAspirant {
             LoadWindow.loader.openWindow("/fxml/aspirant/form_add_aspirant.fxml","Відділ аспірантури | Прийом в аспірантуру",600,730,"paneAspirant",2,2);
             if (addedNew){
                 addedNew=false;
+                int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                 loadData();
+                System.out.println(i);
+                table.getSelectionModel().select(i);
                 searchResultCount.setText("Всього результатів: " + aspirantsData.size());
             }
         } catch (IOException e) {

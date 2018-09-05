@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Calendar;
 
 public class ReportMaker {
 
@@ -29,7 +30,7 @@ public class ReportMaker {
 
 
     public void initialize() {
-
+        yearField.setText(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
     }
 
     public static void main(String[] args) throws IOException, ParseException {
