@@ -36,12 +36,12 @@
          </items>
       </Menu>
 
-      <Menu mnemonicParsing="false" text="Налаштування">
-         <items>
-            <MenuItem fx:id="itemLegend" mnemonicParsing="false" text="Легенда   " />
-            <MenuItem fx:id="itemOther" mnemonicParsing="false" text="Інше    " />
-         </items>
-      </Menu>
+      <!--<Menu mnemonicParsing="false" text="Налаштування">-->
+         <!--<items>-->
+            <!--<MenuItem fx:id="itemLegend" mnemonicParsing="false" text="Легенда   " />-->
+            <!--<MenuItem fx:id="itemOther" mnemonicParsing="false" text="Інше    " />-->
+         <!--</items>-->
+      <!--</Menu>-->
 
       <Menu mnemonicParsing="false" text="Звіти">
          <items>
