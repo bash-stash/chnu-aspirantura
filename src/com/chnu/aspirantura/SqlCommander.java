@@ -20,11 +20,8 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.TimeZone;
 
 import static java.sql.Types.NULL;
 
@@ -34,8 +31,6 @@ public class SqlCommander {
     private static String url;
     private static String name;
     private static String password;
-
-    private static Calendar gmt = Calendar.getInstance(TimeZone.getTimeZone("EST"));
 
     static {
 
@@ -254,7 +249,7 @@ public class SqlCommander {
             DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
 
             while (result1.next()) {
-                date = originalFormat.parse(result1.getDate("date_nakaz", gmt).toString());
+                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 list.add(new ObjectNakaz(result1.getInt("id"), result1.getString("nom_nakaz"),
@@ -331,7 +326,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate("date_nakaz", gmt).toString());
+                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 nakaz = new ObjectNakaz(result1.getInt("id"), result1.getString("nom_nakaz"),
@@ -376,7 +371,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate("date_nakaz", gmt).toString());
+                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 o = new ObjectNakaz(result1.getInt("id"), result1.getString("nom_nakaz"), date, null);
@@ -409,17 +404,19 @@ public class SqlCommander {
 
             PreparedStatement preparedStatement;
 
+            LocalDateTime ldt = LocalDateTime.of(date, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
 
             String query = "INSERT INTO nakaz (about,nom_nakaz,date_nakaz,type) VALUES (?,?,?,?)";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, about);
             preparedStatement.setString(2, newNumber);
-            preparedStatement.setDate(3, java.sql.Date.valueOf(date), gmt);
+            preparedStatement.setDate(3, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(4, type);
             preparedStatement.execute();
 
-            writeLog("INSERT INTO nakaz (about,nom_nakaz,date_nakaz,type) VALUES ('" + about + "','" + newNumber + "'," + java.sql.Date.valueOf(date) + "," + type + ")");
+            writeLog("INSERT INTO nakaz (about,nom_nakaz,date_nakaz,type) VALUES ('" + about + "','" + newNumber + "'," + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "," + type + ")");
 
 
         } catch (SQLException e) {
@@ -437,23 +434,29 @@ public class SqlCommander {
 
 
     public static void editNakaz(String newNumber, String about, int type, LocalDate date, int id) {
+
+
         Connection connection = getConnection();
 
         try {
 
             PreparedStatement preparedStatement;
 
+
+            LocalDateTime ldt = LocalDateTime.of(date, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query = "UPDATE nakaz SET about = ?,nom_nakaz=?,date_nakaz=? ,type=?  WHERE id=?";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, about);
             preparedStatement.setString(2, newNumber);
-            preparedStatement.setDate(3, java.sql.Date.valueOf(date), gmt);
+            preparedStatement.setDate(3, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(4, type);
             preparedStatement.setInt(5, id);
             preparedStatement.execute();
 
-            writeLog("UPDATE nakaz SET about = '" + about + "',nom_nakaz='" + newNumber + "',date_nakaz=" + java.sql.Date.valueOf(date) + " ,type=" + type + "  WHERE id=" + id);
+            writeLog("UPDATE nakaz SET about = '" + about + "',nom_nakaz='" + newNumber + "',date_nakaz=" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + " ,type=" + type + "  WHERE id=" + id);
 
 
         } catch (SQLException e) {
@@ -1352,12 +1355,14 @@ public class SqlCommander {
         Connection connection = getConnection();
         try {
 
+            LocalDateTime ldt = LocalDateTime.of(birthdayData, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
             PreparedStatement preparedStatement;
 
             String query = "INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form,photo) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, pib);
-            preparedStatement.setDate(2, Date.valueOf(birthdayData), gmt);
+            preparedStatement.setDate(2, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(3, idPassport);
             preparedStatement.setInt(4, idKerivnik);
             preparedStatement.setInt(5, idSpecialilty);
@@ -1371,7 +1376,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
             writeLog("INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form) " +
-                    "VALUES('" + pib + "','" + Date.valueOf(birthdayData) + "'," + idPassport + "," + idKerivnik + "," + idSpecialilty + "," + idContacts + "," + idStatus + "," + year + "," + male + "," + form + ")");
+                    "VALUES('" + pib + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "'," + idPassport + "," + idKerivnik + "," + idSpecialilty + "," + idContacts + "," + idStatus + "," + year + "," + male + "," + form + ")");
 
 
             int idAspirant = -1;
@@ -1427,18 +1432,22 @@ public class SqlCommander {
 
             PreparedStatement preparedStatement;
 
+
+            LocalDateTime ldt = LocalDateTime.of(datePublished, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query = "INSERT INTO passport(name,seria,number,published_by,published_date,identificator) VALUES(?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, nameData);
             preparedStatement.setString(2, seriaData);
             preparedStatement.setString(3, numberData);
             preparedStatement.setString(4, publishedBy);
-            preparedStatement.setDate(5, Date.valueOf(datePublished), gmt);
+            preparedStatement.setDate(5, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setString(6, identificatorData);
             preparedStatement.execute();
 
             writeLog("INSERT INTO passport(name,seria,number,published_by,published_date,identificator)" +
-                    "VALUES('" + nameData + "','" + seriaData + "','" + numberData + "','" + publishedBy + "','" + Date.valueOf(datePublished) + "','" + identificatorData + "')");
+                    "VALUES('" + nameData + "','" + seriaData + "','" + numberData + "','" + publishedBy + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "','" + identificatorData + "')");
 
 
             Statement statement = connection.createStatement();
@@ -1531,15 +1540,19 @@ public class SqlCommander {
 
             PreparedStatement preparedStatement;
 
+
+            LocalDateTime ldt = LocalDateTime.of(dateX, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query = "INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES(?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setDate(1, Date.valueOf(dateX), gmt);
+            preparedStatement.setDate(1, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(2, idAspirant);
             preparedStatement.setInt(3, idNakaz);
             preparedStatement.setString(4, ControllerLogin.login);
             preparedStatement.execute();
 
-            writeLog("INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('" + Date.valueOf(dateX) + "'," + idNakaz + "," + idAspirant + ", '" + ControllerLogin.login + "')");
+            writeLog("INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "'," + idNakaz + "," + idAspirant + ", '" + ControllerLogin.login + "')");
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT max(id) FROM status");
@@ -1618,7 +1631,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate(3, gmt).toString());
+                date = originalFormat.parse(result1.getDate(3).toString());
                 date = targetFormat.parse(targetFormat.format(date));
                 ObjectAspirant o = new ObjectAspirant(result1.getInt(1), result1.getString(2), result1.getString(5),
                         date, result1.getString(4), result1.getInt(6), result1.getInt(9));
@@ -1656,16 +1669,20 @@ public class SqlCommander {
 
             PreparedStatement preparedStatement;
 
+
+            LocalDateTime ldt = LocalDateTime.of(dateX, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query = "INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, aspirantId);
             preparedStatement.setInt(2, nakazId);
-            preparedStatement.setDate(3, Date.valueOf(dateX), gmt);
+            preparedStatement.setDate(3, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setString(4, ControllerLogin.login);
             preparedStatement.execute();
 
 
-            writeLog("INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(" + aspirantId + "," + nakazId + ",'" + Date.valueOf(dateX) + "','" + ControllerLogin.login + "')");
+            writeLog("INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(" + aspirantId + "," + nakazId + ",'" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "','" + ControllerLogin.login + "')");
 
             int maxStatusId = -1;
             Statement statement = connection.createStatement();
@@ -1798,7 +1815,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate("published_date", gmt).toString());
+                date = originalFormat.parse(result1.getDate("published_date").toString());
                 date = targetFormat.parse(targetFormat.format(date));
                 LocalDate dateLocal = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 o = new ObjectPassport(result1.getString("seria"), result1.getString("number"), result1.getString("published_by"), dateLocal, result1.getString("identificator"));
@@ -1893,12 +1910,15 @@ public class SqlCommander {
 
             PreparedStatement preparedStatement;
 
+            LocalDateTime ldt = LocalDateTime.of(date, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query;
             if (fis != null) {
                 query = "UPDATE aspirant SET name=?, birthday=?, id_nav_kerivnik=?, id_speciality=?,year=?, is_male=?,study_form=?,photo=? WHERE id=?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, nameX);
-                preparedStatement.setDate(2, Date.valueOf(date), gmt);
+                preparedStatement.setDate(2, new java.sql.Date(zdt.toInstant().toEpochMilli()));
                 preparedStatement.setInt(3, kerivnik);
                 preparedStatement.setInt(4, idSpecialilty);
                 preparedStatement.setInt(5, year);
@@ -1910,7 +1930,7 @@ public class SqlCommander {
                 query = "UPDATE aspirant SET name=?, birthday=?, id_nav_kerivnik=?, id_speciality=?,year=?, is_male=?,study_form=? WHERE id=?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, nameX);
-                preparedStatement.setDate(2, Date.valueOf(date), gmt);
+                preparedStatement.setDate(2, new java.sql.Date(zdt.toInstant().toEpochMilli()));
                 preparedStatement.setInt(3, kerivnik);
                 preparedStatement.setInt(4, idSpecialilty);
                 preparedStatement.setInt(5, year);
@@ -1922,7 +1942,7 @@ public class SqlCommander {
 
             preparedStatement.execute();
 
-            writeLog(String.format("UPDATE aspirant SET name=%s, birthday=%s, id_nav_kerivnik=%d, id_speciality=%d, year=%d, male=%d,form=%d WHERE id=%d", nameX, date.toString(), kerivnik, idSpecialilty, year, male, form, idX));
+            writeLog(String.format("UPDATE aspirant SET name=%s, birthday=%s, id_nav_kerivnik=%d, id_speciality=%d, year=%d, male=%d,form=%d WHERE id=%d", nameX, new java.sql.Date(zdt.toInstant().toEpochMilli()).toString(), kerivnik, idSpecialilty, year, male, form, idX));
 
             query = ("UPDATE status r JOIN nakaz n ON n.id=r.id_nakaz  SET id_nakaz =?  WHERE (aspirant_id=? AND n.type=4) ");
 
@@ -2027,6 +2047,10 @@ public class SqlCommander {
                 idP = result1.getInt(1);
             }
 
+
+            LocalDateTime ldt = LocalDateTime.of(datePublishedData, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             query = "UPDATE passport SET name=?,seria=?, number=?, published_by=?,published_date=?,identificator=? WHERE id=?";
 
             preparedStatement = connection.prepareStatement(query);
@@ -2034,12 +2058,12 @@ public class SqlCommander {
             preparedStatement.setString(2, seriaData);
             preparedStatement.setString(3, numberData);
             preparedStatement.setString(4, publishedByData);
-            preparedStatement.setDate(5, Date.valueOf(datePublishedData), gmt);
+            preparedStatement.setDate(5, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(6, identificatorData);
             preparedStatement.setInt(7, idP);
             preparedStatement.execute();
 
-            writeLog(String.format("UPDATE passport SET name=%s,seria=%s, number=%s, published_by=%s,published_date=%s,identificator=%d WHERE id=%d", nameX, seriaData, numberData, publishedByData, datePublishedData.toString(), identificatorData, idP));
+            writeLog(String.format("UPDATE passport SET name=%s,seria=%s, number=%s, published_by=%s,published_date=%s,identificator=%d WHERE id=%d", nameX, seriaData, numberData, publishedByData, new java.sql.Date(zdt.toInstant().toEpochMilli()).toString(), identificatorData, idP));
         } catch (Exception e) {
 
         } finally {
@@ -2116,10 +2140,10 @@ public class SqlCommander {
 
 
             while (result1.next()) {
-                date = originalFormat.parse(result1.getDate(1, gmt).toString());
+                date = originalFormat.parse(result1.getDate(1).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
-                dateNakaz = originalFormat.parse(result1.getDate(5, gmt).toString());
+                dateNakaz = originalFormat.parse(result1.getDate(5).toString());
                 dateNakaz = targetFormat.parse(targetFormat.format(dateNakaz));
 
 
@@ -2182,18 +2206,21 @@ public class SqlCommander {
 
             PreparedStatement preparedStatement;
 
+            LocalDateTime ldt = LocalDateTime.of(date, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query = "UPDATE science_work SET name=?,`where`=?, link=?, date=? WHERE id=?";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, nameX);
             preparedStatement.setString(2, where);
             preparedStatement.setString(3, link);
-            preparedStatement.setDate(4, Date.valueOf(date), gmt);
+            preparedStatement.setDate(4, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(5, workId);
             preparedStatement.execute();
 
 
-            writeLog(String.format(" UPDATE science_work SET name=%s,`where`=%s, link=%s, date=%s WHERE id=%d", nameX, where, link, Date.valueOf(date).toString(), workId));
+            writeLog(String.format(" UPDATE science_work SET name=%s,`where`=%s, link=%s, date=%s WHERE id=%d", nameX, where, link, new java.sql.Date(zdt.toInstant().toEpochMilli()).toString(), workId));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -2215,17 +2242,20 @@ public class SqlCommander {
             PreparedStatement preparedStatement;
 
 
+            LocalDateTime ldt = LocalDateTime.of(date, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
             String query = "INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES(?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, nameX);
             preparedStatement.setString(2, where);
             preparedStatement.setString(3, link);
-            preparedStatement.setDate(4, Date.valueOf(date), gmt);
+            preparedStatement.setDate(4, new java.sql.Date(zdt.toInstant().toEpochMilli()));
             preparedStatement.setInt(5, aspirantId);
             preparedStatement.execute();
 
 
-            writeLog("INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES('" + nameX + "','" + where + "','" + link + "','" + Date.valueOf(date) + "'," + aspirantId + ")");
+            writeLog("INSERT INTO science_work(name,`where`,link,date,aspirant_id) VALUES('" + nameX + "','" + where + "','" + link + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "'," + aspirantId + ")");
 
 
         } catch (Exception e) {
@@ -2261,7 +2291,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate(3, gmt).toString());
+                date = originalFormat.parse(result1.getDate(3).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 list.add(new ObjectScienceWork(result1.getInt(5), date, result1.getString(2), result1.getString(1), result1.getString(4)));
@@ -2304,7 +2334,7 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                date = originalFormat.parse(result1.getDate(3, gmt).toString());
+                date = originalFormat.parse(result1.getDate(3).toString());
                 date = targetFormat.parse(targetFormat.format(date));
 
                 obj = new ObjectScienceWork(result1.getInt(5), date, result1.getString(2), result1.getString(1), result1.getString(4));
@@ -2348,8 +2378,8 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                dateFrom = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(9, gmt).toString())));
-                dateTill = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(10, gmt).toString())));
+                dateFrom = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(9).toString())));
+                dateTill = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(10).toString())));
 
 
                 list.add(new ObjectPractice(result1.getString(1), result1.getString(2), dateFrom, dateTill, result1.getString(3),
@@ -2385,6 +2415,14 @@ public class SqlCommander {
                     "commission_names=?,started=?,ended=? WHERE id=?";
 
 
+            LocalDateTime ldt = LocalDateTime.of(dateFrom_, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
+
+            LocalDateTime ldt2 = LocalDateTime.of(dateTill_, LocalTime.of(16,0));
+            ZonedDateTime zdt2 = ldt2.atZone(ZoneId.of("America/Los_Angeles"));
+
+
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, name_);
             preparedStatement.setString(2, organization_);
@@ -2394,13 +2432,13 @@ public class SqlCommander {
             preparedStatement.setString(6, credits_);
             preparedStatement.setString(7, workDescription_);
             preparedStatement.setString(8, namesCommission_);
-            preparedStatement.setDate(9, Date.valueOf(dateFrom_), gmt);
-            preparedStatement.setDate(10, Date.valueOf(dateTill_), gmt);
+            preparedStatement.setDate(9, new java.sql.Date(zdt.toInstant().toEpochMilli()));
+            preparedStatement.setDate(10, new java.sql.Date(zdt2.toInstant().toEpochMilli()));
             preparedStatement.setInt(11, workId);
             preparedStatement.execute();
 
 
-            writeLog(String.format("UPDATE practics SET name_practice='%s',organization='%s',mark_national_scale='%s',mark_ectis='%s',mark_points=%d,credits='%s',work_description='%s', commission_names='%s',started='%s',ended='%s' WHERE id=%d", name_, organization_, markNational_, markECTIS_, markPoints_, credits_, dateFrom_, dateTill_, workDescription_, namesCommission_, workId));
+            writeLog(String.format("UPDATE practics SET name_practice='%s',organization='%s',mark_national_scale='%s',mark_ectis='%s',mark_points=%d,credits='%s',work_description='%s', commission_names='%s',started='%s',ended='%s' WHERE id=%d", name_, organization_, markNational_, markECTIS_, markPoints_, credits_, new java.sql.Date(zdt.toInstant().toEpochMilli()), new java.sql.Date(zdt2.toInstant().toEpochMilli()), workDescription_, namesCommission_, workId));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -2421,7 +2459,16 @@ public class SqlCommander {
         try {
 
             PreparedStatement preparedStatement;
-            Date date = Date.valueOf(dateFrom_);
+
+            LocalDateTime ldt = LocalDateTime.of(dateFrom_, LocalTime.of(16,0));
+            ZonedDateTime zdt = ldt.atZone(ZoneId.of("America/Los_Angeles"));
+
+
+            LocalDateTime ldt2 = LocalDateTime.of(dateTill_, LocalTime.of(16,0));
+            ZonedDateTime zdt2 = ldt2.atZone(ZoneId.of("America/Los_Angeles"));
+
+
+
 
             String query = "INSERT INTO practics(name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,aspirant_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
@@ -2433,14 +2480,14 @@ public class SqlCommander {
             preparedStatement.setString(6, credits_);
             preparedStatement.setString(7, workDescription_);
             preparedStatement.setString(8, namesCommission_);
-            preparedStatement.setDate(9, Date.valueOf(dateFrom_), gmt);
-            preparedStatement.setDate(10, Date.valueOf(dateTill_), gmt);
+            preparedStatement.setDate(9, new java.sql.Date(zdt.toInstant().toEpochMilli()));
+            preparedStatement.setDate(10, new java.sql.Date(zdt2.toInstant().toEpochMilli()));
             preparedStatement.setInt(11, aspirantId);
             preparedStatement.execute();
 
 
             writeLog("INSERT INTO practics(name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,aspirant_id) " +
-                    "VALUES('" + name_ + "','" + organization_ + "','" + markNational_ + "','" + markECTIS_ + "'," + markPoints_ + ",'" + credits_ + "','" + workDescription_ + "','" + namesCommission_ + "','" + Date.valueOf(dateFrom_) + "','" + Date.valueOf(dateTill_) + "' , " + aspirantId + ")");
+                    "VALUES('" + name_ + "','" + organization_ + "','" + markNational_ + "','" + markECTIS_ + "'," + markPoints_ + ",'" + credits_ + "','" + workDescription_ + "','" + namesCommission_ + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "','" + new java.sql.Date(zdt2.toInstant().toEpochMilli()) + "' , " + aspirantId + ")");
 
 
         } catch (Exception e) {
@@ -2478,8 +2525,8 @@ public class SqlCommander {
 
             while (result1.next()) {
 
-                dateFrom = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(9, gmt).toString())));
-                dateTill = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(10, gmt).toString())));
+                dateFrom = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(9).toString())));
+                dateTill = targetFormat.parse(targetFormat.format(originalFormat.parse(result1.getDate(10).toString())));
 
 
                 practice = new ObjectPractice(result1.getString(1), result1.getString(2), dateFrom, dateTill, result1.getString(3),
