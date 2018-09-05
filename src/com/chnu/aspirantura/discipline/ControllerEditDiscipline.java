@@ -125,7 +125,7 @@ public class ControllerEditDiscipline {
                         }
                     }
 
-                    comboBoxForm.setValue(forms.get(newValue.getForm()));
+                    comboBoxForm.setValue(forms.get(newValue.getForm()-1));
                     textFieldName.setText(newValue.getName());
                     comboBoxStatus.setValue(newValue.getStatus());
                     comboBoxNumberSym.setValue(newValue.getSemestr()+"");
