@@ -75,6 +75,8 @@
                <String fx:value="Добре" />
                <String fx:value="Задовільно" />
                <String fx:value="Незадовільно" />
+               <String fx:value="Зараховано" />
+               <String fx:value="Не зараховано" />
             </FXCollections>
          </items>
          <value>
