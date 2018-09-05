@@ -125,7 +125,6 @@ public class ControllerAspirant {
                         addedNew=false;
                         int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                         loadData();
-                        System.out.println(i);
                         table.getSelectionModel().select(i);
                     }
                 } catch (IOException e) {
@@ -272,7 +271,6 @@ public class ControllerAspirant {
 
             int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
             loadData();
-            System.out.println(i);
             table.getSelectionModel().select(i);
             searchResultCount.setText("Всього результатів: " + aspirantsData.size());
 
@@ -308,7 +306,6 @@ public class ControllerAspirant {
         ObjectAspirant as = table.getSelectionModel().getSelectedItem();
 
         if(as!=null) {
-            System.out.println(as.getName());
             ControllerActions.actionId = as.getId();
             ControllerActions.aspirant = as;
         }
@@ -341,7 +338,6 @@ public class ControllerAspirant {
                 addedNew=false;
                 int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                 loadData();
-                System.out.println(i);
                 table.getSelectionModel().select(i);
             }
             ControllerActions.actionId=0;
@@ -361,7 +357,6 @@ public class ControllerAspirant {
                 addedNew=false;
                 int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                 loadData();
-                System.out.println(i);
                 table.getSelectionModel().select(i);
                 searchResultCount.setText("Всього результатів: " + aspirantsData.size());
             }
