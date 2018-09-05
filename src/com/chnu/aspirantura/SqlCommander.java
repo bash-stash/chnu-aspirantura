@@ -40,7 +40,7 @@ public class SqlCommander {
             url = "jdbc:mysql://" + Settings.getDatabaseProperty("database.host") + ":" + Settings.getDatabaseProperty("database.port") + "/" + Settings.getDatabaseProperty("database.name") + "?characterEncoding=utf8&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             name = Settings.getDatabaseProperty("database.user");
             password = Settings.getDatabaseProperty("database.pass");
-
+            if (password.equals("aspirantura")) password = "aspirant_chnu_27&&";
             Utils.logger.debug("Cfg is set up successfully, trying to connect..");
             DriverManager.getConnection(url, name, password);
             Utils.logger.debug("Connected successfully!");

@@ -1,5 +1,6 @@
 package com.chnu.aspirantura;
 
+import com.chnu.aspirantura.backup.BackupExecutor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class ControllerLogin {
 
@@ -24,6 +26,21 @@ public class ControllerLogin {
     public static String login;
     private String password;
 
+
+    public void initialize(){
+        Settings.loadDatabaseProperties();
+        Settings.loadProperties();
+        int day = Integer.parseInt(Settings.getProperty("backup.day"));
+
+        if (LocalDate.now().getDayOfMonth()!=day){
+            try {
+                BackupExecutor.makeBackup();
+                Settings.setSettings("backup.day", String.valueOf(LocalDate.now().getDayOfMonth()));
+            }catch (Exception e){
+                Utils.logger.error(e.getMessage());
+            }
+        }
+    }
 
 
     public void login(ActionEvent event) {

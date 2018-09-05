@@ -24,6 +24,10 @@ public class Settings {
         }
     }
 
+    public static String getCommonProperties(String key) {
+        if (properties.containsKey(key)) return (String) properties.get(key);
+        return "";
+    }
 
     public static String getDatabaseProperty(String key) {
         if (propertiesDatabase.containsKey(key)) return (String) propertiesDatabase.get(key);
@@ -79,10 +83,12 @@ public class Settings {
         properties.setProperty("item.year.aspirantura.checked", "true");
         properties.setProperty("item.form.aspirantura.checked", "true");
 
-
         properties.setProperty("item.name.kerivniki.checked", "true");
         properties.setProperty("item.status.kerivniki.checked", "true");
         properties.setProperty("item.speciality.kerivniki.checked", "true");
+        properties.setProperty("backup.count", "0");
+        properties.setProperty("backup.day", "0");
+        properties.setProperty("backup.location", "backups/");
 
         savePropertiesToFile(properties,APP_COMMON);
     }
@@ -92,7 +98,8 @@ public class Settings {
         propertiesDatabase.setProperty("database.port", "3306");
         propertiesDatabase.setProperty("database.name", "mydb");
         propertiesDatabase.setProperty("database.user", "root");
-        propertiesDatabase.setProperty("database.pass", "");
+        propertiesDatabase.setProperty("database.pass", "aspirantura");
+        propertiesDatabase.setProperty("mysqldump.location", "C:/xampp/mysql/bin/mysqldump");
 
         savePropertiesToFile(propertiesDatabase,DB_CFG);
     }
