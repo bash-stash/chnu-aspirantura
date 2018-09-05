@@ -1980,18 +1980,20 @@ public class SqlCommander {
     }
 
 
-    public static void editMark(int id, String mark) {
+    public static void editMark(int id, int markPo, String markNa, String markIE) {
         Connection connection = getConnection();
 
         try {
 
             PreparedStatement preparedStatement;
-            String query = "UPDATE results SET mark= ? WHERE id=?";
+            String query = "UPDATE results SET mark_points= ?,mark_national= ?,mark_ects= ? WHERE id=?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, mark);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setInt(1, markPo);
+            preparedStatement.setString(2, markNa);
+            preparedStatement.setString(3, markIE);
+            preparedStatement.setInt(4, id);
             preparedStatement.execute();
-            writeLog("UPDATE results SET mark = '" + mark + "' WHERE id=" + id);
+            writeLog("UPDATE results SET mark_points = " + markPo + ",mark_national = '"+markNa+"', mark_ects='"+markIE+"' WHERE id=" + id);
 
 
         } catch (SQLException e) {
@@ -2149,14 +2151,14 @@ public class SqlCommander {
         try {
 
             PreparedStatement preparedStatement;
-            String query = ("SELECT name_discipline,name_vykl,discipline_type.type,mark,course,semestr,results.id FROM results INNER JOIN discipline_type ON discipline_type.id = results.discipline_type WHERE aspirant_id=?");
+            String query = ("SELECT name_discipline,name_vykl,discipline_type.type,course,semestr,results.id,mark_points,mark_ects,mark_national FROM results INNER JOIN discipline_type ON discipline_type.id = results.discipline_type WHERE aspirant_id=?");
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, aspirantId);
             ResultSet result1 = preparedStatement.executeQuery();
 
 
             while (result1.next()) {
-                list.add(new ObjectResult(result1.getString(1), result1.getString(2), result1.getString(4), result1.getString(3), result1.getInt(5), result1.getInt(6), result1.getInt(7)));
+                list.add(new ObjectResult(result1.getString(1), result1.getString(2), result1.getString(3), result1.getString(9),result1.getString(8),result1.getString(7), result1.getInt(4), result1.getInt(5), result1.getInt(6)));
             }
 
         } catch (SQLException e) {

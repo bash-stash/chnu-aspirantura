@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="600.0" maxWidth="600.0" minHeight="496.0" minWidth="600.0" prefHeight="496.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerShowResults">
+<Pane maxHeight="600.0" maxWidth="967.0" minHeight="496.0" minWidth="600.0" prefHeight="496.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerShowResults">
    <children>
       <Label layoutX="38.0" layoutY="12.0" text="Результати навчання">
          <font>
@@ -25,42 +25,44 @@
          </font>
       </Label>
       <Separator layoutX="-18.0" layoutY="78.0" prefHeight="3.0" prefWidth="634.0" />
-      <TableView layoutX="-6.0" layoutY="106.0" prefHeight="344.0" prefWidth="612.0" fx:id="table">
+      <TableView fx:id="table" layoutX="1.0" layoutY="106.0" prefHeight="344.0" prefWidth="847.0">
         <columns>
            <TableColumn fx:id="tableDisciplineName" prefWidth="200.0" text="Назва дисципліни" />
            <TableColumn fx:id="tableDisciplineType" prefWidth="100.0" text="Тип контролю" />
             <TableColumn fx:id="tableDisciplineVykladach" prefWidth="211.0" text="Викладач" />
-            <TableColumn fx:id="tableDisciplineMark" prefWidth="100.0" text="Оцінка" />
+            <TableColumn fx:id="tableDisciplineMarkNational" prefWidth="153.0" text="Оцінка за нац. шкалою" />
+            <TableColumn fx:id="tableDisciplineMarkPoints" prefWidth="113.0" text="Оцінка в балах" />
+            <TableColumn fx:id="tableDisciplineMarkIECTIS" prefWidth="76.0" text="ECTS" />
         </columns>
       </TableView>
-      <Button layoutX="497.0" layoutY="468.0" mnemonicParsing="false" onAction="#apply" prefHeight="25.0" prefWidth="90.0" text="Ок" />
-      <TabPane layoutX="-6.0" layoutY="79.0" prefHeight="27.0" prefWidth="476.0" tabClosingPolicy="UNAVAILABLE" fx:id="course">
+      <Button layoutX="747.0" layoutY="464.0" mnemonicParsing="false" onAction="#apply" prefHeight="25.0" prefWidth="90.0" text="Ок" />
+      <TabPane fx:id="course" layoutX="-6.0" layoutY="78.0" prefHeight="27.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="   1 курс   " fx:id="1">
+          <Tab fx:id="1" text="   1 курс   ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
-          <Tab text="   2 курс   " fx:id="2">
+          <Tab fx:id="2" text="   2 курс   ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
-           <Tab text="   3 курс   " fx:id="3">
+           <Tab fx:id="3" text="   3 курс   ">
               <content>
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>
            </Tab>
         </tabs>
       </TabPane>
-      <TabPane layoutX="462.0" layoutY="79.0" pickOnBounds="false" prefHeight="27.0" prefWidth="355.0" tabClosingPolicy="UNAVAILABLE" fx:id="semestr">
+      <TabPane fx:id="semestr" layoutX="712.0" layoutY="79.0" pickOnBounds="false" prefHeight="27.0" prefWidth="355.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab closable="false" text="1 семестр" fx:id="4">
+          <Tab fx:id="4" closable="false" text="1 семестр">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
-          <Tab text="2 семестр" fx:id="5">
+          <Tab fx:id="5" text="2 семестр">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>

@@ -167,7 +167,7 @@ public class ControllerAspirant {
                 ControllerShowResults.aspirantName = item.getName();
 
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_results_aspirant.fxml","Відділ аспірантури | Результати | " + item.getName(),600,500,null,2,0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_results_aspirant.fxml","Відділ аспірантури | Результати | " + item.getName(),840,500,null,2,0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

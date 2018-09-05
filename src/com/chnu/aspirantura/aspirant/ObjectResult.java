@@ -4,10 +4,27 @@ public class ObjectResult {
     private String disName;
     private String vyklName;
     private String type;
-    private String mark;
+
+    private String markNational="asd";
+    private String markIECTIS="asd";
+    private String markPoints="asd";
+
     private int course;
     private int semestr;
     private int id;
+
+    public ObjectResult(String disName, String vyklName, String type, String markNational, String markIECTIS, String markPoints, int course, int semestr, int id) {
+        this.disName = disName;
+        this.vyklName = vyklName;
+        this.type = type;
+        this.markNational = markNational;
+        this.markIECTIS = markIECTIS;
+        this.markPoints = markPoints;
+        this.course = course;
+        this.semestr = semestr;
+        this.id = id;
+    }
+
 
     public String getType() {
         return type;
@@ -21,8 +38,8 @@ public class ObjectResult {
         return vyklName;
     }
 
-    public String getMark() {
-        return mark;
+    public String getMarkNational() {
+        return markNational;
     }
 
     public int getCourse() {
@@ -33,23 +50,28 @@ public class ObjectResult {
         return semestr;
     }
 
-
-    public ObjectResult(String disName, String vyklName, String mark,String type, int course, int semestr,int id) {
-        this.disName = disName;
-        this.vyklName = vyklName;
-        this.mark = mark;
-        this.type = type;
-        this.course = course;
-        this.semestr = semestr;
-        this.id = id;
+    public String getMarkIECTIS() {
+        return markIECTIS;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
+    public String getMarkPoints() {
+        return markPoints;
     }
 
     public int getId() {
-
         return id;
+    }
+
+
+    public void setMarkNational(String markNational) {
+        this.markNational = markNational;
+    }
+
+    public void setMarkIECTIS(String markIECTIS) {
+        this.markIECTIS = markIECTIS;
+    }
+
+    public void setMarkPoints(String markPoints) {
+        this.markPoints = markPoints;
     }
 }

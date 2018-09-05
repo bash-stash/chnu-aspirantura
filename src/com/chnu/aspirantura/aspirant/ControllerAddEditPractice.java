@@ -2,10 +2,7 @@ package com.chnu.aspirantura.aspirant;
 
 import com.chnu.aspirantura.SqlCommander;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -23,13 +20,13 @@ public class ControllerAddEditPractice {
     TextField where;
 
     @FXML
-    TextField markNational;
+    ComboBox<String> markNational;
 
     @FXML
     TextField markPoints;
 
     @FXML
-    TextField markECTIS;
+    ComboBox<String> markECTIS;
 
     @FXML
     TextField credits;
@@ -57,8 +54,8 @@ public class ControllerAddEditPractice {
         name.setText(practice.name);
         where.setText(practice.organization);
 
-        markECTIS.setText(practice.markIectis);
-        markNational.setText(practice.markNational);
+        markECTIS.setValue(practice.markIectis);
+        markNational.setValue(practice.markNational);
         markPoints.setText(String.valueOf(practice.markPoints));
         credits.setText(practice.credits);
 
@@ -88,8 +85,8 @@ public class ControllerAddEditPractice {
         String name_=name.getText();
         String organization_=where.getText();
 
-        String markNational_=markNational.getText();
-        String markECTIS_=markECTIS.getText();
+        String markNational_=markNational.getValue();
+        String markECTIS_=markECTIS.getValue();
         int markPoints_= Integer.parseInt(markPoints.getText());
         String credits_=credits.getText();
 
