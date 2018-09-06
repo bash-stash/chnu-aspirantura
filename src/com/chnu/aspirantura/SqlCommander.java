@@ -416,7 +416,7 @@ public class SqlCommander {
             preparedStatement.setInt(4, type);
             preparedStatement.execute();
 
-            writeLog("INSERT INTO nakaz (about,nom_nakaz,date_nakaz,type) VALUES ('" + about + "','" + newNumber + "'," + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "," + type + ")");
+            writeLog("INSERT INTO nakaz (about,nom_nakaz,date_nakaz,type) VALUES ('" + about + "','" + newNumber + "','" + date + "'," + type + ")");
 
 
         } catch (SQLException e) {
@@ -456,7 +456,7 @@ public class SqlCommander {
             preparedStatement.setInt(5, id);
             preparedStatement.execute();
 
-            writeLog("UPDATE nakaz SET about = '" + about + "',nom_nakaz='" + newNumber + "',date_nakaz=" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + " ,type=" + type + "  WHERE id=" + id);
+            writeLog("UPDATE nakaz SET about = '" + about + "',nom_nakaz='" + newNumber + "',date_nakaz='" +date+ "' ,type=" + type + "  WHERE id=" + id);
 
 
         } catch (SQLException e) {
@@ -1376,7 +1376,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
             writeLog("INSERT INTO aspirant(name,birthday,id_passport,id_nav_kerivnik,id_speciality,id_contacts,id_status,year,is_male,study_form) " +
-                    "VALUES('" + pib + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "'," + idPassport + "," + idKerivnik + "," + idSpecialilty + "," + idContacts + "," + idStatus + "," + year + "," + male + "," + form + ")");
+                    "VALUES('" + pib + "','"+birthdayData+"'," + idPassport + "," + idKerivnik + "," + idSpecialilty + "," + idContacts + "," + idStatus + "," + year + "," + male + "," + form + ")");
 
 
             int idAspirant = -1;
@@ -1447,7 +1447,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
             writeLog("INSERT INTO passport(name,seria,number,published_by,published_date,identificator)" +
-                    "VALUES('" + nameData + "','" + seriaData + "','" + numberData + "','" + publishedBy + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "','" + identificatorData + "')");
+                    "VALUES('" + nameData + "','" + seriaData + "','" + numberData + "','" + publishedBy + "','" + datePublished + "','" + identificatorData + "')");
 
 
             Statement statement = connection.createStatement();
@@ -1552,7 +1552,7 @@ public class SqlCommander {
             preparedStatement.setString(4, ControllerLogin.login);
             preparedStatement.execute();
 
-            writeLog("INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "'," + idNakaz + "," + idAspirant + ", '" + ControllerLogin.login + "')");
+            writeLog("INSERT INTO status(date,aspirant_id,id_nakaz,madeBy) VALUES('" + dateX + "'," + idNakaz + "," + idAspirant + ", '" + ControllerLogin.login + "')");
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT max(id) FROM status");
@@ -1682,7 +1682,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog("INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(" + aspirantId + "," + nakazId + ",'" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "','" + ControllerLogin.login + "')");
+            writeLog("INSERT INTO status(aspirant_id,id_nakaz,date,madeBy) VALUES(" + aspirantId + "," + nakazId + ",'" + dateX + "','" + ControllerLogin.login + "')");
 
             int maxStatusId = -1;
             Statement statement = connection.createStatement();
@@ -1942,7 +1942,7 @@ public class SqlCommander {
 
             preparedStatement.execute();
 
-            writeLog(String.format("UPDATE aspirant SET name=%s, birthday=%s, id_nav_kerivnik=%d, id_speciality=%d, year=%d, male=%d,form=%d WHERE id=%d", nameX, new java.sql.Date(zdt.toInstant().toEpochMilli()).toString(), kerivnik, idSpecialilty, year, male, form, idX));
+            writeLog(String.format("UPDATE aspirant SET name=%s, birthday='%s', id_nav_kerivnik=%d, id_speciality=%d, year=%d, male=%d,form=%d WHERE id=%d", nameX, date, kerivnik, idSpecialilty, year, male, form, idX));
 
             query = ("UPDATE status r JOIN nakaz n ON n.id=r.id_nakaz  SET id_nakaz =?  WHERE (aspirant_id=? AND n.type=4) ");
 
@@ -2063,7 +2063,7 @@ public class SqlCommander {
             preparedStatement.setInt(7, idP);
             preparedStatement.execute();
 
-            writeLog(String.format("UPDATE passport SET name=%s,seria=%s, number=%s, published_by=%s,published_date=%s,identificator=%d WHERE id=%d", nameX, seriaData, numberData, publishedByData, new java.sql.Date(zdt.toInstant().toEpochMilli()).toString(), identificatorData, idP));
+            writeLog(String.format("UPDATE passport SET name=%s,seria=%s, number=%s, published_by=%s,published_date='%s',identificator=%d WHERE id=%d", nameX, seriaData, numberData, publishedByData, datePublishedData, identificatorData, idP));
         } catch (Exception e) {
 
         } finally {
@@ -2220,7 +2220,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog(String.format(" UPDATE science_work SET name=%s,`where`=%s, link=%s, date=%s WHERE id=%d", nameX, where, link, new java.sql.Date(zdt.toInstant().toEpochMilli()).toString(), workId));
+            writeLog(String.format(" UPDATE science_work SET name=%s,`where`=%s, link=%s, date='%s' WHERE id=%d", nameX, where, link, date, workId));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -2438,7 +2438,7 @@ public class SqlCommander {
             preparedStatement.execute();
 
 
-            writeLog(String.format("UPDATE practics SET name_practice='%s',organization='%s',mark_national_scale='%s',mark_ectis='%s',mark_points=%d,credits='%s',work_description='%s', commission_names='%s',started='%s',ended='%s' WHERE id=%d", name_, organization_, markNational_, markECTIS_, markPoints_, credits_, new java.sql.Date(zdt.toInstant().toEpochMilli()), new java.sql.Date(zdt2.toInstant().toEpochMilli()), workDescription_, namesCommission_, workId));
+            writeLog(String.format("UPDATE practics SET name_practice='%s',organization='%s',mark_national_scale='%s',mark_ectis='%s',mark_points=%d,credits='%s',work_description='%s', commission_names='%s',started='%s',ended='%s' WHERE id=%d", name_, organization_, markNational_, markECTIS_, markPoints_, credits_, workDescription_, namesCommission_,dateFrom_, dateTill_,workId));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
@@ -2487,7 +2487,7 @@ public class SqlCommander {
 
 
             writeLog("INSERT INTO practics(name_practice,organization,mark_national_scale,mark_ectis,mark_points,credits,work_description,commission_names,started,ended,aspirant_id) " +
-                    "VALUES('" + name_ + "','" + organization_ + "','" + markNational_ + "','" + markECTIS_ + "'," + markPoints_ + ",'" + credits_ + "','" + workDescription_ + "','" + namesCommission_ + "','" + new java.sql.Date(zdt.toInstant().toEpochMilli()) + "','" + new java.sql.Date(zdt2.toInstant().toEpochMilli()) + "' , " + aspirantId + ")");
+                    "VALUES('" + name_ + "','" + organization_ + "','" + markNational_ + "','" + markECTIS_ + "'," + markPoints_ + ",'" + credits_ + "','" + workDescription_ + "','" + namesCommission_ + "','" + dateFrom_ + "','" +dateTill_ + "' , " + aspirantId + ")");
 
 
         } catch (Exception e) {
