@@ -29,8 +29,6 @@ public class BackupExecutor {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate localDate = LocalDate.now();
             String executeCmd = location + " -u" + dbUser + " -p" + dbPass + " " + dbName + " -r "+backupLocation+"backup-(" + backupCount + ")-" + localDate.format(dateFormatter) + ".sql";
-
-
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             int processComplete = runtimeProcess.waitFor();
 

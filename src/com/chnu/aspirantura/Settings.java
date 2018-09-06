@@ -99,7 +99,7 @@ public class Settings {
         propertiesDatabase.setProperty("database.name", "mydb");
         propertiesDatabase.setProperty("database.user", "root");
         propertiesDatabase.setProperty("database.pass", "aspirantura");
-        propertiesDatabase.setProperty("mysqldump.location", "C:/xampp/mysql/bin/mysqldump");
+        propertiesDatabase.setProperty("mysqldump.location", "C://xampp//mysql//bin//mysqldump");
 
         savePropertiesToFile(propertiesDatabase,DB_CFG);
     }
