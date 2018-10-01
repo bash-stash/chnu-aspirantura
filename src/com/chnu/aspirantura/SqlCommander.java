@@ -1388,17 +1388,20 @@ public class SqlCommander {
 
 
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT disciplines.name, disciplines.control_type, disciplines.course, disciplines.semestr, vykladachi.name FROM disciplines INNER JOIN vykladachi on vykladachi.id = disciplines.vykladach_id INNER JOIN speciality_disciplines  ON disciplines.id = speciality_disciplines.id_disciplines WHERE disciplines.status='Активно' AND disciplines.form=" + form + " AND speciality_disciplines.id_speciality=" + idSpecialilty);
+            resultSet = statement.executeQuery("SELECT disciplines.name, disciplines.control_type, disciplines.course, disciplines.semestr, vykladachi.name, disciplines.id FROM disciplines INNER JOIN vykladachi on vykladachi.id = disciplines.vykladach_id INNER JOIN speciality_disciplines  ON disciplines.id = speciality_disciplines.id_disciplines WHERE disciplines.status='Активно' AND disciplines.form=" + form + " AND speciality_disciplines.id_speciality=" + idSpecialilty);
 
 
             while (resultSet.next()) {
+
                 String disName = resultSet.getString(1);
                 String vyklName = resultSet.getString(5);
                 int controlType = resultSet.getInt(2);
                 int course = resultSet.getInt(3);
                 int semestr = resultSet.getInt(4);
+                int disciplId= resultSet.getInt(6);
 
-                query = "INSERT INTO results(name_discipline,name_vykl,discipline_type,course,semestr,aspirant_id) VALUES(?,?,?,?,?,?)";
+                query = "INSERT INTO results(name_discipline,name_vykl,discipline_type,course,semestr,aspirant_id,discipline_id) VALUES(?,?,?,?,?,?,?)";
+
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, disName);
                 preparedStatement.setString(2, vyklName);
@@ -1406,8 +1409,11 @@ public class SqlCommander {
                 preparedStatement.setInt(4, course);
                 preparedStatement.setInt(5, semestr);
                 preparedStatement.setInt(6, idAspirant);
+                preparedStatement.setInt(7, disciplId);
+
                 preparedStatement.execute();
-                writeLog("INSERT INTO results(name_discipline,name_vykl,discipline_type,course,semestr,aspirant_id)  VALUES('" + disName + "','" + vyklName + "', '" + controlType + "', " + course + ", " + semestr + "," + idAspirant + ")");
+                writeLog("INSERT INTO results(name_discipline,name_vykl,discipline_type,course,semestr,aspirant_id,discipline_id)  VALUES('" + disName + "','" + vyklName + "', '" + controlType + "', " + course + ", " + semestr + "," + idAspirant + ","+disciplId+")");
+
             }
 
 
@@ -2000,7 +2006,7 @@ public class SqlCommander {
     }
 
 
-    public static void editMark(int id, int markPo, String markNa, String markIE) {
+    public static void editMark(int id, String markPo, String markNa, String markIE) {
         Connection connection = getConnection();
 
         try {
@@ -2008,7 +2014,7 @@ public class SqlCommander {
             PreparedStatement preparedStatement;
             String query = "UPDATE results SET mark_points= ?,mark_national= ?,mark_ects= ? WHERE id=?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, markPo);
+            preparedStatement.setString(1, markPo);
             preparedStatement.setString(2, markNa);
             preparedStatement.setString(3, markIE);
             preparedStatement.setInt(4, id);
@@ -2549,5 +2555,102 @@ public class SqlCommander {
                 }
         }
         return practice;
+    }
+
+    public static void editDiploma(int id, String title, String description, int statusCode) {
+
+        Connection connection = getConnection();
+        try {
+
+            PreparedStatement preparedStatement;
+
+            String query = "UPDATE diploma SET title= ?,description=?,result=? WHERE id=?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, description);
+            preparedStatement.setInt(3, statusCode);
+            preparedStatement.setInt(4, id);
+            preparedStatement.execute();
+
+            writeLog("UPDATE diploma SET title='"+title+"',description='"+description+"',result="+statusCode+" WHERE id="+id);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+    }
+
+    public static ObjectDiploma getDiplomaByAspirantId(int aspirantId) {
+
+
+        Connection connection = getConnection();
+        ObjectDiploma o = null;
+        try {
+
+            PreparedStatement preparedStatement;
+            String query = "SELECT id,title,description,result FROM diploma WHERE aspirant_id=?";
+
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, aspirantId);
+            ResultSet result1 = preparedStatement.executeQuery();
+
+            while (result1.next()) {
+                o = new ObjectDiploma(result1.getInt("id"), result1.getString("title"), result1.getString("description"),result1.getInt("result"));
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+        return o;
+
+    }
+
+    public static void createDiploma(String title, String description, int statusCode, int aspirantId) {
+
+        Connection connection = getConnection();
+        try {
+
+            PreparedStatement preparedStatement;
+
+            String query = "INSERT INTO  diploma SET title= ?,description=?,result=?, aspirant_id=?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, description);
+            preparedStatement.setInt(3, statusCode);
+            preparedStatement.setInt(4, aspirantId);
+            preparedStatement.execute();
+
+            writeLog("INSERT diploma SET title='"+title+"',description='"+description+"',result="+statusCode+", aspirant_id="+aspirantId);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+
     }
 }

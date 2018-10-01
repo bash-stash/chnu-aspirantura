@@ -74,8 +74,22 @@ public class ControllerShowResults {
 
 
         course.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
-            courseValue = Integer.parseInt(newTab.getId());
-            filterData();
+
+            if (newTab.getId().equals("diploma")){
+                try {
+                    ControllerDiploma.aspirantId = aspirantId;
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_diploma.fxml", aspirantName + " | Дипломна робота", 475, 435, null, 2, 0);
+                    ControllerDiploma.aspirantId = -1;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(()->course.getSelectionModel().select(Integer.parseInt(oldTab.getId())-1));
+
+            }else{
+
+                    courseValue = Integer.parseInt(newTab.getId());
+                    filterData();
+            }
         });
 
         semestr.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {

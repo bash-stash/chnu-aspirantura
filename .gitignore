@@ -4,3 +4,4 @@ target/
 *.log
 common.properties
 database.properties
+backups/

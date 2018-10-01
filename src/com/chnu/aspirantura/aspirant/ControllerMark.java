@@ -1,6 +1,7 @@
 package com.chnu.aspirantura.aspirant;
 
 import com.chnu.aspirantura.SqlCommander;
+import com.chnu.aspirantura.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -21,9 +22,9 @@ public class ControllerMark {
 
 
     public void initialize(){
-        if (markPo !=null) markPoints.setText(markPo);
-        if (markNa !=null)  markNational.setValue(markNa);
-        if (markIE !=null)  markIECTIS.setValue(markIE);
+        if (markPo !=null && !markPo.equals("")) markPoints.setText(markPo);
+        if (markNa !=null && !markNa.equals(""))  markNational.setValue(markNa);
+        if (markIE !=null && !markIE.equals(""))  markIECTIS.setValue(markIE);
     }
 
     public void apply(){
@@ -31,10 +32,14 @@ public class ControllerMark {
         markIE = markIECTIS.getValue();
         markNa = markNational.getValue();
 
-        int points  = Integer.parseInt(markPo);
+        try {
+            if (!markPo.equals("")) Integer.parseInt(markPo);
+            SqlCommander.editMark(id,markPo,markNa,markIE);
+            ControllerShowResults.changed= true;
+        }catch (Exception e){
+            Utils.showErrorMessage("Невірне значення балів");
+        }
 
-        SqlCommander.editMark(id,points,markNa,markIE);
-        ControllerShowResults.changed= true;
         cancel();
     }
 
