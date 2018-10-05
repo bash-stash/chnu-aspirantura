@@ -159,7 +159,7 @@ public class ObjectAspirant {
     }
 
     public String getDate() {
-        return new SimpleDateFormat("dd.mm.yyyy", Locale.getDefault()).format(date);
+        return new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(date);
     }
 
     public void setDate(Date birth) {

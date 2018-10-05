@@ -85,7 +85,7 @@ public class ControllerMenu {
         MenuItem menuItem = (MenuItem) event.getSource();
         if (menuItem.getId().equals("allTogether")) {
             try {
-                LoadWindow.loader.openWindow("/fxml/reports/report_aspirants.fxml", "Відділ аспірантури | Звіти", 400, 200, null, 2, 0);
+                LoadWindow.loader.openWindow("/fxml/reports/report_aspirants.fxml", "Відділ аспірантури | Звіти", 225, 180, null, 2, 0);
             } catch (IOException e) {
                 Utils.logger.error("Error opening reports: "+e.getMessage());
             }

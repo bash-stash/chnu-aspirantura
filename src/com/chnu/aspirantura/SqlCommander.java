@@ -245,8 +245,8 @@ public class SqlCommander {
 
 
             java.util.Date date;
-            DateFormat originalFormat = new SimpleDateFormat("yyyy-mm-dd");
-            DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
 
             while (result1.next()) {
                 date = originalFormat.parse(result1.getDate("date_nakaz").toString());
@@ -321,8 +321,8 @@ public class SqlCommander {
             ResultSet result1 = preparedStatement.executeQuery();
 
             java.util.Date date;
-            DateFormat originalFormat = new SimpleDateFormat("yyyy-mm-dd");
-            DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
 
             while (result1.next()) {
 
@@ -366,8 +366,8 @@ public class SqlCommander {
             ResultSet result1 = preparedStatement.executeQuery();
 
             java.util.Date date;
-            DateFormat originalFormat = new SimpleDateFormat("yyyy-mm-dd");
-            DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
 
             while (result1.next()) {
 
@@ -1637,8 +1637,8 @@ public class SqlCommander {
 
 
             java.util.Date date;
-            DateFormat originalFormat = new SimpleDateFormat("yyyy-mm-dd");
-            DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
 
 
             while (result1.next()) {
@@ -2707,8 +2707,8 @@ public class SqlCommander {
 
 
             java.util.Date date;
-            DateFormat originalFormat = new SimpleDateFormat("yyyy-mm-dd");
-            DateFormat targetFormat = new SimpleDateFormat("dd.mm.yyyy");
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
 
 
             while (result1.next()) {

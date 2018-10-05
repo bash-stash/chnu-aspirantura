@@ -2,6 +2,7 @@ package com.chnu.aspirantura.reports;
 
 import com.chnu.aspirantura.Utils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -10,12 +11,18 @@ import org.apache.poi.ss.usermodel.Sheet;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ReportMaker {
 
     static private int year = 2018;
+
+    @FXML
+    Button startButton;
 
     @FXML
 
@@ -27,6 +34,7 @@ public class ReportMaker {
     @FXML
     private TextField yearField;
 
+    DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
 
 
     public void initialize() {
@@ -45,9 +53,11 @@ public class ReportMaker {
         try {
             year = Integer.parseInt(yearField.getText());
             makeReport(year);
+            startButton.setDisable(true);
         }catch (Exception e){
             s = "Виникла помилка";
             Utils.logger.error("Report formatting: "+e.getMessage());
+            e.printStackTrace();
         }
 
         resultLabel.setText(s);
@@ -109,7 +119,10 @@ public class ReportMaker {
 
 
 
+
+
     }
+
 
 
     private void manageRowsHeight(XlsxBuilder xlsxBuilder) {
@@ -167,8 +180,10 @@ public class ReportMaker {
 
     private void writeReportToFile(XlsxBuilder xlsxBuilder) {
 
+        String s = targetFormat.format(new Date());
+
         byte[] report = xlsxBuilder.build();
-        try (FileOutputStream fos = new FileOutputStream("report.xlsx")) {
+        try (FileOutputStream fos = new FileOutputStream("report "+s+".xlsx")) {
             fos.write(report);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

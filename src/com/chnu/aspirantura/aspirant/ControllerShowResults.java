@@ -78,7 +78,7 @@ public class ControllerShowResults {
             if (newTab.getId().equals("diploma")){
                 try {
                     ControllerDiploma.aspirantId = aspirantId;
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_diploma.fxml", aspirantName + " | Дипломна робота", 475, 435, null, 2, 0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_diploma.fxml", aspirantName + " | Дисертація ", 475, 435, null, 2, 0);
                     ControllerDiploma.aspirantId = -1;
                 } catch (IOException e) {
                     e.printStackTrace();
