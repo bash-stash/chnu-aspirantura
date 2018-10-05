@@ -22,22 +22,27 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.util.Date;
 
+
 public class ControllerAspirant {
 
     public static final String CSS_DISMISSED = "cell-renderer-dismiss-student";
     public static final String CSS_ACTIVE = "cell-renderer-active-student";
-    public static final String CSS_STOPPED= "cell-renderer-stopped-student";
+    public static final String CSS_STOPPED = "cell-renderer-stopped-student";
     public static final String CSS_FINISHED = "cell-renderer-finished-student";
 
 
-   ObservableList<ObjectAspirant> aspirantsData = FXCollections.observableArrayList();
+    ObservableList<ObjectAspirant> aspirantsData = FXCollections.observableArrayList();
+    ObservableList<ObjectAspirant> aspirantsWithDebtsData = FXCollections.observableArrayList();
 
-    static boolean loaded=false;
+    static boolean loaded = false;
     public static BorderPane root;
     static boolean addedNew = false;
+    Label l2 = new Label("Немає жодного аспіранта з боргами!");
+    Label l1 = new Label("Немає жодного аспіранта у базі даних. Додайте нового аспіранта!");
 
 
-
+    @FXML
+    Label showDebtsLabel;
     @FXML
     public ChoiceBox searchType;
 
@@ -48,14 +53,14 @@ public class ControllerAspirant {
     public TextField textToFind;
 
     @FXML
-    public  TableView<ObjectAspirant> table;
+    public TableView<ObjectAspirant> table;
 
 
     @FXML
-    public  TableColumn<ObjectAspirant, Integer> tableAspirantId;
+    public TableColumn<ObjectAspirant, Integer> tableAspirantId;
 
     @FXML
-    public  TableColumn<ObjectAspirant, String> tableAspirantName;
+    public TableColumn<ObjectAspirant, String> tableAspirantName;
 
     @FXML
     public TableColumn<ObjectAspirant, Date> tableAspirantDate;
@@ -77,7 +82,8 @@ public class ControllerAspirant {
 
     @FXML
     public TableColumn<ObjectAspirant, String> tableAspirantForm;
-
+    private boolean showingDebts = false;
+    private ObjectDebt debt;
 
 
     public TableView<ObjectAspirant> getTable() {
@@ -85,20 +91,18 @@ public class ControllerAspirant {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
 
+        addedNew = true;
+        loaded = false;
 
-        addedNew=true;
-        loaded=false;
-
-        Label l1 = new Label("Немає жодного аспіранта у базі даних. Додайте нового аспіранта!");
         l1.setStyle("-fx-font-size: 20px");
+        l2.setStyle("-fx-font-size: 20px");
 
         table.setPlaceholder(l1);
-//        tableVykladachId.setStyle("-fx-alignment: CENTER");
 
-        Platform.runLater( () -> root.requestFocus());
+        Platform.runLater(() -> root.requestFocus());
 
         if (!loaded) {
             MenuItem mi1 = new MenuItem("Переглянути інформацію");
@@ -106,7 +110,7 @@ public class ControllerAspirant {
                 ObjectAspirant item = table.getSelectionModel().getSelectedItem();
                 ControllerShowInfoAspirant.aspirant = item;
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_info_aspirant.fxml","Відділ аспірантури | " + item.getName(),600,730,null,2,0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_info_aspirant.fxml", "Відділ аспірантури | " + item.getName(), 600, 730, null, 2, 0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -120,9 +124,9 @@ public class ControllerAspirant {
                 ControllerEditInfoAspirant.aspirant = item;
 
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_edit_info_aspirant.fxml","Відділ аспірантури | " + item.getName(),600,730,null,2,0);
-                    if (addedNew){
-                        addedNew=false;
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_edit_info_aspirant.fxml", "Відділ аспірантури | " + item.getName(), 600, 730, null, 2, 0);
+                    if (addedNew) {
+                        addedNew = false;
                         int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                         loadData();
                         table.getSelectionModel().select(i);
@@ -140,7 +144,7 @@ public class ControllerAspirant {
                 ControllerShowHistoryAspirant.aspirantId = item.getId();
                 ControllerShowHistoryAspirant.aspirantName = item.getName();
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_history_aspirant.fxml","Відділ аспірантури | Історія змін | " + item.getName(),600,500,null,2,0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_history_aspirant.fxml", "Відділ аспірантури | Історія змін | " + item.getName(), 600, 500, null, 2, 0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -156,7 +160,7 @@ public class ControllerAspirant {
 
 
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_science_aspirant.fxml","Відділ аспірантури | Наукова активність | " + item.getName(),600,500,null,2,0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_science_aspirant.fxml", "Відділ аспірантури | Наукова активність | " + item.getName(), 600, 500, null, 2, 0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -169,7 +173,7 @@ public class ControllerAspirant {
                 ControllerShowResults.aspirantName = item.getName();
 
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_results_aspirant.fxml","Відділ аспірантури | Результати | " + item.getName(),840,500,null,2,0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_results_aspirant.fxml", "Відділ аспірантури | Результати | " + item.getName(), 840, 500, null, 2, 0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -185,7 +189,7 @@ public class ControllerAspirant {
                 ControllerShowPractice.aspirantName = item.getName();
 
                 try {
-                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_practice_aspirant.fxml","Відділ аспірантури | Практика | " + item.getName(),600,500,null,2,0);
+                    LoadWindow.loader.openWindow("/fxml/aspirant/form_show_practice_aspirant.fxml", "Відділ аспірантури | Практика | " + item.getName(), 600, 500, null, 2, 0);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -193,11 +197,8 @@ public class ControllerAspirant {
             });
 
 
-
-
-
             ContextMenu menu = new ContextMenu();
-            menu.getItems().addAll(mi1, mi2,new SeparatorMenuItem(),mi6,mi5,mi4,new SeparatorMenuItem(),mi3);
+            menu.getItems().addAll(mi1, mi2, new SeparatorMenuItem(), mi6, mi5, mi4, new SeparatorMenuItem(), mi3);
             table.setContextMenu(menu);
 
             tableAspirantId.setCellValueFactory(new PropertyValueFactory<ObjectAspirant, Integer>("id"));
@@ -213,10 +214,9 @@ public class ControllerAspirant {
             tableAspirantNote.setCellValueFactory(new PropertyValueFactory<ObjectAspirant, String>("note"));
 
 
-
-
             tableAspirantNote.setCellFactory(new Callback<TableColumn<ObjectAspirant, String>, TableCell<ObjectAspirant, String>>() {
-                @Override public TableCell<ObjectAspirant, String> call(final TableColumn<ObjectAspirant, String> personStringTableColumn) {
+                @Override
+                public TableCell<ObjectAspirant, String> call(final TableColumn<ObjectAspirant, String> personStringTableColumn) {
                     TableCell cell = new TableCell<ObjectAspirant, String>() {
                         @Override
                         public void updateItem(String item, boolean empty) {
@@ -235,20 +235,20 @@ public class ControllerAspirant {
                         public void handle(MouseEvent event) {
                             if (event.getClickCount() > 1) {
                                 TableCell c = (TableCell) event.getSource();
-                                ObjectAspirant o = (ObjectAspirant)cell.getTableRow().getItem();
-                                ControllerNote.note =c.getText();
+                                ObjectAspirant o = (ObjectAspirant) cell.getTableRow().getItem();
+                                ControllerNote.note = c.getText();
                                 ControllerNote.aspirantId = o.getId();
 
                                 try {
-                                    LoadWindow.loader.openWindow("/fxml/aspirant/form_note.fxml",o.getName(),490,200,null,2,0);
+                                    LoadWindow.loader.openWindow("/fxml/aspirant/form_note.fxml", o.getName(), 490, 200, null, 2, 0);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-                                if (addedNew){
-                                    addedNew=false;
+                                if (addedNew) {
+                                    addedNew = false;
                                     o.setNote(ControllerNote.note);
-                                    ControllerNote.note=null;
-                                    ControllerNote.aspirantId=-1;
+                                    ControllerNote.note = null;
+                                    ControllerNote.aspirantId = -1;
                                     cell.setText(o.getNote());
                                 }
                             }
@@ -264,7 +264,8 @@ public class ControllerAspirant {
                 }
             });
             tableAspirantStatus.setCellFactory(new Callback<TableColumn<ObjectAspirant, String>, TableCell<ObjectAspirant, String>>() {
-                @Override public TableCell<ObjectAspirant, String> call(final TableColumn<ObjectAspirant, String> personStringTableColumn) {
+                @Override
+                public TableCell<ObjectAspirant, String> call(final TableColumn<ObjectAspirant, String> personStringTableColumn) {
                     return new BackgroundTableCell();
                 }
             });
@@ -273,7 +274,6 @@ public class ControllerAspirant {
             loadData();
             table.getSelectionModel().select(i);
             searchResultCount.setText("Всього результатів: " + aspirantsData.size());
-
 
 
             searchType.valueProperty().addListener(new ChangeListener<String>() {
@@ -288,31 +288,45 @@ public class ControllerAspirant {
         }
     }
 
+
+    public void refreshData() {
+
+        if (!showingDebts) {
+            loadData();
+        } else {
+            loadDataDebts(debt);
+        }
+
+    }
+
     public void loadData() {
-        aspirantsData = SqlCommander.getAllAspirants();
+
+        if (!showingDebts) {
+            aspirantsData = SqlCommander.getAllAspirants();
+        }
+        searchResultCount.setText("Всього результатів: " + aspirantsData.size());
+
+        table.setPlaceholder(l1);
         table.setItems(aspirantsData);
+
     }
 
 
-
-
-
-
-
-    @FXML public void loadFormActions(Event event) throws IOException {
+    @FXML
+    public void loadFormActions(Event event) throws IOException {
 
         ControllerActions.aspirantsData = aspirantsData;
 
         ObjectAspirant as = table.getSelectionModel().getSelectedItem();
 
-        if(as!=null) {
+        if (as != null) {
             ControllerActions.actionId = as.getId();
             ControllerActions.aspirant = as;
         }
 
         AnchorPane pane = (AnchorPane) event.getSource();
-        String title="";
-        switch (pane.getId()){
+        String title = "";
+        switch (pane.getId()) {
             case "pauseAspirantPane":
                 ControllerActions.actionId = 1;
                 title = ("Відділ аспірантури | Оформлення перерви");
@@ -333,15 +347,15 @@ public class ControllerAspirant {
 
 
         try {
-            LoadWindow.loader.openWindow("/fxml/aspirant/form_actions_aspirant.fxml",title,515,200,null,2,0);
-            if (addedNew){
-                addedNew=false;
+            LoadWindow.loader.openWindow("/fxml/aspirant/form_actions_aspirant.fxml", title, 515, 200, null, 2, 0);
+            if (addedNew) {
+                addedNew = false;
                 int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                 loadData();
                 table.getSelectionModel().select(i);
             }
-            ControllerActions.actionId=0;
-            ControllerActions.aspirant=null;
+            ControllerActions.actionId = 0;
+            ControllerActions.aspirant = null;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -350,11 +364,12 @@ public class ControllerAspirant {
     }
 
 
-    @FXML public void loadFormAddAspirant() throws IOException {
+    @FXML
+    public void loadFormAddAspirant() throws IOException {
         try {
-            LoadWindow.loader.openWindow("/fxml/aspirant/form_add_aspirant.fxml","Відділ аспірантури | Прийом в аспірантуру",600,730,"paneAspirant",2,2);
-            if (addedNew){
-                addedNew=false;
+            LoadWindow.loader.openWindow("/fxml/aspirant/form_add_aspirant.fxml", "Відділ аспірантури | Прийом в аспірантуру", 600, 730, "paneAspirant", 2, 2);
+            if (addedNew) {
+                addedNew = false;
                 int i = table.getItems().indexOf(table.getSelectionModel().getSelectedItem());
                 loadData();
                 table.getSelectionModel().select(i);
@@ -368,7 +383,7 @@ public class ControllerAspirant {
     }
 
 
-    public void removeTableColumns(){
+    public void removeTableColumns() {
         table.getColumns().remove(1, table.getColumns().size());
     }
 
@@ -382,9 +397,9 @@ public class ControllerAspirant {
             for (ObjectAspirant aspirant : aspirantsData) {
                 if (searchKind.equals("Ім'я аспіранта"))
                     if (aspirant.getName().toLowerCase().contains(toFind.toLowerCase())) {
-                    table.getItems().add(aspirant);
-                    i++;
-                }
+                        table.getItems().add(aspirant);
+                        i++;
+                    }
 
                 if (searchKind.equals("Спеціальність"))
                     if (aspirant.getSpeciality().toLowerCase().contains(toFind.toLowerCase())) {
@@ -408,21 +423,67 @@ public class ControllerAspirant {
                 }
             }
             searchResultCount.setText("Знайдено: " + i);
-        }else{
+        } else {
             table.setItems(aspirantsData);
             searchResultCount.setText("Всього результатів: " + aspirantsData.size());
         }
     }
 
-    public void clear(){
+
+    public void showDebtAspirants() {
+
+        if (!showingDebts) {
+            try {
+                LoadWindow.loader.openWindow("/fxml/aspirant/form_show_debts.fxml", "Переглянути боржників", 300, 360, null, 2, 0);
+                debt = ControllerDebt.debt;
+                if (debt != null) {
+                    ControllerDebt.debt = null;
+                    loadDataDebts(debt);
+                    showingDebts = true;
+                    Platform.runLater(() -> showDebtsLabel.setText("Показати всіх"));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            loadData();
+            Platform.runLater(() -> showDebtsLabel.setText("Показати боржників"));
+            showingDebts = false;
+
+        }
+
+    }
+
+    private void loadDataDebts(ObjectDebt debt) {
+
+        int startYear = debt.getStartYear();
+        int endYear = debt.getEndYear();
+
+        int startCourse = debt.getStartCourse();
+        int endCourse = debt.getEndCourse();
+
+        int startSemestr = debt.getStartSemestr();
+        int endSemestr = debt.getEndSemestr();
+
+        aspirantsWithDebtsData = SqlCommander.getAllAspirantsWithDebts(startYear, endYear, startCourse, endCourse, startSemestr, endSemestr);
+        table.setItems(aspirantsWithDebtsData);
+
+        table.setPlaceholder(l2);
+
+        searchResultCount.setText("Всього результатів: " + aspirantsWithDebtsData.size());
+
+    }
+
+    public void clear() {
         table.setItems(aspirantsData);
         textToFind.setText("");
         searchResultCount.setText("Всього результатів: " + aspirantsData.size());
-        Platform.runLater( () -> ControllerAspirant.root.requestFocus());
+        Platform.runLater(() -> ControllerAspirant.root.requestFocus());
     }
 
     private static class BackgroundTableCell extends TableCell<ObjectAspirant, String> {
-        @Override protected void updateItem(final String item, final boolean empty) {
+        @Override
+        protected void updateItem(final String item, final boolean empty) {
             super.updateItem(item, empty);
 
             setText(empty ? "" : item);
@@ -438,14 +499,11 @@ public class ControllerAspirant {
 
             if (item.equals("Перерва")) {
                 getStyleClass().add(CSS_STOPPED);
-            }
-            else if (item.equals("Активно")) {
+            } else if (item.equals("Активно")) {
                 getStyleClass().add(CSS_ACTIVE);
-            }
-            else if (item.equals("Закінчено")) {
+            } else if (item.equals("Закінчено")) {
                 getStyleClass().add(CSS_FINISHED);
-            }
-            else if (item.equals("Відраховано")) {
+            } else if (item.equals("Відраховано")) {
                 getStyleClass().add(CSS_DISMISSED);
             }
         }

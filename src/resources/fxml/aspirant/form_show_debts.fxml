@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Integer?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="500.0" minHeight="87.0" minWidth="243.0" prefHeight="364.0" prefWidth="303.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerDebt">
+   <children>
+      <Button layoutX="190.0" layoutY="320.0" mnemonicParsing="false" onAction="#apply" prefHeight="30.0" prefWidth="88.0" text="Ок" />
+      <Button layoutX="87.0" layoutY="320.0" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="88.0" text="Скасувати" />
+      <Label fx:id="title1" layoutX="21.0" layoutY="54.0" text="Початковий рік: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="title21" layoutX="21.0" layoutY="12.0" text="Показ боржників">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="startYearComboBox" layoutX="132.0" layoutY="52.0" prefHeight="25.0" prefWidth="147.0" promptText="Не обрано">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <Integer fx:value="2016" />
+               <Integer fx:value="2017" />
+            </FXCollections>
+         </items>
+
+      </ComboBox>
+      <Label fx:id="title11" layoutX="21.0" layoutY="83.0" text="Кінцевий рік: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="endYearComboBox" layoutX="132.0" layoutY="82.0" prefHeight="25.0" prefWidth="147.0" promptText="Не обрано">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Integer fx:value="2016" />
+                <Integer fx:value="2017" />
+            </FXCollections>
+         </items>
+
+      </ComboBox>
+      <Separator layoutX="21.0" layoutY="117.0" prefHeight="3.0" prefWidth="255.0" />
+      <Label fx:id="title12" layoutX="21.0" layoutY="132.0" text="Початковий курс: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="startCourseComboBox" layoutX="142.0" layoutY="130.0" prefHeight="25.0" prefWidth="137.0" promptText="Не обрано">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <Integer fx:value="1" />
+               <Integer fx:value="2" />
+               <Integer fx:value="3" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label fx:id="title111" layoutX="21.0" layoutY="161.0" text="Кінцевий курс: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="endCourseComboBox" layoutX="142.0" layoutY="160.0" prefHeight="25.0" prefWidth="137.0" promptText="Не обрано">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+                <Integer fx:value="1" />
+                <Integer fx:value="2" />
+                <Integer fx:value="3" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Separator layoutX="21.0" layoutY="41.0" prefHeight="3.0" prefWidth="255.0" />
+      <Separator layoutX="21.0" layoutY="197.0" prefHeight="3.0" prefWidth="255.0" />
+      <Label fx:id="title121" layoutX="21.0" layoutY="212.0" text="Початковий семестр: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="title1111" layoutX="21.0" layoutY="241.0" text="Кінцевий семестр: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="endSemestrComboBox" layoutX="162.0" layoutY="240.0" prefHeight="25.0" prefWidth="117.0" promptText="Не обрано">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <Integer fx:value="1" />
+               <Integer fx:value="2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <ComboBox fx:id="startSemestrComboBox" layoutX="162.0" layoutY="210.0" prefHeight="25.0" prefWidth="117.0" promptText="Не обрано">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <Integer fx:value="1" />
+               <Integer fx:value="2" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+   </children>
+</Pane>

@@ -32,6 +32,11 @@ public class ControllerMark {
         markIE = markIECTIS.getValue();
         markNa = markNational.getValue();
 
+
+        if (markNa.equals("Не обрано"))markNa="";
+        if (markIE.equals("Не обрано"))markIE="";
+
+
         try {
             if (!markPo.equals("")) Integer.parseInt(markPo);
             SqlCommander.editMark(id,markPo,markNa,markIE);

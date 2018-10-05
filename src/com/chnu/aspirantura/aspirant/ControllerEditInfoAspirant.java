@@ -1,6 +1,7 @@
 package com.chnu.aspirantura.aspirant;
 
 import com.chnu.aspirantura.SqlCommander;
+import com.chnu.aspirantura.Utils;
 import com.chnu.aspirantura.nakaz.ObjectNakaz;
 import com.chnu.aspirantura.speciality.ObjectSpeciality;
 import com.chnu.aspirantura.vykladach.ObjectVykladach;
@@ -9,6 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -221,5 +223,14 @@ public class ControllerEditInfoAspirant {
             passportPane.setVisible(true);
             showHideLabel.setText(("[Показати]"));
         }
+    }
+
+    public void deleteAspirant(ActionEvent event) {
+        if (Utils.askYesNo("Ви дійсно хочете видалити "+aspirant.getName()+" ?")==1){
+            SqlCommander.deleteAspirant(aspirant.getId());
+            ControllerAspirant.addedNew=true;
+            cancel();
+        }
+
     }
 }

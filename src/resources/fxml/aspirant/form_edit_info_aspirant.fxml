@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="597.0" minHeight="600.0" minWidth="597.0" prefHeight="730.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerEditInfoAspirant">
+<Pane maxHeight="-Infinity" maxWidth="597.0" minHeight="600.0" minWidth="597.0" prefHeight="730.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.chnu.aspirantura.aspirant.ControllerEditInfoAspirant">
    <children>
       <Pane prefHeight="745.0" prefWidth="588.0">
          <children>
@@ -164,6 +164,7 @@
                   </FXCollections>
                </items>
             </ComboBox>
+            <Button layoutX="27.0" layoutY="682.0" mnemonicParsing="false" onAction="#deleteAspirant" prefHeight="35.0" prefWidth="142.0" text="Видалити аспіранта" />
          </children>
       </Pane>
    </children>
