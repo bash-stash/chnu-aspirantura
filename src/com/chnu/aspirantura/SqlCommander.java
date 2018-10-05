@@ -2744,4 +2744,46 @@ public class SqlCommander {
 
 
     }
+
+
+    public static boolean isItAspirantGraduationYear(ObjectAspirant aspirant, int year) {
+        Connection connection = getConnection();
+        try {
+
+            Statement statement;
+            statement = connection.createStatement();
+            ResultSet result1 = statement.executeQuery("SELECT nakaz.date_nakaz " +
+                    "FROM nakaz JOIN nakaz_type ON nakaz.type = nakaz_type.type INNER JOIN status s ON nakaz.id = s.id_nakaz  INNER JOIN aspirant ON aspirant.id_status = s.id WHERE nakaz_type.type=3 AND aspirant.id="+aspirant.getId());
+
+            java.util.Date date;
+            DateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+            while (result1.next()) {
+                date = originalFormat.parse(result1.getDate("date_nakaz").toString());
+                date = targetFormat.parse(targetFormat.format(date));
+
+                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                if (localDate.getYear() == (year+1)) {
+                    return true;
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (Exception e) {
+
+                }
+        }
+        return false;
+
+    }
 }

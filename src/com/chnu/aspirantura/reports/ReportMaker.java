@@ -1,6 +1,11 @@
 package com.chnu.aspirantura.reports;
 
+import com.chnu.aspirantura.SqlCommander;
 import com.chnu.aspirantura.Utils;
+import com.chnu.aspirantura.aspirant.ObjectAspirant;
+import com.chnu.aspirantura.aspirant.ObjectDiploma;
+import com.chnu.aspirantura.speciality.ObjectSpeciality;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -116,11 +121,87 @@ public class ReportMaker {
 
 
     private void addDataToReport(XlsxBuilder xlsxBuilder,int year){
+        ObservableList<ObjectSpeciality> specialityObservableList = SqlCommander.getAllSpeciality();
+        ObservableList<ObjectAspirant> allAspirants = SqlCommander.getAllAspirants();
+
+    int rowCount=1;
+        for (ObjectSpeciality speciality : specialityObservableList) {
+
+            int dailyFormAccepted=0;
+            int otherFormAcepted=0;
+
+            int dailyFormGraduatedAll=0;
+            int dailyFormGraduatedWithDissertation=0;
+
+            int otherFormGraduatedAll=0;
+            int otherFormGraduatedWithDissertation=0;
+
+            int amountDailyForm=0;
+            int amountDailyOther=0;
+
+            int amountWomen=0;
+            int amountWomenGraduated=0;
+            int amountWomenAccepted=0;
 
 
+            for (ObjectAspirant aspirant: allAspirants) {
+                if (aspirant.getSpeciality().equals(speciality.getName())){
+
+                    boolean dailyForm = aspirant.getForm().equals("Денна");
+                    boolean isMale = aspirant.getMale().equals("Чоловіча");
 
 
+                    if (aspirant.getYear()==year){
+                        if (!isMale) amountWomenAccepted++;
+                        if (dailyForm) dailyFormAccepted++;
+                        else otherFormAcepted++;
 
+                    }
+
+
+                    if (SqlCommander.isItAspirantGraduationYear(aspirant,year)){
+
+                        if (!isMale) amountWomenGraduated++;
+                        if (dailyForm) dailyFormGraduatedAll++;
+                        else otherFormGraduatedAll++;
+
+                        ObjectDiploma objectDiploma = SqlCommander.getDiplomaByAspirantId(aspirant.getId());
+
+                        if(objectDiploma!=null && objectDiploma.getStatus()!=0){
+                            if (dailyForm) dailyFormGraduatedWithDissertation++;
+                            else otherFormGraduatedWithDissertation++;
+                        }
+
+                    }
+
+                    if (!aspirant.getStatusLabel().equals("Відраховано")){
+                        if (!isMale) amountWomen++;
+                        if (dailyForm) amountDailyForm++;
+                        else amountDailyOther++;
+                    }
+
+                }
+            }
+
+
+        xlsxBuilder.startRow();
+        xlsxBuilder.addTextLeftAlignedColumn(speciality.getName());
+        xlsxBuilder.addTextCenterAlignedColumn(speciality.getCode());
+
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(rowCount++));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(dailyFormAccepted));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(otherFormAcepted));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(dailyFormGraduatedAll));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(dailyFormGraduatedWithDissertation));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(otherFormGraduatedAll));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(otherFormGraduatedWithDissertation));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(amountDailyForm));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(amountDailyOther));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(amountWomen));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(amountWomenGraduated));
+        xlsxBuilder.addTextCenterAlignedColumn(String.valueOf(amountWomenAccepted));
+
+        }
     }
 
 

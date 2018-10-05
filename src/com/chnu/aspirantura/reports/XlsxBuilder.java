@@ -191,12 +191,26 @@ public class XlsxBuilder {
      * @return this instance
      */
     public XlsxBuilder addTextLeftAlignedColumn(String text) {
+
         Cell cell = row.createCell(nextColumnIdx);
         CellStyle style = getCellStyle(StyleAttribute.ALIGN_LEFT);
+        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+        style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
         cell.setCellStyle(style);
-        cell.setCellValue(StringUtils.stripToEmpty(text));
+
+
+
+        try{
+            cell.setCellValue(Integer.parseInt(text));
+            cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+        }catch (Exception e){
+            cell.setCellValue(StringUtils.stripToEmpty(text));
+        }
         nextColumnIdx = nextColumnIdx + 1;
         return this;
+
     }
 
 
@@ -257,7 +271,7 @@ public class XlsxBuilder {
         style.setFillBackgroundColor(IndexedColors.WHITE.getIndex());
         style.setWrapText(true);
         cell.setCellStyle(style);
-        if (regionId==0) sheet.setColumnWidth(cell.getColumnIndex(), (text.length()) * 256);
+        if (regionId==0) sheet.setColumnWidth(cell.getColumnIndex(), (text.length()+2) * 256);
         else if(regionId==1) sheet.setColumnWidth(cell.getColumnIndex(), (8) * 256);
         else if(regionId==2) sheet.setColumnWidth(cell.getColumnIndex(), (6) * 256);
         else if(regionId==3) sheet.setColumnWidth(cell.getColumnIndex(), ((text.length())* 256));
