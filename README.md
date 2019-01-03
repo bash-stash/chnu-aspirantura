@@ -1,3 +1,3 @@
 # The desktop  application for BSNU department of graduate students
 
-(Warning: spaghetti code inside)
+(Warning: awful, nasty spaghetti code inside)
